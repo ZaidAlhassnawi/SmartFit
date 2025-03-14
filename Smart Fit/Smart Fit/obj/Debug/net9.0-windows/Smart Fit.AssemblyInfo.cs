@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Smart Fit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8630db99d9c354e14b5be6333cd00ec66aad3256")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+67fc2dfc115228b3a925bff9a90614fd3d5ca4bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Smart Fit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Smart Fit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
