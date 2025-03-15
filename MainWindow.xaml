@@ -56,7 +56,7 @@
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
-                        
+
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}"
@@ -100,7 +100,56 @@
 
             <!-- Main Content -->
             <Grid Margin="0,50,0,0">
-                <!-- Your UI elements go here -->
+                <!-- UI elements go here -->
+
+                <StackPanel HorizontalAlignment="Left" Background="#F6F7F9" Width="220"  Margin="40,0,0,10" Height="842" VerticalAlignment="Bottom">
+                    <!-- Logo -->
+                    <StackPanel Orientation="Horizontal" Margin="20,30,0,20"/>
+
+                    <!-- Navigation Items -->
+                    <Button Background="#4A7AB0" HorizontalAlignment="Left" Width="180" Padding="10" Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <Image  HorizontalAlignment="Left" Source="Assets\Images\Vector.png"  Width="24" Height="24" Margin="0,0,60,0"/>
+                            <TextBlock Text="الرئيسية" FontSize="16" FontWeight="SemiBold" Foreground="#3E3E3E" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Background="Transparent" HorizontalAlignment="Left" Width="180" Padding="10" Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Assets\Images\Dumbbells 2.png" Width="24" Height="24" Margin="0,0,60,0"/>
+                            <TextBlock Text="تمارينك" FontSize="16" FontWeight="SemiBold" Foreground="#3E3E3E" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Background="Transparent" HorizontalAlignment="Left" Width="180" Padding="10" Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Assets\Images\Stars Minimalistic.png" Width="24" Height="24" Margin="0,0,60,0" />
+                            <TextBlock Text="إنشاء خطة مع AI" FontSize="16" FontWeight="SemiBold" Foreground="#3E3E3E" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Background="Transparent" HorizontalAlignment="Left" Width="180" Padding="10" Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Assets\Images\User.png" Width="24" Height="24" Margin="0,0,60,0" />
+                            <TextBlock Text="ملفك الشخصي" FontSize="16" FontWeight="SemiBold" Foreground="#3E3E3E" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <Grid Margin="40,0,-40,852">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="96*"/>
+                        <ColumnDefinition Width="228*"/>
+                        <ColumnDefinition Width="496*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="48*"/>
+                        <ColumnDefinition Width="303*"/>
+                        <ColumnDefinition Width="216*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Smart Fit" Grid.Column="1" Margin="0,0,495,0" Grid.ColumnSpan="2" FontSize="24" VerticalContentAlignment="Center" Foreground="#FF4A7AB0" FontFamily=""/>
+                    <Image Source="Assets\Images\Logo.png" HorizontalAlignment="Left" Height="88" VerticalAlignment="Center" Width="86"/>
+                </Grid>
+
+
             </Grid>
         </Grid>
     </Border>

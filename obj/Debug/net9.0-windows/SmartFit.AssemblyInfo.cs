@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartFit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8b411d3eef48d770317dbd4c393e5cfbde6aa85")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4876b4e891bffa67a24993d2e74b743e42d9f07")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartFit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartFit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
