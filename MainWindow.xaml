@@ -5,8 +5,103 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmartFit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+       x:Name="mainwindow"  Title="" Height="1024" Width="1440"
+        WindowStyle="None" AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"
+        Padding="2,0,2,4" Background="Transparent" MinHeight="700" MinWidth="984">
 
-    </Grid>
+    <!-- Main Window Border -->
+    <Border x:Name="MainBorder" Background="#FFFFFF" CornerRadius="50" BorderThickness="2" BorderBrush="LightGray">
+        <Grid>
+            <!-- Custom Rounded Title Bar -->
+            <Border x:Name="TitleBar" Background="#B8D9FF" CornerRadius="50,50,0,0" Height="50" VerticalAlignment="Top"
+                    MouseDown="TitleBar_MouseDown">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="51" />
+                        <ColumnDefinition Width="73" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="SmartFit" FontSize="18" FontWeight="Bold"
+                               VerticalAlignment="Center" Margin="20,0,0,0" Height="24"/>
+
+                    <!-- Minimize Button -->
+                    <Button Grid.Column="1" Content="━" FontSize="16" Click="Minimize_Click"
+                            Background="Transparent" BorderBrush="Transparent" ToolTip="Minimize" Margin="0,6,0,6" HorizontalAlignment="Center" Width="38" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+  CornerRadius="10"
+  BorderBrush="Transparent"
+  BorderThickness="0"
+  Padding="5"
+  Effect="{StaticResource DropShadowEffect}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+                    <!-- Maximize/Restore Button -->
+                    <Button Grid.Column="2" Content="▢" FontSize="16" Click="MaximizeRestore_Click"
+                            Background="Transparent" BorderBrush="Transparent" ToolTip="Maximize/Restore" Margin="5,6,5,6" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                        
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+  CornerRadius="10"
+  BorderBrush="Transparent"
+  BorderThickness="0"
+  Padding="5"
+  Effect="{StaticResource DropShadowEffect}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+                    <!-- Close Button -->
+                    <Button  Grid.Column="3" Content="✕" FontSize="16" Click="Close_Click"
+                            Background="Transparent" BorderBrush="Transparent" Foreground="Red" ToolTip="Close" Margin="13,6,27,6" Cursor="Hand" >
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                    CornerRadius="10"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Padding="5"
+                    Effect="{StaticResource DropShadowEffect}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+                </Grid>
+            </Border>
+
+            <!-- Main Content -->
+            <Grid Margin="0,50,0,0">
+                <!-- Your UI elements go here -->
+            </Grid>
+        </Grid>
+    </Border>
 </Window>

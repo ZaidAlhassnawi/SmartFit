@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:SmartFit"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <DropShadowEffect x:Key="DropShadowEffect" BlurRadius="10"
+                      ShadowDepth="3" Opacity="0.5"/>
     </Application.Resources>
 </Application>
