@@ -8,13 +8,13 @@
        x:Name="mainwindow"  Title="" Height="1024" Width="1440"
         WindowStyle="None" AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"
-        Padding="2,0,2,4" Background="Transparent" MinHeight="700" MinWidth="984">
+        Padding="2,0,2,4" Background="Transparent" MinHeight="700" MinWidth="1275">
 
     <!-- Main Window Border -->
     <Border x:Name="MainBorder" Background="#FFFFFF" CornerRadius="50" BorderThickness="2" BorderBrush="LightGray">
         <Grid>
             <!-- Custom Rounded Title Bar -->
-            <Border x:Name="TitleBar" Background="#B8D9FF" CornerRadius="50,50,0,0" Height="50" VerticalAlignment="Top"
+            <Border x:Name="TitleBar" Background="#FFFFFFFF" CornerRadius="50,50,0,0" Height="50" VerticalAlignment="Top"
                     MouseDown="TitleBar_MouseDown">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -33,7 +33,7 @@
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
-
+ 
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}"
@@ -100,13 +100,17 @@
 
             <!-- Main Content -->
             <Grid Margin="0,50,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="187*"/>
+                    <ColumnDefinition Width="531*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="101*"/>
-                    <RowDefinition Height="869*"/>
+                    <RowDefinition Height="56*"/>
+                    <RowDefinition Height="429*"/>
                 </Grid.RowDefinitions>
                 <!-- UI elements go here -->
 
-                <StackPanel  HorizontalAlignment="Left" Background="#F6F7F9" Width="328"  Margin="0,10,0,38" Grid.Row="1">
+                <StackPanel Background="#FFFFFFFF"  Margin="10,0,0,38" Grid.Row="1" HorizontalAlignment="Left" Width="339">
                     <!-- Logo -->
                     <StackPanel Orientation="Horizontal" Margin="20,30,0,20"/>
                     <Border x:Name="HomeBorder" Margin="0,0,0,1" CornerRadius="28" Background="#4A7AB0" Height="56" Width="296" Padding="10,16,10,16" Cursor="Hand" MouseDown="HomeBorder_MouseDown">
@@ -117,44 +121,90 @@
                     </Border>
                     <Border x:Name="ExcBorder"  Margin="0,0,0,1" CornerRadius="28" Background="#FFFFFF" Height="56" Width="296" Padding="10,16,10,16" Cursor="Hand" MouseDown="ExcBorder_MouseDown">
                         <StackPanel Orientation="Horizontal">
-                            <Image x:Name="ExcIcon" Source="Assets\Images\Dumbbells 2.png" Width="24" Height="24" Margin="0,0,0,0"/>
+                            <Image x:Name="ExcIcon" Source="Assets\Images\Dumbbells2.png" Width="24" Height="24" Margin="0,0,0,0"/>
                             <TextBlock x:Name="ExcText" Text="تمارينك" FontSize="16" FontWeight="SemiBold" Foreground="#FF4A7AB0" Margin="8,0,0,0"/>
                         </StackPanel>
                     </Border>
                     <Border  x:Name="AiBorder" Margin="0,0,0,1" CornerRadius="28" Background="#FFFFFF" Height="56" Width="296" Padding="10,16,10,16" Cursor="Hand" MouseDown="AiBorder_MouseDown">
                         <StackPanel Orientation="Horizontal">
-                            <Image x:Name="AiIcon" Source="Assets\Images\Stars Minimalistic.png" Width="24" Height="24" Margin="0,0,0,0" />
+                            <Image x:Name="AiIcon" Source="Assets\Images\StarsMinimalistic2.png" Width="24" Height="24" Margin="0,0,0,0" />
                             <TextBlock x:Name="AiText" Text="إنشاء خطة مع AI" FontSize="16" FontWeight="SemiBold" Foreground="#FF4A7AB0" Margin="8,0,0,0" FlowDirection="RightToLeft"/>
                         </StackPanel>
                     </Border>
                     <Border x:Name="Userborder" Margin="0,0,0,1" CornerRadius="28" Background="#FFFFFF" Height="56" Width="296" Padding="10,16,10,16" Cursor="Hand" MouseDown="Userborder_MouseDown">
                         <StackPanel Orientation="Horizontal">
-                            <Image x:Name="UserIcon" Source="Assets\Images\User.png" Width="24" Height="24" Margin="0,0,0,0" />
+                            <Image x:Name="UserIcon" Source="Assets\Images\User2.png" Width="24" Height="24" Margin="0,0,0,0" />
                             <TextBlock x:Name="UserText" Text="ملفك الشخصي" FontSize="16" FontWeight="SemiBold" Foreground="#FF4A7AB0" Margin="8,0,0,0"/>
                         </StackPanel>
                     </Border>
 
                     <!-- Navigation Items -->
                 </StackPanel>
-                <Grid Grid.RowSpan="2" Height="118" VerticalAlignment="Top" Margin="40,0,0,0" HorizontalAlignment="Left" Width="1396">
+                <Grid Grid.RowSpan="2" Height="118" VerticalAlignment="Top" Margin="34,0,0,0" HorizontalAlignment="Left" Width="1184" Grid.ColumnSpan="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="93*"/>
-                        <ColumnDefinition Width="221*"/>
-                        <ColumnDefinition Width="512*"/>
-                        <ColumnDefinition Width="58*"/>
-                        <ColumnDefinition Width="61*"/>
-                        <ColumnDefinition Width="241*"/>
-                        <ColumnDefinition Width="210*"/>
+                        <ColumnDefinition Width="90*"/>
+                        <ColumnDefinition Width="123*"/>
+                        <ColumnDefinition Width="615*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="46*"/>
+                        <ColumnDefinition Width="260*"/>
                     </Grid.ColumnDefinitions>
-                    <Label FontFamily="Assets\Fonts\#Poppins Black" Content="Smart Fit" Grid.Column="1" Margin="0,0,13,0" FontSize="24" VerticalContentAlignment="Center" Foreground="#FF4A7AB0" />
-                    <Image Source="Assets\Images\Logo.png" HorizontalAlignment="Right" Height="88" VerticalAlignment="Center" Width="86" Margin="0,0,7,0"/>
+                    <Label FontFamily="Assets\Fonts\#Poppins Black" Content="Smart Fit" FontSize="24" VerticalContentAlignment="Center" Foreground="#FF4A7AB0" Grid.ColumnSpan="2" Margin="86,0,1,0" />
+                    <Image Source="Assets\Images\Logo.png" HorizontalAlignment="Left" Height="88" VerticalAlignment="Center" Width="86"/>
 
-                    <Border Background="#FFF4F4F4" CornerRadius="15" BorderBrush="Gray" BorderThickness="0" Padding="5" Grid.Column="2" HorizontalAlignment="Center" Margin="0,33,0,38" Width="456">
+                    <Border Background="#FFF4F4F4" CornerRadius="15" BorderBrush="Gray" BorderThickness="0" Padding="5" Grid.Column="2" HorizontalAlignment="Center" Margin="0,33,0,38" Width="556">
+                        <Border.Effect>
+                            <DropShadowEffect/>
+                        </Border.Effect>
 
-                        <TextBox  x:Name="SearchBox" IsReadOnly="True"  TextWrapping="Wrap" Text="ابحث عن تمرينك" VerticalAlignment="Center" Height="44" BorderThickness="0,0,0,0" VerticalContentAlignment="Center" Padding="30,0,0,0" Background="#FFF4F4F4" Cursor="IBeam" Foreground="Gray" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus"/>
+                        <TextBox  x:Name="SearchBox" IsReadOnly="True"  TextWrapping="Wrap" Text="ابحث عن تمرينك" VerticalAlignment="Center" Height="44" BorderThickness="0,0,0,0" VerticalContentAlignment="Center" Padding="30,0,0,0" Background="#FFF4F4F4" Cursor="IBeam" Foreground="Gray" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus">
+                         
+                        </TextBox>
                     </Border>
 
-                    <Image Grid.Column="2" HorizontalAlignment="Left" Height="24" Margin="35,44,0,0" VerticalAlignment="Top" Width="24" Source="/Assets/Images/Magnifer.png" Stretch="Fill"/>
+                    <Image Grid.Column="2" HorizontalAlignment="Left" Height="24" Margin="37,44,0,0" VerticalAlignment="Top" Width="24" Source="/Assets/Images/Magnifer.png" Stretch="Fill" Cursor="Hand">
+                        <Image.Effect>
+                            <DropShadowEffect/>
+                        </Image.Effect>
+                    </Image>
+                    <Image Grid.Column="3" HorizontalAlignment="Center" Height="24" VerticalAlignment="Center" Width="24" Source="/Assets/Images/Notifications.png" Cursor="Hand">
+                        <Image.Effect>
+                            <DropShadowEffect/>
+                        </Image.Effect>
+                    </Image>
+                    <Image Grid.Column="4" HorizontalAlignment="Center" Height="24" VerticalAlignment="Center" Width="24" Source="/Assets/Images/AIChat.png" Cursor="Hand">
+                        <Image.Effect>
+                            <DropShadowEffect/>
+                        </Image.Effect>
+                    </Image>
+                </Grid>
+                <Grid Grid.Column="1" Height="112" VerticalAlignment="Center" HorizontalAlignment="Right" Width="213">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="11*"/>
+                        <RowDefinition Height="17*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="134*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse Grid.Column="1" HorizontalAlignment="Center" Height="48" VerticalAlignment="Top" Width="48" Margin="0,22,0,0" Grid.RowSpan="2" Cursor="Hand">
+                        <Ellipse.Effect>
+                            <DropShadowEffect/>
+                        </Ellipse.Effect>
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/Assets/Images/Logo.png"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Label Content="Ahmed muhmmed" HorizontalAlignment="Left" Margin="47,0,0,0" VerticalAlignment="Bottom" Width="108" Height="27">
+                        <Label.Effect>
+                            <DropShadowEffect/>
+                        </Label.Effect>
+                    </Label>
+                    <Label Content="18 عام" HorizontalAlignment="Left" Margin="40,0,0,42" VerticalAlignment="Bottom" Width="115" Height="28" Grid.RowSpan="2" FlowDirection="RightToLeft" Foreground="#FFB2B2B2">
+                        <Label.Effect>
+                            <DropShadowEffect/>
+                        </Label.Effect>
+                    </Label>
                 </Grid>
 
 

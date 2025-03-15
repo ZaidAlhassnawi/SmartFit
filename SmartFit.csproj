@@ -27,12 +27,15 @@
     <None Remove="Assets\Fonts\Poppins-SemiBoldItalic.ttf" />
     <None Remove="Assets\Fonts\Poppins-Thin.ttf" />
     <None Remove="Assets\Fonts\Poppins-ThinItalic.ttf" />
-    <None Remove="Assets\Images\Dumbbells 2.png" />
+    <None Remove="Assets\Images\AIChat.png" />
+    <None Remove="Assets\Images\Dumbbells1.png" />
+    <None Remove="Assets\Images\Dumbbells3.png" />
     <None Remove="Assets\Images\Home.png" />
     <None Remove="Assets\Images\Logo.png" />
     <None Remove="Assets\Images\Magnifer.png" />
-    <None Remove="Assets\Images\Stars Minimalistic.png" />
-    <None Remove="Assets\Images\User.png" />
+    <None Remove="Assets\Images\Notifications.png" />
+    <None Remove="Assets\Images\StarsMinimalistic1.png" />
+    <None Remove="Assets\Images\User1.png" />
     <None Remove="Assets\Images\Vector.png" />
   </ItemGroup>
 
@@ -55,12 +58,18 @@
     <Resource Include="Assets\Fonts\Poppins-SemiBoldItalic.ttf" />
     <Resource Include="Assets\Fonts\Poppins-Thin.ttf" />
     <Resource Include="Assets\Fonts\Poppins-ThinItalic.ttf" />
-    <Resource Include="Assets\Images\Dumbbells 2.png" />
+    <Resource Include="Assets\Images\AIChat.png" />
+    <Resource Include="Assets\Images\Dumbbells1.png" />
+    <Resource Include="Assets\Images\Dumbbells2.png" />
+    <Resource Include="Assets\Images\Dumbbells3.png" />
     <Resource Include="Assets\Images\Home.png" />
     <Resource Include="Assets\Images\Logo.png" />
     <Resource Include="Assets\Images\Magnifer.png" />
-    <Resource Include="Assets\Images\Stars Minimalistic.png" />
-    <Resource Include="Assets\Images\User.png" />
+    <Resource Include="Assets\Images\Notifications.png" />
+    <Resource Include="Assets\Images\StarsMinimalistic1.png" />
+    <Resource Include="Assets\Images\StarsMinimalistic2.png" />
+    <Resource Include="Assets\Images\User1.png" />
+    <Resource Include="Assets\Images\User2.png" />
     <Resource Include="Assets\Images\Vector.png" />
   </ItemGroup>
 

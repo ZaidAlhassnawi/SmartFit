@@ -39,6 +39,7 @@ namespace SmartFit
                 SearchBox.Text = "";
                 SearchBox.Foreground = Brushes.Black;
             }
+
         }
 
         private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
@@ -62,12 +63,15 @@ namespace SmartFit
 
                 ExcBorder.Background = Brushes.White;
                 ExcText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+                ExcIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/Dumbbells2.png"));
 
                 AiBorder.Background = Brushes.White;
                 AiText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+                AiIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/StarsMinimalistic2.png"));
 
                 Userborder.Background = Brushes.White;
                 UserText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+                UserIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/User2.png"));
 
             }
         }
@@ -78,6 +82,7 @@ namespace SmartFit
             {
                 ExcBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
                 ExcText.Foreground = Brushes.White;
+                ExcIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/Dumbbells1.png"));
 
                 HomeBorder.Background = Brushes.White;
                 HomeText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
@@ -85,9 +90,11 @@ namespace SmartFit
 
                 AiBorder.Background = Brushes.White;
                 AiText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+                AiIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/StarsMinimalistic2.png"));
 
                 Userborder.Background = Brushes.White;
                 UserText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+                UserIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/User2.png"));
 
             }
         }
@@ -98,9 +105,11 @@ namespace SmartFit
             {
                 AiBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
                 AiText.Foreground = Brushes.White;
+                AiIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/StarsMinimalistic1.png"));
 
                 ExcBorder.Background = Brushes.White;
                 ExcText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+                ExcIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/Dumbbells3.png"));
 
                 HomeBorder.Background = Brushes.White;
                 HomeText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
@@ -108,6 +117,7 @@ namespace SmartFit
 
                 Userborder.Background = Brushes.White;
                 UserText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+                UserIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/User2.png"));
 
             }
         }
@@ -118,10 +128,11 @@ namespace SmartFit
             {
                 Userborder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
                 UserText.Foreground = Brushes.White;
-
+                UserIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/User1.png"));
 
                 ExcBorder.Background = Brushes.White;
                 ExcText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+                ExcIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/Dumbbells2.png"));
 
                 HomeBorder.Background = Brushes.White;
                 HomeText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
@@ -129,6 +140,7 @@ namespace SmartFit
 
                 AiBorder.Background = Brushes.White;
                 AiText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+                AiIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/StarsMinimalistic2.png"));
             }
         }
 
