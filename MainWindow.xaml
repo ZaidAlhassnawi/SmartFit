@@ -100,53 +100,61 @@
 
             <!-- Main Content -->
             <Grid Margin="0,50,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="101*"/>
+                    <RowDefinition Height="869*"/>
+                </Grid.RowDefinitions>
                 <!-- UI elements go here -->
 
-                <StackPanel HorizontalAlignment="Left" Background="#F6F7F9" Width="220"  Margin="40,0,0,10" Height="842" VerticalAlignment="Bottom">
+                <StackPanel  HorizontalAlignment="Left" Background="#F6F7F9" Width="328"  Margin="0,10,0,38" Grid.Row="1">
                     <!-- Logo -->
                     <StackPanel Orientation="Horizontal" Margin="20,30,0,20"/>
+                    <Border x:Name="HomeBorder" Margin="0,0,0,1" CornerRadius="28" Background="#4A7AB0" Height="56" Width="296" Padding="10,16,10,16" Cursor="Hand" MouseDown="HomeBorder_MouseDown">
+                        <StackPanel Orientation="Horizontal">
+                            <Image  x:Name="HomeIcon" HorizontalAlignment="Left" Source="Assets\Images\vector.png"  Width="24" Height="24" Margin="0,0,0,0"/>
+                            <TextBlock x:Name="HomeText" Text="الرئيسية" FontSize="16" FontWeight="SemiBold" Foreground="White"  Margin="8,0,0,0" Height="29"/>
+                        </StackPanel>
+                    </Border>
+                    <Border x:Name="ExcBorder"  Margin="0,0,0,1" CornerRadius="28" Background="#FFFFFF" Height="56" Width="296" Padding="10,16,10,16" Cursor="Hand" MouseDown="ExcBorder_MouseDown">
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:Name="ExcIcon" Source="Assets\Images\Dumbbells 2.png" Width="24" Height="24" Margin="0,0,0,0"/>
+                            <TextBlock x:Name="ExcText" Text="تمارينك" FontSize="16" FontWeight="SemiBold" Foreground="#FF4A7AB0" Margin="8,0,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <Border  x:Name="AiBorder" Margin="0,0,0,1" CornerRadius="28" Background="#FFFFFF" Height="56" Width="296" Padding="10,16,10,16" Cursor="Hand" MouseDown="AiBorder_MouseDown">
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:Name="AiIcon" Source="Assets\Images\Stars Minimalistic.png" Width="24" Height="24" Margin="0,0,0,0" />
+                            <TextBlock x:Name="AiText" Text="إنشاء خطة مع AI" FontSize="16" FontWeight="SemiBold" Foreground="#FF4A7AB0" Margin="8,0,0,0" FlowDirection="RightToLeft"/>
+                        </StackPanel>
+                    </Border>
+                    <Border x:Name="Userborder" Margin="0,0,0,1" CornerRadius="28" Background="#FFFFFF" Height="56" Width="296" Padding="10,16,10,16" Cursor="Hand" MouseDown="Userborder_MouseDown">
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:Name="UserIcon" Source="Assets\Images\User.png" Width="24" Height="24" Margin="0,0,0,0" />
+                            <TextBlock x:Name="UserText" Text="ملفك الشخصي" FontSize="16" FontWeight="SemiBold" Foreground="#FF4A7AB0" Margin="8,0,0,0"/>
+                        </StackPanel>
+                    </Border>
 
                     <!-- Navigation Items -->
-                    <Button Background="#4A7AB0" HorizontalAlignment="Left" Width="180" Padding="10" Cursor="Hand">
-                        <StackPanel Orientation="Horizontal">
-                            <Image  HorizontalAlignment="Left" Source="Assets\Images\Vector.png"  Width="24" Height="24" Margin="0,0,60,0"/>
-                            <TextBlock Text="الرئيسية" FontSize="16" FontWeight="SemiBold" Foreground="#3E3E3E" Margin="10,0,0,0"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button Background="Transparent" HorizontalAlignment="Left" Width="180" Padding="10" Cursor="Hand">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="Assets\Images\Dumbbells 2.png" Width="24" Height="24" Margin="0,0,60,0"/>
-                            <TextBlock Text="تمارينك" FontSize="16" FontWeight="SemiBold" Foreground="#3E3E3E" Margin="10,0,0,0"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button Background="Transparent" HorizontalAlignment="Left" Width="180" Padding="10" Cursor="Hand">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="Assets\Images\Stars Minimalistic.png" Width="24" Height="24" Margin="0,0,60,0" />
-                            <TextBlock Text="إنشاء خطة مع AI" FontSize="16" FontWeight="SemiBold" Foreground="#3E3E3E" Margin="10,0,0,0"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button Background="Transparent" HorizontalAlignment="Left" Width="180" Padding="10" Cursor="Hand">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="Assets\Images\User.png" Width="24" Height="24" Margin="0,0,60,0" />
-                            <TextBlock Text="ملفك الشخصي" FontSize="16" FontWeight="SemiBold" Foreground="#3E3E3E" Margin="10,0,0,0"/>
-                        </StackPanel>
-                    </Button>
                 </StackPanel>
-                <Grid Margin="40,0,-40,852">
+                <Grid Grid.RowSpan="2" Height="118" VerticalAlignment="Top" Margin="40,0,0,0" HorizontalAlignment="Left" Width="1396">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="96*"/>
-                        <ColumnDefinition Width="228*"/>
-                        <ColumnDefinition Width="496*"/>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="48*"/>
-                        <ColumnDefinition Width="303*"/>
-                        <ColumnDefinition Width="216*"/>
+                        <ColumnDefinition Width="93*"/>
+                        <ColumnDefinition Width="221*"/>
+                        <ColumnDefinition Width="512*"/>
+                        <ColumnDefinition Width="58*"/>
+                        <ColumnDefinition Width="61*"/>
+                        <ColumnDefinition Width="241*"/>
+                        <ColumnDefinition Width="210*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Smart Fit" Grid.Column="1" Margin="0,0,495,0" Grid.ColumnSpan="2" FontSize="24" VerticalContentAlignment="Center" Foreground="#FF4A7AB0" FontFamily=""/>
-                    <Image Source="Assets\Images\Logo.png" HorizontalAlignment="Left" Height="88" VerticalAlignment="Center" Width="86"/>
+                    <Label FontFamily="Assets\Fonts\#Poppins Black" Content="Smart Fit" Grid.Column="1" Margin="0,0,13,0" FontSize="24" VerticalContentAlignment="Center" Foreground="#FF4A7AB0" />
+                    <Image Source="Assets\Images\Logo.png" HorizontalAlignment="Right" Height="88" VerticalAlignment="Center" Width="86" Margin="0,0,7,0"/>
+
+                    <Border Background="#FFF4F4F4" CornerRadius="15" BorderBrush="Gray" BorderThickness="0" Padding="5" Grid.Column="2" HorizontalAlignment="Center" Margin="0,33,0,38" Width="456">
+
+                        <TextBox  x:Name="SearchBox" IsReadOnly="True"  TextWrapping="Wrap" Text="ابحث عن تمرينك" VerticalAlignment="Center" Height="44" BorderThickness="0,0,0,0" VerticalContentAlignment="Center" Padding="30,0,0,0" Background="#FFF4F4F4" Cursor="IBeam" Foreground="Gray" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus"/>
+                    </Border>
+
+                    <Image Grid.Column="2" HorizontalAlignment="Left" Height="24" Margin="35,44,0,0" VerticalAlignment="Top" Width="24" Source="/Assets/Images/Magnifer.png" Stretch="Fill"/>
                 </Grid>
 
 
