@@ -56,6 +56,7 @@ namespace SmartFit
         {
             if (e.ChangedButton == MouseButton.Left)
             {
+                WindowsContainer.SelectedIndex = 0;
 
                 HomeBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
                 HomeText.Foreground = Brushes.White;
@@ -80,6 +81,8 @@ namespace SmartFit
         {
             if (e.ChangedButton == MouseButton.Left)
             {
+                WindowsContainer.SelectedIndex = 1;
+
                 ExcBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
                 ExcText.Foreground = Brushes.White;
                 ExcIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/Dumbbells1.png"));
@@ -103,6 +106,9 @@ namespace SmartFit
         {
             if (e.ChangedButton == MouseButton.Left)
             {
+                WindowsContainer.SelectedIndex = 2;
+
+
                 AiBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
                 AiText.Foreground = Brushes.White;
                 AiIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/StarsMinimalistic1.png"));
@@ -126,6 +132,9 @@ namespace SmartFit
         {
             if (e.ChangedButton == MouseButton.Left)
             {
+                WindowsContainer.SelectedIndex = 3;
+
+
                 Userborder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
                 UserText.Foreground = Brushes.White;
                 UserIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/User1.png"));
@@ -156,8 +165,8 @@ namespace SmartFit
                 Top = _originalTop;
 
                 // Restore rounded corners
-                MainBorder.CornerRadius = new CornerRadius(50);
-                TitleBar.CornerRadius = new CornerRadius(50, 50, 0, 0);
+                MainBorder.CornerRadius = new CornerRadius(10);
+                TitleBar.CornerRadius = new CornerRadius(10, 10, 0, 0);
 
                 _isMaximized = false;
             }
