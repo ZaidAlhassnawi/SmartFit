@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Data.Entity;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -10,6 +11,7 @@ namespace SmartFit
         public MainWindow()
         {
             InitializeComponent();
+         
         }
 
         // Enable window dragging by clicking on the title bar
