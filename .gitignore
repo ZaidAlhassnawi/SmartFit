@@ -361,10 +361,3 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd 
-MainWindow.xaml
-MainWindow.xaml.cs
-SmartFit.csproj
-obj/Debug/net9.0-windows/MainWindow.g.i.cs
-obj/Debug/net9.0-windows/SmartFit.AssemblyInfo.cs
-obj/Debug/net9.0-windows/SmartFit.AssemblyInfoInputs.cache
-obj/Debug/net9.0-windows/SmartFit_MarkupCompile.i.cache
