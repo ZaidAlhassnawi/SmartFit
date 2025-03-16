@@ -42,3 +42,12 @@ C:\Users\ahmed\Desktop\SmartFit\Business\obj\Debug\net9.0-windows\refint\Busines
 C:\Users\ahmed\Desktop\SmartFit\Business\obj\Debug\net9.0-windows\Business.pdb
 C:\Users\ahmed\Desktop\SmartFit\Business\obj\Debug\net9.0-windows\Business.genruntimeconfig.cache
 C:\Users\ahmed\Desktop\SmartFit\Business\obj\Debug\net9.0-windows\ref\Business.dll
+D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\Business.csproj.AssemblyReference.cache
+D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\Business.AssemblyInfoInputs.cache
+D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\Business.AssemblyInfo.cs
+D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\Business.csproj.CoreCompileInputs.cache
+D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\Business.sourcelink.json
+D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\Business.dll
+D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\refint\Business.dll
+D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\Business.pdb
