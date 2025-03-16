@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Data.Entity;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -10,6 +11,7 @@ namespace SmartFit
         public MainWindow()
         {
             InitializeComponent();
+         
         }
 
         // Enable window dragging by clicking on the title bar
@@ -151,6 +153,21 @@ namespace SmartFit
                 AiText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
                 AiIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/StarsMinimalistic2.png"));
             }
+        }
+
+        private void Ellipse_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WindowsContainer.SelectedIndex = 3;
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WindowsContainer.SelectedIndex = 2;
+        }
+
+        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("ads");
         }
 
         private bool _isMaximized = false;
