@@ -51,6 +51,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Assets\Fonts\Poppins-Black.ttf" />
     <Resource Include="Assets\Fonts\Poppins-BlackItalic.ttf" />
     <Resource Include="Assets\Fonts\Poppins-Bold.ttf" />

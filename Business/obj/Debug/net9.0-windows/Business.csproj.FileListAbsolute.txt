@@ -51,3 +51,6 @@ D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\Busine
 D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\Business.dll
 D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\refint\Business.dll
 D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\Business.pdb
+C:\Users\Anas Qadora\SmartFit\Business\bin\Debug\net9.0-windows\Database.dll
+C:\Users\Anas Qadora\SmartFit\Business\bin\Debug\net9.0-windows\Database.pdb
+C:\Users\Anas Qadora\SmartFit\Business\obj\Debug\net9.0-windows\Business.csproj.Up2Date
