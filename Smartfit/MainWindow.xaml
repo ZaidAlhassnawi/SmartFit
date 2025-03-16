@@ -6,10 +6,10 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" 
         xmlns:local="clr-namespace:SmartFit"
         mc:Ignorable="d"
-        x:Name="mainwindow"  Title="" Height="1024" Width="1440"
+        x:Name="mainwindow"  Title="" Height="865" Width="1188"
         WindowStyle="None" AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"
-        Padding="2,0,2,4" Background="Transparent" MinHeight="900" MinWidth="1275">
+        Padding="2,0,2,4" Background="Transparent" MinHeight="700" MinWidth="1075">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -187,8 +187,7 @@
             <!-- Main Content -->
             <Grid Margin="0,50,0,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="187*"/>
-                    <ColumnDefinition Width="531*"/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="56*"/>
@@ -197,10 +196,10 @@
 
                 <!-- UI elements go here -->
 
-                <StackPanel Background="#FFFFFFFF"  Margin="10,0,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="339">
+                <StackPanel Background="#FFFFFFFF" Grid.Row="1" HorizontalAlignment="Left" Width="360" Margin="0,6,0,0">
                     <!-- Logo -->
                     <StackPanel Orientation="Horizontal" Margin="20,30,0,20"/>
-                    <Border x:Name="HomeBorder" Margin="0,0,0,1" CornerRadius="28" Background="#4A7AB0" Height="56" Width="296" Padding="10,16,10,16" Cursor="Hand" MouseDown="HomeBorder_MouseDown">
+                    <Border x:Name="HomeBorder"  Margin="0,0,0,1" CornerRadius="28" Background="#4A7AB0" Height="56" Width="296" Padding="10,16,10,16" Cursor="Hand" MouseDown="HomeBorder_MouseDown">
                         <StackPanel Orientation="Horizontal">
                             <Image  x:Name="HomeIcon" HorizontalAlignment="Left" Source="Assets\Images\vector.png"  Width="24" Height="24" Margin="0,0,0,0"/>
                             <TextBlock x:Name="HomeText" Text="الرئيسية" FontSize="16" FontWeight="SemiBold" Foreground="White"  Margin="8,0,0,0" Height="29"/>
@@ -228,7 +227,7 @@
                     <!-- Navigation Items -->
                 </StackPanel>
 
-                <Grid Grid.RowSpan="2" Height="118" VerticalAlignment="Top" Margin="34,0,0,0" HorizontalAlignment="Left" Width="1184" Grid.ColumnSpan="2">
+                <Grid Grid.RowSpan="2" Height="118" VerticalAlignment="Top" Margin="34,0,0,0" HorizontalAlignment="Left" Width="1184">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="90*"/>
                         <ColumnDefinition Width="123*"/>
@@ -268,7 +267,7 @@
                     </Image>
                 </Grid>
 
-                <Grid Grid.Column="1" Height="112" VerticalAlignment="Top" HorizontalAlignment="Right" Width="213" Margin="0,10,0,0" Grid.RowSpan="2">
+                <Grid Height="112" VerticalAlignment="Top" HorizontalAlignment="Right" Width="213" Margin="0,10,0,0" Grid.RowSpan="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="11*"/>
                         <RowDefinition Height="17*"/>
@@ -298,9 +297,9 @@
 
                 </Grid>
 
-                <Border CornerRadius="32,0,0,0" Background="#FFF4F4F4" Padding="5" Margin="349,6,0,0" Grid.Row="1" Grid.ColumnSpan="2">
+                <Border CornerRadius="32,0,0,0" Background="#FFF4F4F4" Padding="5" Margin="364,6,0,0" Grid.Row="1">
 
-                    <TabControl x:Name="WindowsContainer" BorderThickness="0" Margin="5,5,5,5" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <TabControl x:Name="WindowsContainer" BorderThickness="0" Margin="-5,-5,5,5" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
 
                         <TabControl.Resources>
                             <Style TargetType="TabItem">
@@ -311,7 +310,7 @@
                         <TabItem x:Name="HomeScreenTab" TabIndex="0">
 
 
-                            <Grid Height="857" VerticalAlignment="Top" Margin="-5,-15,0,0">
+                            <Grid Height="857" VerticalAlignment="Top" Margin="0,0,0,10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="239*"/>
                                     <RowDefinition Height="603*"/>
