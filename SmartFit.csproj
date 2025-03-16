@@ -41,6 +41,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Assets\Fonts\Poppins-Black.ttf" />
     <Resource Include="Assets\Fonts\Poppins-BlackItalic.ttf" />
     <Resource Include="Assets\Fonts\Poppins-Bold.ttf" />
