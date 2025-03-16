@@ -6,10 +6,10 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" 
         xmlns:local="clr-namespace:SmartFit"
         mc:Ignorable="d"
-        x:Name="mainwindow"  Title="" Height="865" Width="1188"
+        x:Name="mainwindow"  Title="" Height="900" Width="1200"
         WindowStyle="None" AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"
-        Padding="2,0,2,4" Background="Transparent" MinHeight="700" MinWidth="1075">
+        Padding="2,0,2,4" Background="Transparent" MinHeight="900" MinWidth="1200">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -310,7 +310,7 @@
                         <TabItem x:Name="HomeScreenTab" TabIndex="0">
 
 
-                            <Grid Height="857" VerticalAlignment="Top" Margin="0,0,0,10">
+                            <Grid Height="857" VerticalAlignment="Top" Margin="-5,-15,0,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="239*"/>
                                     <RowDefinition Height="603*"/>
