@@ -171,7 +171,7 @@
                             <DropShadowEffect/>
                         </Image.Effect>
                     </Image>
-                    <Image Grid.Column="4" HorizontalAlignment="Center" Height="24" VerticalAlignment="Center" Width="24" Source="/Assets/Images/AIChat.png" Cursor="Hand">
+                    <Image Grid.Column="4" HorizontalAlignment="Center" Height="24" VerticalAlignment="Center" Width="24" Source="/Assets/Images/AIChat.png" Cursor="Hand" MouseDown="Image_MouseDown">
                         <Image.Effect>
                             <DropShadowEffect/>
                         </Image.Effect>
@@ -186,7 +186,7 @@
                         <ColumnDefinition Width="134*"/>
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
-                    <Ellipse Grid.Column="1" HorizontalAlignment="Center" Height="48" VerticalAlignment="Top" Width="48" Margin="0,22,0,0" Grid.RowSpan="2" Cursor="Hand">
+                    <Ellipse Grid.Column="1" HorizontalAlignment="Center" Height="48" VerticalAlignment="Top" Width="48" Margin="0,22,0,0" Grid.RowSpan="2" Cursor="Hand" MouseDown="Ellipse_MouseDown">
                         <Ellipse.Effect>
                             <DropShadowEffect/>
                         </Ellipse.Effect>
@@ -205,34 +205,7 @@
 
                 <Border CornerRadius="50,0,0,0" Background="#FFF4F4F4" Padding="5" Margin="354,6,0,0" Grid.Row="1" Grid.ColumnSpan="2">
 
-                    <TabControl x:Name="WindowsContainer" BorderThickness="0" Margin="334,260,80,350" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
-                        
-                        <TabControl.Resources>
-                            <Style TargetType="TabItem">
-                                <Setter Property="Visibility" Value="Collapsed"/>
-                            </Style>
-                        </TabControl.Resources>
-                       
-                        
-                        <TabItem TabIndex="0" x:Name="HomeScreen" BorderThickness="0" Header="TabItem" Background="{x:Null}" BorderBrush="{x:Null}">
-
-                            <Label Content="Home screen" FontSize="100 "/>
-
-                        </TabItem>
-
-                        <TabItem TabIndex="1" x:Name="ExcScreen" BorderThickness="0" Header="TabItem">
-                            <Label Content="ExcScreen" FontSize="100 "/>
-                        </TabItem>
-
-                        <TabItem TabIndex="2" x:Name="AiScreen" BorderThickness="0" Header="TabItem" Background="{x:Null}" BorderBrush="{x:Null}">
-                            <Label Content="AiScreen" FontSize="100 "/>
-                        </TabItem>
-
-                        <TabItem TabIndex="3" x:Name="UserScreen" BorderThickness="0" Header="TabItem">
-                            <Label Content="UserScreen" FontSize="100 "/>
-                        </TabItem>
-
-                    </TabControl>
+                  
 
                 </Border>
 

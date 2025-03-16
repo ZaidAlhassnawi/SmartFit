@@ -155,6 +155,21 @@ namespace SmartFit
             }
         }
 
+        private void Ellipse_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WindowsContainer.SelectedIndex = 3;
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WindowsContainer.SelectedIndex = 2;
+        }
+
+        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("ads");
+        }
+
         private bool _isMaximized = false;
 
         private void MaximizeRestore_Click(object sender, RoutedEventArgs e)
