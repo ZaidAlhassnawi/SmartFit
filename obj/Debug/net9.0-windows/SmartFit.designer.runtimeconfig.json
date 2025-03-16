@@ -13,7 +13,15 @@
     ],
     "additionalProbingPaths": [
       "C:\\Users\\ahmed\\.dotnet\\store\\|arch|\\|tfm|",
+<<<<<<< HEAD
       "C:\\Users\\ahmed\\.nuget\\packages",
+=======
+<<<<<<< HEAD
+      "C:\\Users\\Anas Qadora\\.nuget\\packages",
+=======
+      "C:\\Users\\ahmed\\.nuget\\packages",
+>>>>>>> b8adc4102a0b7dcb0b281401d79dc6d19218b190
+>>>>>>> d2b30a25152e4c83116aba7e32f2b0bf3156734c
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
