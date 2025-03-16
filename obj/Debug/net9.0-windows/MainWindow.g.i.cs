@@ -230,6 +230,7 @@ namespace SmartFit
         /// InitializeComponent
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+<<<<<<< HEAD
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "9.0.1.0")]
         public void InitializeComponent()
         {
@@ -241,6 +242,17 @@ namespace SmartFit
             System.Uri resourceLocater = new System.Uri("/SmartFit;component/mainwindow.xaml", System.UriKind.Relative);
 
 #line 1 "..\..\..\MainWindow.xaml"
+=======
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "9.0.2.0")]
+        public void InitializeComponent() {
+            if (_contentLoaded) {
+                return;
+            }
+            _contentLoaded = true;
+            System.Uri resourceLocater = new System.Uri("/SmartFit;V1.0.0.0;component/mainwindow.xaml", System.UriKind.Relative);
+            
+            #line 1 "..\..\..\MainWindow.xaml"
+>>>>>>> b967dec (تم رفع قاعدة البيانات)
             System.Windows.Application.LoadComponent(this, resourceLocater);
 
 #line default
@@ -248,7 +260,7 @@ namespace SmartFit
         }
 
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "9.0.1.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "9.0.2.0")]
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
