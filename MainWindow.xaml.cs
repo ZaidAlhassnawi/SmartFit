@@ -1,5 +1,4 @@
-﻿using System.Data.Entity;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -8,10 +7,10 @@ namespace SmartFit
 {
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
-         
         }
 
         // Enable window dragging by clicking on the title bar
@@ -58,7 +57,7 @@ namespace SmartFit
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                WindowsContainer.SelectedIndex = 0;
+                //WindowsContainer.SelectedIndex = 0;
 
                 HomeBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
                 HomeText.Foreground = Brushes.White;
@@ -83,7 +82,7 @@ namespace SmartFit
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                WindowsContainer.SelectedIndex = 1;
+                //WindowsContainer.SelectedIndex = 1;
 
                 ExcBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
                 ExcText.Foreground = Brushes.White;
@@ -108,7 +107,7 @@ namespace SmartFit
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                WindowsContainer.SelectedIndex = 2;
+                //WindowsContainer.SelectedIndex = 2;
 
 
                 AiBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
@@ -134,7 +133,7 @@ namespace SmartFit
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                WindowsContainer.SelectedIndex = 3;
+                //WindowsContainer.SelectedIndex = 3;
 
 
                 Userborder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
@@ -157,12 +156,12 @@ namespace SmartFit
 
         private void Ellipse_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            WindowsContainer.SelectedIndex = 3;
+            //WindowsContainer.SelectedIndex = 3;
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            WindowsContainer.SelectedIndex = 2;
+            //WindowsContainer.SelectedIndex = 2;
         }
 
         private void Label_MouseDown(object sender, MouseButtonEventArgs e)
