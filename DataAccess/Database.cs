@@ -1,6 +1,4 @@
-﻿using LiveCharts.Wpf.Charts.Base;
-using System;
-using System.Data.SQLite;
+﻿using System.Data.SQLite;
 using System.IO;
 
 namespace FitnessApp.DAL
@@ -275,7 +273,7 @@ namespace FitnessApp.DAL
                 }
             }
         }
-      
+
 
         ////Updates///
 
@@ -355,7 +353,7 @@ namespace FitnessApp.DAL
 
 
         ////Finds///
-       
+
 
         private static SQLiteDataReader ExecuteReader(string query, SQLiteParameter[] parameters)
         {
@@ -416,7 +414,7 @@ namespace FitnessApp.DAL
         }
 
 
-        
+
 
     }//END 
 
