@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiveCharts.Wpf.Charts.Base;
+using System;
 using System.Data.SQLite;
 using System.IO;
 
@@ -125,7 +126,7 @@ namespace FitnessApp.DAL
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"خطأ أثناء إضافة المستخدم: {ex.Message}");
+                Console.WriteLine($"Error adding user: {ex.Message}");
                 return -1;
             }
         }
@@ -155,32 +156,113 @@ namespace FitnessApp.DAL
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"خطأ أثناء إضافة المستخدم: {ex.Message}");
+                Console.WriteLine($"Error adding user: {ex.Message}");
                 return -1;
             }
         }
 
+
         // دالة لإضافة بيانات مع البارامترات مثال
-        public static int AddExercise(Exercise exercise)
+        public static int AddExercise(int PlanID, string ExerciseName, int Repetitions, int Sets, int Duration, float CaloriesBurned)
         {
-            string query = @"
+            int ExerciseID = -1;
+            try
+            {
+                string query = @"
                 INSERT INTO Exercises 
-                (PlanID, ExerciseName, Repetitions, Sets, Duration, CaloriesBurned)
-                VALUES (@PlanID, @Name, @Reps, @Sets, @Duration, @Calories)";
+                (PlanID,ExerciseName, Repetitions, Sets, Duration, CaloriesBurned)
+                VALUES (@PlanID,@ExerciseName, @Repetitions, @Sets, @Duration, @CaloriesBurned)";
 
-            SQLiteParameter[] parameters = {
-                new SQLiteParameter("@PlanID", exercise.PlanID),
-                new SQLiteParameter("@Name", exercise.ExerciseName),
-                new SQLiteParameter("@Reps", exercise.Repetitions),
-                new SQLiteParameter("@Sets", exercise.Sets),
-                new SQLiteParameter("@Duration", exercise.Duration),
-                new SQLiteParameter("@Calories", exercise.CaloriesBurned)
-            };
+                SQLiteParameter[] parameters =
+                {
+                new SQLiteParameter("@PlanID", PlanID),
+                new SQLiteParameter("@ExerciseName", ExerciseName),
+                new SQLiteParameter("@Repetitions", Repetitions),
+                new SQLiteParameter("@Sets", Sets),
+                new SQLiteParameter("@Duration", Duration),
+                new SQLiteParameter("@ExerciseName", CaloriesBurned)
 
-            return ExecuteParametrizedQuery(query, parameters);
+                };
+
+                ExerciseID = ExecuteParametrizedQuery(query, parameters);
+
+                return ExerciseID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error adding user: {ex.Message}");
+                return -1;
+            }
+
+
         }
 
-        // دالة عامة لتنفيذ الاستعلامات مع البارامترات
+        //دالة لإضافة بيانات خطة التغذية
+        public static int AddNutritionPlan(int UserID, string PlanDetails, string CreatedAt)
+        {
+            int NutritionPlanID = -1;
+            try
+            {
+                string query = @"INSERT INTO NutritionPlans 
+                                        (UserID,  PlanDetails,  CreatedAt)
+                                 VALUES (@UserID, @PlanDetails, @CreatedAt)";
+
+                SQLiteParameter[] parameters =
+                {
+                new SQLiteParameter("@UserID", UserID),
+                new SQLiteParameter("@PlanDetails", PlanDetails),
+                new SQLiteParameter("@CreatedAt", CreatedAt),
+
+                };
+
+                NutritionPlanID = ExecuteParametrizedQuery(query, parameters);
+
+                return NutritionPlanID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error adding user: {ex.Message}");
+                return -1;
+            }
+
+
+        }
+
+
+        //دالة لإضافة بيانات النشاط اليومي لليوزر
+        public static int AddUserActivitie(int UserID, string Date, int Steps, float CaloriesBurned, int WorkoutDuration)
+        {
+            int ActivitieID = -1;
+            try
+            {
+                string query = @"INSERT INTO UserActivities 
+                                        (UserID,  Date,  Steps, CaloriesBurned,WorkoutDuration)
+                                 VALUES (@UserID, @Date, @Steps, @CaloriesBurned, @WorkoutDuration)";
+
+                SQLiteParameter[] parameters =
+                {
+                new SQLiteParameter("@UserID", UserID),
+                new SQLiteParameter("@Date", Date),
+                new SQLiteParameter("@Steps", Steps),
+                new SQLiteParameter("@CaloriesBurned", CaloriesBurned),
+                new SQLiteParameter("@WorkoutDuration", WorkoutDuration),
+
+                };
+
+                ActivitieID = ExecuteParametrizedQuery(query, parameters);
+
+                return ActivitieID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error adding user: {ex.Message}");
+                return -1;
+            }
+
+
+        }
+
+
         public static int ExecuteParametrizedQuery(string query, SQLiteParameter[] parameters)
         {
             using (var conn = GetConnection())
@@ -193,17 +275,150 @@ namespace FitnessApp.DAL
                 }
             }
         }
-    }
+      
+
+        ////Updates///
+
+        public static int UpdateUser(int userId, string name, int age, float weight, float height, string gender, string activityLevel)
+        {
+            string query = @"UPDATE Users SET Name = @Name, Age = @Age, Weight = @Weight, 
+                     Height = @Height, Gender = @Gender, ActivityLevel = @ActivityLevel
+                     WHERE UserID = @UserID";
+
+            SQLiteParameter[] parameters =
+            {
+                 new SQLiteParameter("@UserID", userId),
+                 new SQLiteParameter("@Name", name),
+                 new SQLiteParameter("@Age", age),
+                 new SQLiteParameter("@Weight", weight),
+                 new SQLiteParameter("@Height", height),
+                 new SQLiteParameter("@Gender", gender),
+                 new SQLiteParameter("@ActivityLevel", activityLevel)
+            };
+
+            return ExecuteParametrizedQuery(query, parameters);
+        }
+
+        public static int UpdateWorkoutPlan(int planId, string planName, string planDetails)
+        {
+            string query = @"UPDATE WorkoutPlans SET PlanName = @PlanName, PlanDetails = @PlanDetails
+                     WHERE PlanID = @PlanID";
+
+            SQLiteParameter[] parameters =
+            {
+                new SQLiteParameter("@PlanID", planId),
+                new SQLiteParameter("@PlanName", planName),
+                new SQLiteParameter("@PlanDetails", planDetails)
+            };
+
+            return ExecuteParametrizedQuery(query, parameters);
+        }
+
+
+        ////تحديث خطة تمرين معين
+        public static int UpdateExercise(int exerciseId, string exerciseName, int repetitions, int sets, int duration, float caloriesBurned)
+        {
+            string query = @"UPDATE Exercises SET ExerciseName = @ExerciseName, Repetitions = @Repetitions, 
+                     Sets = @Sets, Duration = @Duration, CaloriesBurned = @CaloriesBurned
+                     WHERE ExerciseID = @ExerciseID";
+
+            SQLiteParameter[] parameters =
+            {
+                new SQLiteParameter("@ExerciseID", exerciseId),
+                new SQLiteParameter("@ExerciseName", exerciseName),
+                new SQLiteParameter("@Repetitions", repetitions),
+                new SQLiteParameter("@Sets", sets),
+                new SQLiteParameter("@Duration", duration),
+                new SQLiteParameter("@CaloriesBurned", caloriesBurned)
+            };
+
+            return ExecuteParametrizedQuery(query, parameters);
+        }
+
+        //تحديث نشاط معين للمستخدم
+        public static int UpdateUserActivity(int activityId, int steps, float caloriesBurned, int workoutDuration)
+        {
+            string query = @"UPDATE UserActivities SET Steps = @Steps, CaloriesBurned = @CaloriesBurned, 
+                     WorkoutDuration = @WorkoutDuration WHERE ActivityID = @ActivityID";
+
+            SQLiteParameter[] parameters =
+            {
+                new SQLiteParameter("@ActivityID", activityId),
+                new SQLiteParameter("@Steps", steps),
+                new SQLiteParameter("@CaloriesBurned", caloriesBurned),
+                new SQLiteParameter("@WorkoutDuration", workoutDuration)
+            };
+
+            return ExecuteParametrizedQuery(query, parameters);
+        }
 
 
 
-    public class Exercise
-    {
-        public int PlanID { get; set; }
-        public string ExerciseName { get; set; }
-        public int Repetitions { get; set; }
-        public int Sets { get; set; }
-        public int Duration { get; set; }
-        public double? CaloriesBurned { get; set; }
-    }
+        ////Finds///
+       
+
+        private static SQLiteDataReader ExecuteReader(string query, SQLiteParameter[] parameters)
+        {
+            var conn = GetConnection();
+            conn.Open();
+            var cmd = new SQLiteCommand(query, conn);
+            if (parameters != null)
+            {
+                cmd.Parameters.AddRange(parameters);
+            }
+            return cmd.ExecuteReader();
+        }
+
+        public static SQLiteDataReader GetUserById(int userId)
+        {
+            string query = "SELECT * FROM Users WHERE UserID = @UserID";
+            SQLiteParameter[] parameters = { new SQLiteParameter("@UserID", userId) };
+
+            return ExecuteReader(query, parameters);
+        }
+
+
+
+        public static SQLiteDataReader GetAllUsers()
+        {
+            string query = "SELECT * FROM Users";
+            return ExecuteReader(query, null);
+        }
+
+        public static SQLiteDataReader GetWorkoutPlansByUserId(int userId)
+        {
+            string query = "SELECT * FROM WorkoutPlans WHERE UserID = @UserID";
+            SQLiteParameter[] parameters = { new SQLiteParameter("@UserID", userId) };
+
+            return ExecuteReader(query, parameters);
+        }
+
+        // البحث عن جميع التمارين ضمن خطة معينة
+        public static SQLiteDataReader GetExercisesByPlanId(int planId)
+        {
+            string query = "SELECT * FROM Exercises WHERE PlanID = @PlanID";
+            SQLiteParameter[] parameters = { new SQLiteParameter("@PlanID", planId) };
+
+            return ExecuteReader(query, parameters);
+        }
+
+        //البحث عن نشاط يومي لمستخدم في تاريخ معين
+        public static SQLiteDataReader GetUserActivityByDate(int userId, string date)
+        {
+            string query = "SELECT * FROM UserActivities WHERE UserID = @UserID AND Date = @Date";
+            SQLiteParameter[] parameters =
+            {
+                new SQLiteParameter("@UserID", userId),
+                new SQLiteParameter("@Date", date)
+            };
+
+            return ExecuteReader(query, parameters);
+        }
+
+
+        
+
+    }//END 
+
+
 }
