@@ -54,6 +54,11 @@ D:\ProjectofHackthone\SmartFit\SmartFit\Business\obj\Debug\net9.0-windows\Busine
 C:\Users\Anas Qadora\SmartFit\Business\bin\Debug\net9.0-windows\Database.dll
 C:\Users\Anas Qadora\SmartFit\Business\bin\Debug\net9.0-windows\Database.pdb
 C:\Users\Anas Qadora\SmartFit\Business\obj\Debug\net9.0-windows\Business.csproj.Up2Date
+<<<<<<< HEAD
+C:\Users\ahmed\Desktop\SmartFit\Business\bin\Debug\net9.0-windows\Database.dll
+C:\Users\ahmed\Desktop\SmartFit\Business\bin\Debug\net9.0-windows\Database.pdb
+C:\Users\ahmed\Desktop\SmartFit\Business\obj\Debug\net9.0-windows\Business.csproj.Up2Date
+=======
 D:\ProjectofHackthone\SmartFit\Business\bin\Debug\net9.0-windows\Business.deps.json
 D:\ProjectofHackthone\SmartFit\Business\bin\Debug\net9.0-windows\Business.runtimeconfig.json
 D:\ProjectofHackthone\SmartFit\Business\bin\Debug\net9.0-windows\Business.dll
@@ -72,3 +77,4 @@ D:\ProjectofHackthone\SmartFit\Business\obj\Debug\net9.0-windows\refint\Business
 D:\ProjectofHackthone\SmartFit\Business\obj\Debug\net9.0-windows\Business.pdb
 D:\ProjectofHackthone\SmartFit\Business\obj\Debug\net9.0-windows\Business.genruntimeconfig.cache
 D:\ProjectofHackthone\SmartFit\Business\obj\Debug\net9.0-windows\ref\Business.dll
+>>>>>>> c2326db3660987d8aa7f04a08060bb9fd934a3af

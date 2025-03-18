@@ -1,0 +1,72 @@
+
+
+                        <Popup  x:Name="UserPopupScreen" Placement="AbsolutePoint" AllowsTransparency="True">
+                            <Border x:Name="draggableBorder" Background="White" CornerRadius="32" BorderThickness="0" Height="722" Width="518" MouseLeftButtonDown="draggableBorder_MouseLeftButtonDown"  MouseMove="draggableBorder_MouseMove"  MouseLeftButtonUp="draggableBorder_MouseLeftButtonUp" Margin="0,0,294,0" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Grid HorizontalAlignment="Left" Width="518">
+
+                                    <Border Background="White" CornerRadius="28" BorderBrush="#FFC9C9C9" BorderThickness="1" Padding="30,0,0,0" Margin="0,0,0,428" HorizontalAlignment="Center" Width="398" Height="64" VerticalAlignment="Bottom" >
+                                        <Grid>
+                                            <TextBox  x:Name="TBUserName"  TextWrapping="Wrap" Text="Ahmed Mohammed" VerticalAlignment="Center" Height="45" BorderThickness="0,0,0,0" VerticalContentAlignment="Center" Background="White" Cursor="IBeam" Foreground="Black"  Margin="0,0,17,0"/>
+                                        </Grid>
+                                    </Border>
+
+                                    <Label Width="176" Content="الاسم" Margin="0,0,60,497" FlowDirection="RightToLeft" FontSize="14" HorizontalAlignment="Right" Height="36" VerticalAlignment="Bottom">
+                                        <Label.Foreground>
+                                            <SolidColorBrush Color="Black" Opacity="0.5"/>
+                                        </Label.Foreground>
+                                    </Label>
+
+
+                                    <Border  x:Name="btnSaveTheNewUserInfo" CornerRadius="28" Background="#4A7AB0" Padding="20,16,10,16" Cursor="Hand"  Margin="0,0,0,34" HorizontalAlignment="Center" Width="398" MouseDown="btnSaveTheNewUserInfo_MouseDown" Height="56" VerticalAlignment="Bottom">
+
+                                        <TextBlock  Text="احفظ" FontSize="16" FontWeight="SemiBold" Foreground="White" Margin="162,0,0,0" FlowDirection="RightToLeft" HorizontalAlignment="Left"/>
+
+                                    </Border>
+
+                                    <Ellipse Height="140" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Width="140" Margin="0,0,0,550">
+                                        <Ellipse.Effect>
+                                            <DropShadowEffect/>
+                                        </Ellipse.Effect>
+                                        <Ellipse.Fill>
+                                            <ImageBrush ImageSource="/Assets/Images/Logo.png"/>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <Label Width="176" Content="العمر" Margin="0,0,60,359" FlowDirection="RightToLeft" FontSize="14" HorizontalAlignment="Right" Height="36" VerticalAlignment="Bottom">
+                                        <Label.Foreground>
+                                            <SolidColorBrush Color="Black" Opacity="0.5"/>
+                                        </Label.Foreground>
+                                    </Label>
+                                    <Border Background="White" Width="398" Height="64" CornerRadius="28" BorderBrush="#FFC9C9C9" BorderThickness="1" Padding="30,0,0,0" Margin="0,0,0,295" VerticalAlignment="Bottom" HorizontalAlignment="Center" >
+                                        <Grid>
+                                            <TextBox  x:Name="TBUserAge"   TextWrapping="Wrap" Text="18" VerticalAlignment="Center" Height="45" BorderThickness="0,0,0,0" VerticalContentAlignment="Center" Background="White" Cursor="IBeam" Foreground="Black"  Margin="0,0,17,0"/>
+                                        </Grid>
+                                    </Border>
+                                    <Label Width="176" Content="الاسم" Margin="0,0,60,221" FlowDirection="RightToLeft" FontSize="14" Height="36" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                                        <Label.Foreground>
+                                            <SolidColorBrush Color="Black" Opacity="0.5"/>
+                                        </Label.Foreground>
+                                    </Label>
+                                    <Border Background="White" Width="398" Height="64" CornerRadius="28" BorderBrush="#FFC9C9C9" BorderThickness="1" Padding="30,0,0,0" Margin="0,0,0,152" VerticalAlignment="Bottom" HorizontalAlignment="Center" >
+                                        <Grid>
+                                            <TextBox  x:Name="TBUserEmail"   TextWrapping="Wrap" Text="Ahmed Mohammed" VerticalAlignment="Center" Height="45" BorderThickness="0,0,0,0" VerticalContentAlignment="Center" Background="White" Cursor="IBeam" Foreground="Black"  Margin="0,0,17,0"/>
+                                        </Grid>
+                                    </Border>
+
+
+                                    <RadioButton Style="{DynamicResource MyRadioButton}" Content="انثي" Margin="0,0,141,100" Height="37" FontSize="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="77" >
+                                        <RadioButton.Foreground>
+                                            <SolidColorBrush Color="Black" Opacity="0.6"/>
+                                        </RadioButton.Foreground>
+                                    </RadioButton>
+                                    <RadioButton Style="{DynamicResource MyRadioButton}" Content="ذكر" Margin="0,0,62,101" Width="67" Height="37" FontSize="20" IsChecked="True" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                                        <RadioButton.Foreground>
+                                            <SolidColorBrush Color="Black" Opacity="0.6"/>
+                                        </RadioButton.Foreground>
+                                    </RadioButton>
+
+                                </Grid>
+
+                            </Border>
+
+                        </Popup>
+

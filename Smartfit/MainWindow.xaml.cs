@@ -24,9 +24,6 @@ namespace SmartFit
                 YAxisLabelFormatter = value =>
                 {
                     return value + "m";
-                    //else if ((value % 60) == 0) return (value / 60) + "h ";
-                    //else if (value >= 60) return (short)(value / 60) + "h " + (value % 60) + "m";
-                    //else return "";
                 };
             }
         }
@@ -37,12 +34,34 @@ namespace SmartFit
             DataContext = new ChartViewModel();
         }
 
+
+        private bool isFullscreen = false;
+
+        private void ToggleFullscreen()
+        {
+            if (isFullscreen)
+            {
+                // Exit Fullscreen
+                this.WindowState = WindowState.Normal;
+                this.ResizeMode = ResizeMode.CanResize;
+            }
+
+
+            isFullscreen = !isFullscreen;
+        }
+
+
         // Enable window dragging by clicking on the title bar
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
+
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    ToggleFullscreen();
+                }
             }
         }
 
@@ -77,10 +96,35 @@ namespace SmartFit
             }
         }
 
+        private void TBTypeFavoriteEXC_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (TBTypeFavoriteEXC.Text == "اختياري")
+            {
+                TBTypeFavoriteEXC.IsReadOnly = false;
+                TBTypeFavoriteEXC.Text = "";
+                TBTypeFavoriteEXC.Foreground = Brushes.Black;
+            }
+
+        }
+
+        private void TBTypeFavoriteEXC_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TBTypeFavoriteEXC.Text))
+            {
+                TBTypeFavoriteEXC.Text = "اختياري";
+                TBTypeFavoriteEXC.Foreground = Brushes.Gray;
+                TBTypeFavoriteEXC.IsReadOnly = true;
+            }
+        }
+
+
+
         private void HomeBorder_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
             {
+                UserPopupScreen.IsOpen = false;
+                AiPopupScreen.IsOpen = false;
                 WindowsContainer.SelectedIndex = 0;
 
                 HomeBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
@@ -106,6 +150,8 @@ namespace SmartFit
         {
             if (e.ChangedButton == MouseButton.Left)
             {
+                UserPopupScreen.IsOpen = false;
+                AiPopupScreen.IsOpen = false;
                 WindowsContainer.SelectedIndex = 1;
 
                 ExcBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
@@ -127,12 +173,19 @@ namespace SmartFit
             }
         }
 
+        private bool _IsUserEnterPlanInfos = false;
+
         private void AiBorder_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                //WindowsContainer.SelectedIndex = 2;
+                UserPopupScreen.IsOpen = false;
 
+                WindowsContainer.SelectedIndex = 2;
+
+                if (_IsUserEnterPlanInfos) AiPopupScreen.IsOpen = false;
+
+                else AiPopupScreen.IsOpen = true;
 
                 AiBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
                 AiText.Foreground = Brushes.White;
@@ -157,7 +210,8 @@ namespace SmartFit
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                //WindowsContainer.SelectedIndex = 3;
+
+                UserPopupScreen.IsOpen = true;
 
 
                 Userborder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
@@ -178,18 +232,10 @@ namespace SmartFit
             }
         }
 
-        private void Ellipse_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            //WindowsContainer.SelectedIndex = 3;
-        }
-
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            //WindowsContainer.SelectedIndex = 2;
-        }
 
         private void Label_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            UserPopupScreen.IsOpen = false;
             WindowsContainer.SelectedIndex = 1;
 
             ExcBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
@@ -200,6 +246,116 @@ namespace SmartFit
             HomeBorder.Background = Brushes.White;
             HomeText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
             HomeIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/Home.png"));
+
+            Userborder.Background = Brushes.White;
+            UserText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            UserIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/User2.png"));
+        }
+
+        private void btnMakeThePlanPopupWindown_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if ((CBSelectAge.SelectedItem != null)
+                && (CBSelectHeigt.SelectedItem != null)
+                && (CBSelectWeight.SelectedItem != null)
+                && (CBSelectSportingGoals.SelectedItem != null)
+                && (CBSelectFitnessLevel.SelectedItem != null)
+                && (CBSelectEXCTime.SelectedItem != null)
+                && (CBSelectTrainingDaysOfWeek.SelectedItem != null)
+                && (CBSelectEXCPlace.SelectedItem != null)
+                && (CBSelectPlanType.SelectedItem != null)
+                )
+            {
+                AiPopupScreen.IsOpen = false;
+                _IsUserEnterPlanInfos = true;
+            }
+        }
+
+        private void btnSaveTheNewUserInfo_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            UserPopupScreen.IsOpen = false;
+        }
+
+        private void UserPhoto_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            UserPopupScreen.IsOpen = true;
+
+            Userborder.Background = Brushes.White;
+            UserText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            UserIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/User2.png"));
+        }
+
+
+        private bool isDragging = false;
+        private Point clickPosition;
+        private void draggableBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = true;
+            clickPosition = e.GetPosition(this); // Get initial mouse position relative to the window
+            draggableBorder.CaptureMouse(); // Capture the mouse to track movement
+        }
+
+        private void draggableBorder_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging && e.LeftButton == MouseButtonState.Pressed)
+            {
+                Point currentPosition = e.GetPosition(this);
+
+                double offsetX = currentPosition.X - clickPosition.X;
+                double offsetY = currentPosition.Y - clickPosition.Y;
+
+                // Move the Border
+                draggableBorder.Margin = new Thickness(
+                    draggableBorder.Margin.Left + offsetX,
+                    draggableBorder.Margin.Top + offsetY,
+                    0, 0);
+
+                clickPosition = currentPosition; // Update position for smooth dragging
+            }
+        }
+
+        private void draggableBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            draggableBorder.ReleaseMouseCapture(); // Release the mouse
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            UserPopupScreen.IsOpen = false;
+        }
+
+        private void btnMakeYourPlanWithAi_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WindowsContainer.SelectedIndex = 2;
+            UserPopupScreen.IsOpen = false;
+
+
+            if (_IsUserEnterPlanInfos) AiPopupScreen.IsOpen = false;
+            else AiPopupScreen.IsOpen = true;
+        }
+
+
+        private void btnMakeNewPlan_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WindowsContainer.SelectedIndex = 1;
+
+        }
+
+        private void btnSuggestNewPlan_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            _IsUserEnterPlanInfos = false;
+            AiPopupScreen.IsOpen = true;
+            CBSelectAge.SelectedItem = null;
+            CBSelectHeigt.SelectedItem = null;
+            CBSelectWeight.SelectedItem = null;
+            CBSelectSportingGoals.SelectedItem = null;
+            CBSelectFitnessLevel.SelectedItem = null;
+            CBSelectEXCTime.SelectedItem = null;
+            CBSelectTrainingDaysOfWeek.SelectedItem = null;
+            CBSelectEXCPlace.SelectedItem = null;
+            CBSelectPlanType.SelectedItem = null;
+            TBTypeFavoriteEXC.Text = "اختياري";
+
         }
 
         private bool _isMaximized = false;
@@ -216,6 +372,7 @@ namespace SmartFit
                 // Restore rounded corners
                 MainBorder.CornerRadius = new CornerRadius(10);
                 TitleBar.CornerRadius = new CornerRadius(10, 10, 0, 0);
+                ToggleFullscreen();
 
                 _isMaximized = false;
             }
@@ -228,13 +385,14 @@ namespace SmartFit
                 _originalLeft = Left;
                 _originalTop = Top;
 
-                // Get the screen working area (excluding taskbar)
+                //Get the screen working area(excluding taskbar)
                 var screen = SystemParameters.WorkArea;
 
-                Left = screen.Left;
-                Top = screen.Top;
-                Width = screen.Width;
-                Height = screen.Height;
+                Left = screen.Left - 10;
+                Top = screen.Top - 10;
+                Width = screen.Width + 20;
+                Height = screen.Height + 15;
+
 
                 // Remove the border radius when maximized
                 MainBorder.CornerRadius = new CornerRadius(0);

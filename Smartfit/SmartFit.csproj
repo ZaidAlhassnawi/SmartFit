@@ -40,6 +40,7 @@
     <None Remove="Assets\Images\PushupMan.png" />
     <None Remove="Assets\Images\Robot.png" />
     <None Remove="Assets\Images\StarsMinimalistic1.png" />
+    <None Remove="Assets\Images\StarsMinimalistic3.png" />
     <None Remove="Assets\Images\User1.png" />
     <None Remove="Assets\Images\Vector.png" />
     <None Remove="Assets\Images\Water.png" />
@@ -88,6 +89,7 @@
     <Resource Include="Assets\Images\Robot.png" />
     <Resource Include="Assets\Images\StarsMinimalistic1.png" />
     <Resource Include="Assets\Images\StarsMinimalistic2.png" />
+    <Resource Include="Assets\Images\StarsMinimalistic3.png" />
     <Resource Include="Assets\Images\User1.png" />
     <Resource Include="Assets\Images\User2.png" />
     <Resource Include="Assets\Images\Vector.png" />
