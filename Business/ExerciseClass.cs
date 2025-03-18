@@ -47,6 +47,20 @@ namespace Business
             Mode = enMode.Update;
         }
 
+        public static clsExercise FindExercisByPlanID (int PlanID)
+        {
+            int ExerciseID = -1, Repetitions = -1, Sets = -1, Duration = -1;
+            string ExerciseName = "";
+            float CaloriesBurned = 0;
+
+            bool isFound = DatabaseHelper.GetExercisesByPlanId(PlanID, ref ExerciseID, ref ExerciseName, ref Repetitions, ref Sets,
+                ref Duration, ref CaloriesBurned);
+
+            if (isFound)
+                return new clsExercise(ExerciseID, PlanID, ExerciseName, Repetitions, Sets, Duration, CaloriesBurned);
+            else
+                return null;
+        }
 
         private bool _AddExercise()
         {
@@ -54,6 +68,12 @@ namespace Business
                 this.Duration, this.CaloriesBurned);
 
             return (this.ExerciseID != -1);
+        }
+
+        private bool _UpdateExercise()
+        {
+            return DatabaseHelper.UpdateExercise(this.ExerciseID,this.ExerciseName, this.Repetitions,this.Sets,
+                this.Duration,this.CaloriesBurned);
         }
 
         public bool Save()
@@ -68,6 +88,8 @@ namespace Business
                     }
                     else
                         return false;
+                case enMode.Update:
+                    return _UpdateExercise();
             }
 
             return false;

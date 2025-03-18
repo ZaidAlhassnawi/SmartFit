@@ -37,6 +37,19 @@ namespace Business
             Mode = enMode.Update;
         }
 
+        public static clsNutritionPlan FindNutritionPlanByUserID(int UserID)
+        {
+            int NutritionPlanID = -1;
+            string PlanDetails = "", CreatedAt = "";
+
+            bool isFound = DatabaseHelper.GetNutritionPlan(UserID, ref NutritionPlanID, ref PlanDetails, ref CreatedAt);
+
+            if (isFound)
+                return new clsNutritionPlan(NutritionPlanID, UserID, PlanDetails, CreatedAt);
+            else
+                return null;
+        }
+
         private bool _AddNutritionPlan()
         {
             this.PlanID = DatabaseHelper.AddNutritionPlan(this.UserID,this.PlanDetails,this.CreatedAt);
