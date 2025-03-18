@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FitnessApp.DAL;
+﻿using FitnessApp.DAL;
 
 namespace Business
 {
@@ -16,7 +11,7 @@ namespace Business
         public int UserID { get; set; }
         public string Date { get; set; }
         public int Steps { get; set; }
-        public float CaloriesBurned  { get; set; }
+        public float CaloriesBurned { get; set; }
         public int WorkoutDuration { get; set; }
 
         public clsUserActivitie()
@@ -44,7 +39,7 @@ namespace Business
             Mode = enMode.Update;
         }
 
-        public static clsUserActivitie FindUserActivitieByUserIDAndDate(int UserID,string Date)
+        public static clsUserActivitie FindUserActivitieByUserIDAndDate(int UserID, string Date)
         {
             int ActivitieID = -1, Steps = 0, WorkoutDuration = 0;
             float CaloriesBurned = 0;
@@ -60,7 +55,7 @@ namespace Business
 
         private bool _AddUserActivitie()
         {
-            this.ActivitieID = DatabaseHelper.AddUserActivitie(this.UserID,this.Date,this.Steps,this.CaloriesBurned,
+            this.ActivitieID = DatabaseHelper.AddUserActivitie(this.UserID, this.Date, this.Steps, this.CaloriesBurned,
                 this.WorkoutDuration);
 
             return (this.ActivitieID != -1);
@@ -68,7 +63,7 @@ namespace Business
 
         private bool _UpdateUserActivity()
         {
-            return DatabaseHelper.UpdateUserActivity(this.ActivitieID,this.Steps,this.CaloriesBurned,
+            return DatabaseHelper.UpdateUserActivity(this.ActivitieID, this.Steps, this.CaloriesBurned,
                 this.WorkoutDuration);
         }
 

@@ -117,8 +117,6 @@ namespace SmartFit
             }
         }
 
-
-
         private void HomeBorder_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -232,7 +230,6 @@ namespace SmartFit
             }
         }
 
-
         private void Label_MouseDown(object sender, MouseButtonEventArgs e)
         {
             UserPopupScreen.IsOpen = false;
@@ -337,24 +334,30 @@ namespace SmartFit
 
         private void btnMakeNewPlan_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            WindowsContainer.SelectedIndex = 1;
+            if (_IsUserEnterPlanInfos)
+            {
+                WindowsContainer.SelectedIndex = 1;
+            }
 
         }
 
         private void btnSuggestNewPlan_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            _IsUserEnterPlanInfos = false;
-            AiPopupScreen.IsOpen = true;
-            CBSelectAge.SelectedItem = null;
-            CBSelectHeigt.SelectedItem = null;
-            CBSelectWeight.SelectedItem = null;
-            CBSelectSportingGoals.SelectedItem = null;
-            CBSelectFitnessLevel.SelectedItem = null;
-            CBSelectEXCTime.SelectedItem = null;
-            CBSelectTrainingDaysOfWeek.SelectedItem = null;
-            CBSelectEXCPlace.SelectedItem = null;
-            CBSelectPlanType.SelectedItem = null;
-            TBTypeFavoriteEXC.Text = "اختياري";
+            if (_IsUserEnterPlanInfos)
+            {
+                _IsUserEnterPlanInfos = false;
+                AiPopupScreen.IsOpen = true;
+                CBSelectAge.SelectedItem = null;
+                CBSelectHeigt.SelectedItem = null;
+                CBSelectWeight.SelectedItem = null;
+                CBSelectSportingGoals.SelectedItem = null;
+                CBSelectFitnessLevel.SelectedItem = null;
+                CBSelectEXCTime.SelectedItem = null;
+                CBSelectTrainingDaysOfWeek.SelectedItem = null;
+                CBSelectEXCPlace.SelectedItem = null;
+                CBSelectPlanType.SelectedItem = null;
+                TBTypeFavoriteEXC.Text = "اختياري";
+            }
 
         }
 
@@ -401,10 +404,6 @@ namespace SmartFit
                 _isMaximized = true;
             }
         }
-
-
-
-
 
         // Close window
         private void Close_Click(object sender, RoutedEventArgs e)

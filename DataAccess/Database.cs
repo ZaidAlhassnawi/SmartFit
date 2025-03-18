@@ -1,17 +1,6 @@
-<<<<<<< HEAD
-﻿using System.Data.SQLite;
-=======
-﻿using LiveCharts.Wpf.Charts.Base;
-using System;
 using System.Data;
 using System.Data.SQLite;
->>>>>>> af845c00b80a874019145c129f28eb99a7743800
 using System.IO;
-using System.Numerics;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Media3D;
 
 namespace FitnessApp.DAL
 {
@@ -362,13 +351,6 @@ namespace FitnessApp.DAL
             return (ExecuteParametrizedQuery(query, parameters) != 0);
         }
 
-
-        ////Finds///
-<<<<<<< HEAD
-
-=======
->>>>>>> af845c00b80a874019145c129f28eb99a7743800
-
         private static SQLiteDataReader ExecuteReader(string query, SQLiteParameter[] parameters)
         {
             var conn = GetConnection();
@@ -444,7 +426,7 @@ namespace FitnessApp.DAL
 
         // البحث عن جميع التمارين ضمن خطة معينة
         public static bool GetExercisesByPlanId(int PlanID, ref int ExerciseID, ref string ExerciseName,
-            ref int Repetitions, ref int Sets,ref int Duration, ref float CaloriesBurned)
+            ref int Repetitions, ref int Sets, ref int Duration, ref float CaloriesBurned)
         {
             bool isFound = false;
 
@@ -472,7 +454,7 @@ namespace FitnessApp.DAL
 
         //البحث عن نشاط يومي لمستخدم في تاريخ معين
         public static bool GetUserActivityByDate(int UserID, string Date, ref int ActivitieID, ref int Steps,
-            ref float CaloriesBurned,ref int WorkoutDuration)
+            ref float CaloriesBurned, ref int WorkoutDuration)
         {
             bool isFound = false;
 
@@ -528,15 +510,6 @@ namespace FitnessApp.DAL
 
         }
 
-
-<<<<<<< HEAD
-
-
-    }//END 
-=======
-        //END 
->>>>>>> af845c00b80a874019145c129f28eb99a7743800
-
-
     }
+
 }
