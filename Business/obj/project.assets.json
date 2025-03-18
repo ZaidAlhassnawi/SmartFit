@@ -1308,23 +1308,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ahmed\\.nuget\\packages\\": {},
+    "C:\\Users\\Zaid Al-Hassnawi\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ahmed\\Desktop\\SmartFit\\Business\\Business.csproj",
+      "projectUniqueName": "D:\\ProjectofHackthone\\SmartFit\\Business\\Business.csproj",
       "projectName": "Business",
-      "projectPath": "C:\\Users\\ahmed\\Desktop\\SmartFit\\Business\\Business.csproj",
-      "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ahmed\\Desktop\\SmartFit\\Business\\obj\\",
+      "projectPath": "D:\\ProjectofHackthone\\SmartFit\\Business\\Business.csproj",
+      "packagesPath": "C:\\Users\\Zaid Al-Hassnawi\\.nuget\\packages\\",
+      "outputPath": "D:\\ProjectofHackthone\\SmartFit\\Business\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Zaid Al-Hassnawi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1333,15 +1333,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0-windows7.0": {
           "targetAlias": "net9.0-windows",
           "projectReferences": {
-            "C:\\Users\\ahmed\\Desktop\\SmartFit\\DataAccess\\Database.csproj": {
-              "projectPath": "C:\\Users\\ahmed\\Desktop\\SmartFit\\DataAccess\\Database.csproj"
+            "D:\\ProjectofHackthone\\SmartFit\\DataAccess\\Database.csproj": {
+              "projectPath": "D:\\ProjectofHackthone\\SmartFit\\DataAccess\\Database.csproj"
             }
           }
         }
@@ -1356,7 +1355,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0-windows7.0": {
@@ -1390,7 +1389,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

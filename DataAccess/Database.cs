@@ -1,7 +1,13 @@
 ﻿using LiveCharts.Wpf.Charts.Base;
 using System;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
+using System.Numerics;
+using System.Reflection;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Media3D;
 
 namespace FitnessApp.DAL
 {
@@ -275,11 +281,11 @@ namespace FitnessApp.DAL
                 }
             }
         }
-      
+
 
         ////Updates///
 
-        public static int UpdateUser(int userId, string name, int age, float weight, float height, string gender, string activityLevel)
+        public static bool UpdateUser(int userId, string name, int age, float weight, float height, string gender, string activityLevel)
         {
             string query = @"UPDATE Users SET Name = @Name, Age = @Age, Weight = @Weight, 
                      Height = @Height, Gender = @Gender, ActivityLevel = @ActivityLevel
@@ -296,10 +302,10 @@ namespace FitnessApp.DAL
                  new SQLiteParameter("@ActivityLevel", activityLevel)
             };
 
-            return ExecuteParametrizedQuery(query, parameters);
+            return (ExecuteParametrizedQuery(query, parameters) != 0);
         }
 
-        public static int UpdateWorkoutPlan(int planId, string planName, string planDetails)
+        public static bool UpdateWorkoutPlan(int planId, string planName, string planDetails)
         {
             string query = @"UPDATE WorkoutPlans SET PlanName = @PlanName, PlanDetails = @PlanDetails
                      WHERE PlanID = @PlanID";
@@ -311,12 +317,12 @@ namespace FitnessApp.DAL
                 new SQLiteParameter("@PlanDetails", planDetails)
             };
 
-            return ExecuteParametrizedQuery(query, parameters);
+            return (ExecuteParametrizedQuery(query, parameters) != 0);
         }
 
 
         ////تحديث خطة تمرين معين
-        public static int UpdateExercise(int exerciseId, string exerciseName, int repetitions, int sets, int duration, float caloriesBurned)
+        public static bool UpdateExercise(int exerciseId, string exerciseName, int repetitions, int sets, int duration, float caloriesBurned)
         {
             string query = @"UPDATE Exercises SET ExerciseName = @ExerciseName, Repetitions = @Repetitions, 
                      Sets = @Sets, Duration = @Duration, CaloriesBurned = @CaloriesBurned
@@ -332,11 +338,11 @@ namespace FitnessApp.DAL
                 new SQLiteParameter("@CaloriesBurned", caloriesBurned)
             };
 
-            return ExecuteParametrizedQuery(query, parameters);
+            return (ExecuteParametrizedQuery(query, parameters) != 0);
         }
 
         //تحديث نشاط معين للمستخدم
-        public static int UpdateUserActivity(int activityId, int steps, float caloriesBurned, int workoutDuration)
+        public static bool UpdateUserActivity(int activityId, int steps, float caloriesBurned, int workoutDuration)
         {
             string query = @"UPDATE UserActivities SET Steps = @Steps, CaloriesBurned = @CaloriesBurned, 
                      WorkoutDuration = @WorkoutDuration WHERE ActivityID = @ActivityID";
@@ -349,34 +355,52 @@ namespace FitnessApp.DAL
                 new SQLiteParameter("@WorkoutDuration", workoutDuration)
             };
 
-            return ExecuteParametrizedQuery(query, parameters);
+            return (ExecuteParametrizedQuery(query, parameters) != 0);
         }
 
 
-
         ////Finds///
-       
 
         private static SQLiteDataReader ExecuteReader(string query, SQLiteParameter[] parameters)
         {
             var conn = GetConnection();
             conn.Open();
-            var cmd = new SQLiteCommand(query, conn);
-            if (parameters != null)
+
+            using (var cmd = new SQLiteCommand(query, conn))
             {
-                cmd.Parameters.AddRange(parameters);
+                if (parameters != null)
+                {
+                    cmd.Parameters.AddRange(parameters);
+                }
+                return cmd.ExecuteReader(CommandBehavior.CloseConnection); // يغلق الاتصال عند إغلاق الـ reader
             }
-            return cmd.ExecuteReader();
         }
 
-        public static SQLiteDataReader GetUserById(int userId)
+        public static bool GetUserById(int userId, ref string UserName, ref int Age, ref float Weight,
+            ref float Height, ref string Gender, ref string ActivityLevel)
         {
+            bool isFound = false;
+
             string query = "SELECT * FROM Users WHERE UserID = @UserID";
             SQLiteParameter[] parameters = { new SQLiteParameter("@UserID", userId) };
 
-            return ExecuteReader(query, parameters);
-        }
+            using (var reader = ExecuteReader(query, parameters))
+            {
+                if (reader.Read())  // التحقق من وجود بيانات
+                {
+                    isFound = true;
 
+                    UserName = (string)reader["UserName"];
+                    Age = (int)reader["Age"];
+                    Weight = (float)reader["Weight"];
+                    Height = (float)reader["Height"];
+                    Gender = (string)reader["Gender"];
+                    ActivityLevel = (string)reader["ActivityLevel"];
+                }
+            }
+
+            return isFound; // في حال تم العثور على المستخدم تكون النتيجة ترو غير ذلك فولس
+        }
 
 
         public static SQLiteDataReader GetAllUsers()
@@ -385,40 +409,120 @@ namespace FitnessApp.DAL
             return ExecuteReader(query, null);
         }
 
-        public static SQLiteDataReader GetWorkoutPlansByUserId(int userId)
+        public static bool GetWorkoutPlansByUserId(int UserID, ref int PlanID, ref string PlanName,
+            ref string PlanDetails, ref string CreatedAt)
         {
-            string query = "SELECT * FROM WorkoutPlans WHERE UserID = @UserID";
-            SQLiteParameter[] parameters = { new SQLiteParameter("@UserID", userId) };
+            bool isFound = false;
 
-            return ExecuteReader(query, parameters);
+            string query = "SELECT * FROM WorkoutPlans WHERE UserID = @UserID";
+            SQLiteParameter[] parameters = { new SQLiteParameter("@UserID", UserID) };
+
+            using (var reader = ExecuteReader(query, parameters))
+            {
+                if (reader.Read())  // التحقق من وجود بيانات
+                {
+                    isFound = true;
+
+                    PlanID = (int)reader["PlanID"];
+                    PlanName = (string)reader["PlanName"];
+                    PlanDetails = (string)reader["PlanDetails"];
+                    CreatedAt = (string)reader["CreatedAt"];
+
+                }
+            }
+
+            return isFound; // في حال تم العثور على المستخدم تكون النتيجة ترو غير ذلك فولس
         }
 
         // البحث عن جميع التمارين ضمن خطة معينة
-        public static SQLiteDataReader GetExercisesByPlanId(int planId)
+        public static bool GetExercisesByPlanId(int PlanID, ref int ExerciseID, ref string ExerciseName,
+            ref int Repetitions, ref int Sets,ref int Duration, ref float CaloriesBurned)
         {
-            string query = "SELECT * FROM Exercises WHERE PlanID = @PlanID";
-            SQLiteParameter[] parameters = { new SQLiteParameter("@PlanID", planId) };
+            bool isFound = false;
 
-            return ExecuteReader(query, parameters);
+            string query = "SELECT * FROM Exercises WHERE PlanID = @PlanID";
+            SQLiteParameter[] parameters = { new SQLiteParameter("@PlanID", PlanID) };
+
+            using (var reader = ExecuteReader(query, parameters))
+            {
+                if (reader.Read())  // التحقق من وجود بيانات
+                {
+                    isFound = true;
+
+                    ExerciseID = (int)reader["ExerciseID"];
+                    ExerciseName = (string)reader["ExerciseName"];
+                    Repetitions = (int)reader["Repetitions"];
+                    Sets = (int)reader["Sets"];
+                    Duration = (int)reader["Duration"];
+                    CaloriesBurned = (float)reader["CaloriesBurned"];
+
+                }
+            }
+
+            return isFound; // في حال تم العثور على المستخدم تكون النتيجة ترو غير ذلك فولس
         }
 
         //البحث عن نشاط يومي لمستخدم في تاريخ معين
-        public static SQLiteDataReader GetUserActivityByDate(int userId, string date)
+        public static bool GetUserActivityByDate(int UserID, string Date, ref int ActivitieID, ref int Steps,
+            ref float CaloriesBurned,ref int WorkoutDuration)
         {
+            bool isFound = false;
+
             string query = "SELECT * FROM UserActivities WHERE UserID = @UserID AND Date = @Date";
             SQLiteParameter[] parameters =
             {
-                new SQLiteParameter("@UserID", userId),
-                new SQLiteParameter("@Date", date)
+                new SQLiteParameter("@UserID", UserID),
+                new SQLiteParameter("@Date", Date)
             };
 
-            return ExecuteReader(query, parameters);
+            using (var reader = ExecuteReader(query, parameters))
+            {
+                if (reader.Read())  // التحقق من وجود بيانات
+                {
+                    isFound = true;
+
+                    ActivitieID = (int)reader["ActivitieID"];
+                    Steps = (int)reader["Steps"];
+                    CaloriesBurned = (float)reader["CaloriesBurned"];
+                    WorkoutDuration = (int)reader["WorkoutDuration"];
+                }
+            }
+
+            return isFound; // في حال تم العثور على المستخدم تكون النتيجة ترو غير ذلك فولس   
+
+        }
+
+        public static bool GetNutritionPlan(int UserID, ref int NutritionPlanID, ref string PlanDetails,
+            ref string CreatedAt)
+        {
+            bool isFound = false;
+
+            string query = "SELECT * FROM NutritionPlans WHERE UserID = @UserID;";
+            SQLiteParameter[] parameters =
+            {
+                new SQLiteParameter("@UserID", UserID),
+            };
+
+            using (var reader = ExecuteReader(query, parameters))
+            {
+                if (reader.Read())  // التحقق من وجود بيانات
+                {
+                    isFound = true;
+
+                    NutritionPlanID = (int)reader["NutritionPlanID"];
+                    PlanDetails = (string)reader["PlanDetails"];
+                    CreatedAt = (string)reader["CreatedAt"];
+
+                }
+            }
+
+            return isFound; // في حال تم العثور على المستخدم تكون النتيجة ترو غير ذلك فولس      
+
         }
 
 
-        
-
-    }//END 
+        //END 
 
 
+    }
 }
