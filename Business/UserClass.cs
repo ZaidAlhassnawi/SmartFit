@@ -53,6 +53,21 @@ namespace Business
             Mode = enMode.Update;
         }
 
+        public static clsUser FindUserByID(int UserID)
+        {
+            string UserName = "", Gender = "", ActivityLevel = "";
+            int Age = 0;
+            float Weight = 0, Height = 0;
+
+            bool isFound = DatabaseHelper.GetUserById(UserID, ref UserName, ref Age, ref Weight, ref Height, ref Gender, ref ActivityLevel);
+
+            if (isFound)
+                return new clsUser(UserID, UserName, Age, Weight, Height, Gender, ActivityLevel);
+            else
+                return null;
+        }
+
+
         private bool _AddNewUser()
         {
             this.UserID = DatabaseHelper.AddUser(this.UserName, this.Age, this.Weight, this.Height,
@@ -61,6 +76,11 @@ namespace Business
             return (this.UserID != -1);
         }
 
+        private bool _UpdateUser()
+        {
+            return DatabaseHelper.UpdateUser(this.UserID,this.UserName,this.Age,this.Weight,this.Height,this.Gender,
+                this.ActivityLevel);
+        }
  
 
         public bool Save()
@@ -75,6 +95,8 @@ namespace Business
                     }
                     else
                         return false;
+                case enMode.Update:
+                    return _UpdateUser();
             }
 
             return false;

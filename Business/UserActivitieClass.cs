@@ -44,6 +44,19 @@ namespace Business
             Mode = enMode.Update;
         }
 
+        public static clsUserActivitie FindUserActivitieByUserIDAndDate(int UserID,string Date)
+        {
+            int ActivitieID = -1, Steps = 0, WorkoutDuration = 0;
+            float CaloriesBurned = 0;
+
+            bool isFound = DatabaseHelper.GetUserActivityByDate(UserID, Date, ref ActivitieID, ref Steps, ref CaloriesBurned,
+                ref WorkoutDuration);
+
+            if (isFound)
+                return new clsUserActivitie(ActivitieID, UserID, Date, Steps, CaloriesBurned, WorkoutDuration);
+            else
+                return null;
+        }
 
         private bool _AddUserActivitie()
         {
@@ -53,6 +66,11 @@ namespace Business
             return (this.ActivitieID != -1);
         }
 
+        private bool _UpdateUserActivity()
+        {
+            return DatabaseHelper.UpdateUserActivity(this.ActivitieID,this.Steps,this.CaloriesBurned,
+                this.WorkoutDuration);
+        }
 
         public bool Save()
         {
@@ -66,6 +84,8 @@ namespace Business
                     }
                     else
                         return false;
+                case enMode.Update:
+                    return _UpdateUserActivity();
             }
 
             return false;
