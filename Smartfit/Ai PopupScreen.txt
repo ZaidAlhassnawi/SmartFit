@@ -1,0 +1,202 @@
+ <Popup  x:Name="AiPopupScreen" Placement="Center" AllowsTransparency="True">
+
+     <Border Background="White" CornerRadius="32" BorderThickness="0" Margin="26,0,26,-4">
+     <Grid>
+         <Grid Margin="40,32,40,156">
+
+             <Grid Margin="0,0,0,476">
+                 <TextBlock Text="هيا لنصنع معا خطتك الرياضية !" Padding="10" FlowDirection="RightToLeft" FontSize="24" Foreground="#FF4A7AB0" 
+Margin="0,0,0,10" HorizontalAlignment="Center" Height="52" VerticalAlignment="Bottom"/>
+             </Grid>
+
+             <Grid Margin="0,56,0,0">
+
+                 <Grid Margin="0,10,0,355">
+
+                     <Label Width="176" Content="العمر" Margin="376,10,0,71" FlowDirection="RightToLeft" FontSize="14">
+                         <Label.Foreground>
+                             <SolidColorBrush Color="Black" Opacity="0.5"/>
+                         </Label.Foreground>
+                     </Label>
+                     <ComboBox x:Name="CBSelectAge"  Style="{DynamicResource MyComboBox}" Margin="376,26,0,0" Width="176" Height="56" FontSize="16">
+                         <ComboBoxItem Content="الاختيار الأول"/>
+                         <ComboBoxItem Content="Option 2"/>
+                         <ComboBoxItem Content="Option 3"/>
+                         <ComboBoxItem Content="Option 4"/>
+                         <ComboBoxItem Content="Option 5"/>
+                         <ComboBoxItem Content="Option 6"/>
+                         <ComboBoxItem Content="Option 7"/>
+                         <ComboBoxItem Content="Option 8"/>
+                     </ComboBox>
+
+                     <ComboBox  x:Name="CBSelectHeigt" Style="{DynamicResource MyComboBox}" Margin="188,26,188,0" Width="176" Height="56" FontSize="16">
+                         <ComboBoxItem Content="الاختيار الأول"/>
+                         <ComboBoxItem Content="Option 2"/>
+                         <ComboBoxItem Content="Option 3"/>
+                         <ComboBoxItem Content="Option 4"/>
+                         <ComboBoxItem Content="Option 5"/>
+                         <ComboBoxItem Content="Option 6"/>
+                         <ComboBoxItem Content="Option 7"/>
+                         <ComboBoxItem Content="Option 8"/>
+                     </ComboBox>
+
+                     <ComboBox x:Name="CBSelectWeight" Style="{DynamicResource MyComboBox}" Margin="0,26,376,0" Width="176" Height="56" FontSize="16">
+                         <ComboBoxItem Content="الاختيار الأول"/>
+                         <ComboBoxItem Content="Option 2"/>
+                         <ComboBoxItem Content="Option 3"/>
+                         <ComboBoxItem Content="Option 4"/>
+                         <ComboBoxItem Content="Option 5"/>
+                         <ComboBoxItem Content="Option 6"/>
+                         <ComboBoxItem Content="Option 7"/>
+                         <ComboBoxItem Content="Option 8"/>
+                     </ComboBox>
+                     <Label Width="176" Content="الطول الحالي" Margin="188,10,188,71" FlowDirection="RightToLeft" FontSize="14">
+                         <Label.Foreground>
+                             <SolidColorBrush Color="Black" Opacity="0.5"/>
+                         </Label.Foreground>
+                     </Label>
+                     <Label Width="176" Content="الوزن الحالي" Margin="0,10,376,71" FlowDirection="RightToLeft" FontSize="14">
+                         <Label.Foreground>
+                             <SolidColorBrush Color="Black" Opacity="0.5"/>
+                         </Label.Foreground>
+                     </Label>
+
+                 </Grid>
+
+                 <Grid Margin="0,121,0,254">
+
+                     <ComboBox x:Name="CBSelectSportingGoals"  Style="{DynamicResource MyComboBox}" Margin="188,0,0,0" Height="56" FontSize="16" VerticalAlignment="Bottom">
+                         <ComboBoxItem Content="الاختيار الأول"/>
+                         <ComboBoxItem Content="Option 2"/>
+                         <ComboBoxItem Content="Option 3"/>
+                         <ComboBoxItem Content="Option 4"/>
+                         <ComboBoxItem Content="Option 5"/>
+                         <ComboBoxItem Content="Option 6"/>
+                         <ComboBoxItem Content="Option 7"/>
+                         <ComboBoxItem Content="Option 8"/>
+                     </ComboBox>
+
+                     <ComboBox x:Name="CBSelectFitnessLevel" Style="{DynamicResource MyComboBox}" Margin="0,0,376,0" Width="176" Height="56" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                         <ComboBoxItem Content="الاختيار الأول"/>
+                         <ComboBoxItem Content="Option 2"/>
+                         <ComboBoxItem Content="Option 3"/>
+                         <ComboBoxItem Content="Option 4"/>
+                         <ComboBoxItem Content="Option 5"/>
+                         <ComboBoxItem Content="Option 6"/>
+                         <ComboBoxItem Content="Option 7"/>
+                         <ComboBoxItem Content="Option 8"/>
+                     </ComboBox>
+                     <Label Width="176" Content="الأهداف الرياضية" Margin="376,15,0,56" FlowDirection="RightToLeft" FontSize="14">
+                         <Label.Foreground>
+                             <SolidColorBrush Color="Black" Opacity="0.5"/>
+                         </Label.Foreground>
+                     </Label>
+                     <Label Width="176" Content="اللياقة البدنية" Margin="0,15,376,56" FlowDirection="RightToLeft" FontSize="14">
+                         <Label.Foreground>
+                             <SolidColorBrush Color="Black" Opacity="0.5"/>
+                         </Label.Foreground>
+                     </Label>
+
+                 </Grid>
+
+                 <Grid Margin="0,222,0,137">
+
+                     <ComboBox x:Name="CBSelectEXCTime" Style="{DynamicResource MyComboBox}" Width="176" Height="56" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                         <ComboBoxItem Content="الاختيار الأول"/>
+                         <ComboBoxItem Content="Option 2"/>
+                         <ComboBoxItem Content="Option 3"/>
+                         <ComboBoxItem Content="Option 4"/>
+                         <ComboBoxItem Content="Option 5"/>
+                         <ComboBoxItem Content="Option 6"/>
+                         <ComboBoxItem Content="Option 7"/>
+                         <ComboBoxItem Content="Option 8"/>
+                     </ComboBox>
+
+                     <ComboBox x:Name="CBSelectTrainingDaysOfWeek" Style="{DynamicResource MyComboBox}" Margin="0,0,0,-1" Width="176" FontSize="16" HorizontalAlignment="Center" Height="56" VerticalAlignment="Bottom">
+                         <ComboBoxItem Content="الاختيار الأول"/>
+                         <ComboBoxItem Content="Option 2"/>
+                         <ComboBoxItem Content="Option 3"/>
+                         <ComboBoxItem Content="Option 4"/>
+                         <ComboBoxItem Content="Option 5"/>
+                         <ComboBoxItem Content="Option 6"/>
+                         <ComboBoxItem Content="Option 7"/>
+                         <ComboBoxItem Content="Option 8"/>
+                     </ComboBox>
+
+                     <ComboBox x:Name="CBSelectEXCPlace" Style="{DynamicResource MyComboBox}" Margin="0,0,376,0" Width="176" Height="56" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                         <ComboBoxItem Content="الاختيار الأول"/>
+                         <ComboBoxItem Content="Option 2"/>
+                         <ComboBoxItem Content="Option 3"/>
+                         <ComboBoxItem Content="Option 4"/>
+                         <ComboBoxItem Content="Option 5"/>
+                         <ComboBoxItem Content="Option 6"/>
+                         <ComboBoxItem Content="Option 7"/>
+                         <ComboBoxItem Content="Option 8"/>
+                     </ComboBox>
+                     <Label Width="176" Content="وقت التمرين" Margin="376,32,0,55" FlowDirection="RightToLeft" FontSize="14">
+                         <Label.Foreground>
+                             <SolidColorBrush Color="Black" Opacity="0.5"/>
+                         </Label.Foreground>
+                     </Label>
+                     <Label Width="176" Content="ايام التمارين في الأسبوع" Margin="188,32,188,55" FlowDirection="RightToLeft" FontSize="14">
+                         <Label.Foreground>
+                             <SolidColorBrush Color="Black" Opacity="0.5"/>
+                         </Label.Foreground>
+                     </Label>
+                     <Label Width="176" Content="مكان التمرين" Margin="0,31,376,56" FlowDirection="RightToLeft" FontSize="14">
+                         <Label.Foreground>
+                             <SolidColorBrush Color="Black" Opacity="0.5"/>
+                         </Label.Foreground>
+                     </Label>
+
+                 </Grid>
+
+                 <Grid Margin="0,333,0,22">
+
+                     <Border Background="White" Width="    372" Height="56" CornerRadius="28" BorderBrush="#FFC9C9C9" BorderThickness="1" Padding="30,0,0,0" Margin="-1,65,181,0" >
+                         <Grid>
+                             <TextBox  x:Name="TBTypeFavoriteEXC" IsReadOnly="True"  TextWrapping="Wrap" Text="اختياري" VerticalAlignment="Center" Height="45" BorderThickness="0,0,0,0" VerticalContentAlignment="Center" Background="White" Cursor="IBeam" Foreground="Gray" GotFocus="TBTypeFavoriteEXC_GotFocus" LostFocus="TBTypeFavoriteEXC_LostFocus" Margin="0,0,17,0" FlowDirection="RightToLeft"/>
+                         </Grid>
+                     </Border>
+
+                     <ComboBox   x:Name="CBSelectPlanType" Style="{DynamicResource MyComboBox}" Width="176" Height="56" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                         <ComboBoxItem Content="الاختيار الأول"/>
+                         <ComboBoxItem Content="Option 2"/>
+                         <ComboBoxItem Content="Option 3"/>
+                         <ComboBoxItem Content="Option 4"/>
+                         <ComboBoxItem Content="Option 5"/>
+                         <ComboBoxItem Content="Option 6"/>
+                         <ComboBoxItem Content="Option 7"/>
+                         <ComboBoxItem Content="Option 8"/>
+                     </ComboBox>
+                     <Label Width="176" Content="نوع الخطة" Margin="376,35,0,56" FlowDirection="RightToLeft" FontSize="14">
+                         <Label.Foreground>
+                             <SolidColorBrush Color="Black" Opacity="0.5"/>
+                         </Label.Foreground>
+                     </Label>
+                     <Label Width="176" Content="التمارين المفضلة" Margin="188,35,188,56" FlowDirection="RightToLeft" FontSize="14">
+                         <Label.Foreground>
+                             <SolidColorBrush Color="Black" Opacity="0.5"/>
+                         </Label.Foreground>
+                     </Label>
+
+                 </Grid>
+
+
+             </Grid>
+
+         </Grid>
+
+
+         <Border  x:Name="btnMakeThePlanPopupWindown" CornerRadius="28" Background="#4A7AB0" Padding="20,16,10,16" Cursor="Hand"  Margin="0,633,0,30" HorizontalAlignment="Center" Width="552" Height="53" MouseDown="btnMakeThePlanPopupWindown_MouseDown">
+
+             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                 <Image x:Name="AiIcon1" Source="/Assets/Images/StarsMinimalistic3.png" Width="24" Height="24" Margin="0,0,0,0" />
+                 <TextBlock x:Name="AiText1" Text="إنشاء خطة مع AI" FontSize="16" FontWeight="SemiBold" Foreground="White" Margin="8,0,0,0" FlowDirection="RightToLeft"/>
+             </StackPanel>
+
+         </Border>
+     </Grid>
+ </Border>
+
+ </Popup>
