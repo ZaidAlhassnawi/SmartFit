@@ -906,7 +906,6 @@
 
                             </TabItem>
 
-
                             <TabItem TabIndex="1" >
 
                                 <ScrollViewer>
@@ -937,7 +936,6 @@
 
 
                             </TabItem>
-
 
                             <TabItem TabIndex="2" >
                                 <Grid>
@@ -1384,7 +1382,7 @@ Margin="0,0,0,10" HorizontalAlignment="Center" Height="52" VerticalAlignment="Bo
                                                 <Border  x:Name="btnMakeThePlanPopupWindown" CornerRadius="28" Background="#4A7AB0" Padding="20,16,10,16" Cursor="Hand"  Margin="0,633,0,30" HorizontalAlignment="Center" Width="552" Height="53" MouseDown="btnMakeThePlanPopupWindown_MouseDown">
 
                                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                                        <Image x:Name="AiIcon1" Source="/Assets/Images/StarsMinimalistic3.png" Width="24" Height="24" Margin="0,0,0,0" />
+                                                        <Image x:Name="AiIcon1" Source="/Assets/Images/StarsMinimalistic3.png" Width="23" Height="22" Margin="0,0,0,0" />
                                                         <TextBlock x:Name="AiText1" Text="إنشاء خطة مع AI" FontSize="16" FontWeight="SemiBold" Foreground="White" Margin="8,0,0,0" FlowDirection="RightToLeft"/>
                                                     </StackPanel>
 

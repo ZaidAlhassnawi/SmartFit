@@ -274,11 +274,25 @@ namespace SmartFit
 
         private void UserPhoto_MouseDown(object sender, MouseButtonEventArgs e)
         {
+
             UserPopupScreen.IsOpen = true;
 
-            Userborder.Background = Brushes.White;
-            UserText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
-            UserIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/User2.png"));
+
+            Userborder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            UserText.Foreground = Brushes.White;
+            UserIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/User1.png"));
+
+            ExcBorder.Background = Brushes.White;
+            ExcText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            ExcIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/Dumbbells2.png"));
+
+            HomeBorder.Background = Brushes.White;
+            HomeText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            HomeIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/Home.png"));
+
+            AiBorder.Background = Brushes.White;
+            AiText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            AiIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/StarsMinimalistic2.png"));
         }
 
 
@@ -330,7 +344,6 @@ namespace SmartFit
             if (_IsUserEnterPlanInfos) AiPopupScreen.IsOpen = false;
             else AiPopupScreen.IsOpen = true;
         }
-
 
         private void btnMakeNewPlan_MouseDown(object sender, MouseButtonEventArgs e)
         {
