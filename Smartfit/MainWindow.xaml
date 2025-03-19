@@ -6,7 +6,7 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" 
         xmlns:local="clr-namespace:SmartFit"
         mc:Ignorable="d"
-        x:Name="mainwindow"  Title="" Height="1020" Width="1488"
+        x:Name="mainwindow"  Title="" Height="900" Width="1250"
         WindowStyle="None" AllowsTransparency="False"
         ResizeMode="CanResize" WindowStartupLocation="CenterScreen"
         Padding="2,0,2,4" Background="Transparent" 
@@ -678,7 +678,7 @@
 
                         <Grid Grid.Column="1" HorizontalAlignment="Left" Width="73">
 
-                            <Ellipse x:Name="UserPhoto" Height="48" VerticalAlignment="Center" Cursor="Hand" Margin="0,0,25,0" HorizontalAlignment="Right" Width="48" MouseDown="UserPhoto_MouseDown">
+                            <Ellipse x:Name="UserPhoto" Height="48" VerticalAlignment="Center" Cursor="Hand" Margin="0,0,25,0" HorizontalAlignment="Right" Width="48" MouseDown="btnUserPhoto_MouseDown">
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="/Assets/Images/Logo.png"/>
                                 </Ellipse.Fill>
@@ -732,8 +732,8 @@
                                                     <ColumnDefinition/>
                                                     <ColumnDefinition Width="0*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Border x:Name="btnContinueEXC" Background="#4A7AB0" Margin="28,28,0,114" CornerRadius="32" Width="152" Cursor="Hand" HorizontalAlignment="Left">
-                                                    <Label Content="أكمل تمرينك الان!"  Foreground="#FFFFFF" FlowDirection="RightToLeft" HorizontalAlignment="Center" VerticalAlignment="Center" MouseDown="Label_MouseDown" />
+                                                <Border x:Name="btnContinueEXC" Background="#4A7AB0" Margin="28,28,0,114" CornerRadius="32" Width="152" Cursor="Hand" HorizontalAlignment="Left" MouseDown="btnContinuYourEXC_MouseDown" >
+                                                    <Label Content="أكمل تمرينك الان!"  Foreground="#FFFFFF" FlowDirection="RightToLeft" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                                 </Border>
                                                 <Ellipse Margin="0,136,10,0" HorizontalAlignment="Right" Width="207">
                                                     <Ellipse.Fill>
