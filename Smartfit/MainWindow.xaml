@@ -6,11 +6,11 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" 
         xmlns:local="clr-namespace:SmartFit"
         mc:Ignorable="d"
-        x:Name="mainwindow"  Title="" Height="1020" Width="1488"
+        x:Name="mainwindow"  Title="" Height="900" Width="1250"
         WindowStyle="None" AllowsTransparency="False"
         ResizeMode="CanResize" WindowStartupLocation="CenterScreen"
         Padding="2,0,2,4" Background="Transparent" 
-    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" MinWidth="1170" MinHeight="900">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -629,14 +629,7 @@
                     </StackPanel>
 
                     <Label FontFamily="Assets\Fonts\#Poppins Black" Content="Smart Fit" FontSize="24" VerticalContentAlignment="Center" Foreground="#FF4A7AB0" Margin="129,0,0,3" HorizontalAlignment="Left" Width="199" Grid.Row="1" />
-                    <Image Source="/Assets/Images/Logo.png" HorizontalAlignment="Left" Width="80" Margin="37,0,0,15" Grid.Row="1">
-                        <Image.Effect>
-
-
-                            <DropShadowEffect/>
-                        </Image.Effect>
-                    </Image>
-
+                    <Image Source="/Assets/Images/Logo.png" HorizontalAlignment="Left" Width="80" Margin="37,0,0,15" Grid.Row="1"/>
                 </Grid>
 
                 <Grid Height="96" VerticalAlignment="Top" Margin="369,0,0,0">
@@ -659,11 +652,7 @@
                             <Border Background="#FFF4F4F4" Height="56" CornerRadius="28" BorderBrush="Gray" BorderThickness="0" Padding="30,0,0,0" Margin="3,20,1,20" >
                                 <Grid>
                                     <TextBox  x:Name="SearchBox" IsReadOnly="True"  TextWrapping="Wrap" Text="ابحث عن تمرينك" VerticalAlignment="Center" Height="44" BorderThickness="0,0,0,0" VerticalContentAlignment="Center" Padding="30,0,0,0" Background="#FFF4F4F4" Cursor="IBeam" Foreground="Gray" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" Margin="0,0,17,0"/>
-                                    <Image Height="18" VerticalAlignment="Center" Source="/Assets/Images/Magnifer.png" Stretch="Fill" Cursor="Hand" Margin="-12,0,0,0" HorizontalAlignment="Left" Width="27">
-                                        <Image.Effect>
-                                            <DropShadowEffect/>
-                                        </Image.Effect>
-                                    </Image>
+                                    <Image Height="18" VerticalAlignment="Center" Source="/Assets/Images/Magnifer.png" Stretch="Fill" Cursor="Hand" Margin="-12,0,0,0" HorizontalAlignment="Left" Width="27"/>
                                 </Grid>
                             </Border>
 
@@ -675,16 +664,8 @@
                                 <ColumnDefinition Width="41*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image HorizontalAlignment="Center" Height="24" VerticalAlignment="Center" Width="24" Source="/Assets/Images/Notifications.png" Cursor="Hand">
-                                <Image.Effect>
-                                    <DropShadowEffect/>
-                                </Image.Effect>
-                            </Image>
-                            <Image HorizontalAlignment="Right" Height="24" VerticalAlignment="Center" Width="24" Source="/Assets/Images/AIChat.png" Cursor="Hand" Grid.Column="1" Margin="0,0,8,0">
-                                <Image.Effect>
-                                    <DropShadowEffect/>
-                                </Image.Effect>
-                            </Image>
+                            <Image HorizontalAlignment="Center" Height="24" VerticalAlignment="Center" Width="24" Source="/Assets/Images/Notifications.png" Cursor="Hand"/>
+                            <Image HorizontalAlignment="Right" Height="24" VerticalAlignment="Center" Width="24" Source="/Assets/Images/AIChat.png" Cursor="Hand" Grid.Column="1" Margin="0,0,8,0"/>
 
                         </Grid>
                     </Grid>
@@ -697,10 +678,7 @@
 
                         <Grid Grid.Column="1" HorizontalAlignment="Left" Width="73">
 
-                            <Ellipse x:Name="UserPhoto" Height="48" VerticalAlignment="Center" Cursor="Hand" Margin="0,0,25,0" HorizontalAlignment="Right" Width="48" MouseDown="UserPhoto_MouseDown">
-                                <Ellipse.Effect>
-                                    <DropShadowEffect/>
-                                </Ellipse.Effect>
+                            <Ellipse x:Name="UserPhoto" Height="48" VerticalAlignment="Center" Cursor="Hand" Margin="0,0,25,0" HorizontalAlignment="Right" Width="48" MouseDown="btnUserPhoto_MouseDown">
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="/Assets/Images/Logo.png"/>
                                 </Ellipse.Fill>
@@ -735,7 +713,7 @@
 
                             <TabItem     TabIndex="0" >
 
-                                <Grid Height="847" VerticalAlignment="Top" Margin="-5,-5,0,0">
+                                <Grid Height="847" VerticalAlignment="Top" Margin="0,-30,0,0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="239*"/>
                                         <RowDefinition Height="603*"/>
@@ -754,8 +732,8 @@
                                                     <ColumnDefinition/>
                                                     <ColumnDefinition Width="0*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Border x:Name="btnContinueEXC" Background="#4A7AB0" Margin="28,28,0,114" CornerRadius="32" Width="152" Cursor="Hand" HorizontalAlignment="Left">
-                                                    <Label Content="أكمل تمرينك الان!"  Foreground="#FFFFFF" FlowDirection="RightToLeft" HorizontalAlignment="Center" VerticalAlignment="Center" MouseDown="Label_MouseDown" />
+                                                <Border x:Name="btnContinueEXC" Background="#4A7AB0" Margin="28,28,0,114" CornerRadius="32" Width="152" Cursor="Hand" HorizontalAlignment="Left" MouseDown="btnContinuYourEXC_MouseDown" >
+                                                    <Label Content="أكمل تمرينك الان!"  Foreground="#FFFFFF" FlowDirection="RightToLeft" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                                 </Border>
                                                 <Ellipse Margin="0,136,10,0" HorizontalAlignment="Right" Width="207">
                                                     <Ellipse.Fill>
@@ -928,32 +906,13 @@
 
                             </TabItem>
 
-
                             <TabItem TabIndex="1" >
 
                                 <ScrollViewer>
 
-                                    <StackPanel Orientation="Vertical" Width="Auto" HorizontalAlignment="Stretch">
+                                    <StackPanel Orientation="Vertical" Margin="5,1,0,0">
 
-                                        <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                            <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="87*"/>
-                                                    <ColumnDefinition Width="427*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <Grid Background="White" />
-                                                <Image Source="/Assets/Images/MountainClimbersEXC.png" Margin="0,0,4,0" />
-
-                                                <Grid Background="White" Grid.Column="1"/>
-                                                <TextBlock FontSize="24" Text="Mountain Climbers" Grid.Column="1" Margin="5,10,620,72"/>
-                                                <Label FontSize="24" Content="×12" Grid.Column="1" Margin="5,90,620,0" IsEnabled="False"/>
-                                            </Grid>
-
-                                        </Border>
-
-                                        <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
+                                        <Border CornerRadius="32" Margin="16,12" Width="Auto"  Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
 
                                             <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
                                                 <Grid.ColumnDefinitions>
@@ -962,141 +921,14 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <Grid Background="White" />
-                                                <Image Source="/Assets/Images/MountainClimbersEXC.png" Margin="0,0,4,0" />
+                                                <Image Source="/Assets/Images/MountainClimbersEXC.png" Margin="3,0,0,0" />
 
                                                 <Grid Background="White" Grid.Column="1"/>
-                                                <TextBlock FontSize="24" Text="Mountain Climbers" Grid.Column="1" Margin="5,10,620,72"/>
-                                                <Label FontSize="24" Content="×12" Grid.Column="1" Margin="5,90,620,0" IsEnabled="False"/>
+                                                <TextBlock FontSize="24" Text="Mountain Climbers" Grid.Column="1" Margin="5,10,0,72"/>
+                                                <Label FontSize="24" Content="×12" Grid.Column="1" Margin="5,90,0,0" IsEnabled="False"/>
                                             </Grid>
 
                                         </Border>
-
-                                        <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                            <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="87*"/>
-                                                    <ColumnDefinition Width="427*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <Grid Background="White" />
-                                                <Image Source="/Assets/Images/MountainClimbersEXC.png" Margin="0,0,4,0" />
-
-                                                <Grid Background="White" Grid.Column="1"/>
-                                                <TextBlock FontSize="24" Text="Mountain Climbers" Grid.Column="1" Margin="5,10,620,72"/>
-                                                <Label FontSize="24" Content="×12" Grid.Column="1" Margin="5,90,620,0" IsEnabled="False"/>
-                                            </Grid>
-
-                                        </Border>
-
-                                        <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                            <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="87*"/>
-                                                    <ColumnDefinition Width="427*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <Grid Background="White" />
-                                                <Image Source="/Assets/Images/MountainClimbersEXC.png" Margin="0,0,4,0" />
-
-                                                <Grid Background="White" Grid.Column="1"/>
-                                                <TextBlock FontSize="24" Text="Mountain Climbers" Grid.Column="1" Margin="5,10,620,72"/>
-                                                <Label FontSize="24" Content="×12" Grid.Column="1" Margin="5,90,620,0" IsEnabled="False"/>
-                                            </Grid>
-
-                                        </Border>
-
-                                        <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                            <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="87*"/>
-                                                    <ColumnDefinition Width="427*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <Grid Background="White" />
-                                                <Image Source="/Assets/Images/MountainClimbersEXC.png" Margin="0,0,4,0" />
-
-                                                <Grid Background="White" Grid.Column="1"/>
-                                                <TextBlock FontSize="24" Text="Mountain Climbers" Grid.Column="1" Margin="5,10,620,72"/>
-                                                <Label FontSize="24" Content="×12" Grid.Column="1" Margin="5,90,620,0" IsEnabled="False"/>
-                                            </Grid>
-
-                                        </Border>
-
-                                        <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                            <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="87*"/>
-                                                    <ColumnDefinition Width="427*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <Grid Background="White" />
-                                                <Image Source="/Assets/Images/MountainClimbersEXC.png" Margin="0,0,4,0" />
-
-                                                <Grid Background="White" Grid.Column="1"/>
-                                                <TextBlock FontSize="24" Text="Mountain Climbers" Grid.Column="1" Margin="5,10,620,72"/>
-                                                <Label FontSize="24" Content="×12" Grid.Column="1" Margin="5,90,620,0" IsEnabled="False"/>
-                                            </Grid>
-
-                                        </Border>
-
-                                        <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                            <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="87*"/>
-                                                    <ColumnDefinition Width="427*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <Grid Background="White" />
-                                                <Image Source="/Assets/Images/MountainClimbersEXC.png" Margin="0,0,4,0" />
-
-                                                <Grid Background="White" Grid.Column="1"/>
-                                                <TextBlock FontSize="24" Text="Mountain Climbers" Grid.Column="1" Margin="5,10,620,72"/>
-                                                <Label FontSize="24" Content="×12" Grid.Column="1" Margin="5,90,620,0" IsEnabled="False"/>
-                                            </Grid>
-
-                                        </Border>
-
-                                        <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                            <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="87*"/>
-                                                    <ColumnDefinition Width="427*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <Grid Background="White" />
-                                                <Image Source="/Assets/Images/MountainClimbersEXC.png" Margin="0,0,4,0" />
-
-                                                <Grid Background="White" Grid.Column="1"/>
-                                                <TextBlock FontSize="24" Text="Mountain Climbers" Grid.Column="1" Margin="5,10,620,72"/>
-                                                <Label FontSize="24" Content="×12" Grid.Column="1" Margin="5,90,620,0" IsEnabled="False"/>
-                                            </Grid>
-
-                                        </Border>
-
-                                        <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                            <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="87*"/>
-                                                    <ColumnDefinition Width="427*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <Grid Background="White" />
-                                                <Image Source="/Assets/Images/MountainClimbersEXC.png" Margin="0,0,4,0" />
-
-                                                <Grid Background="White" Grid.Column="1"/>
-                                                <TextBlock FontSize="24" Text="Mountain Climbers" Grid.Column="1" Margin="5,10,620,72"/>
-                                                <Label FontSize="24" Content="×12" Grid.Column="1" Margin="5,90,620,0" IsEnabled="False"/>
-                                            </Grid>
-
-                                        </Border>
-
 
                                     </StackPanel>
 
@@ -1104,7 +936,6 @@
 
 
                             </TabItem>
-
 
                             <TabItem TabIndex="2" >
                                 <Grid>
@@ -1551,7 +1382,7 @@ Margin="0,0,0,10" HorizontalAlignment="Center" Height="52" VerticalAlignment="Bo
                                                 <Border  x:Name="btnMakeThePlanPopupWindown" CornerRadius="28" Background="#4A7AB0" Padding="20,16,10,16" Cursor="Hand"  Margin="0,633,0,30" HorizontalAlignment="Center" Width="552" Height="53" MouseDown="btnMakeThePlanPopupWindown_MouseDown">
 
                                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                                        <Image x:Name="AiIcon1" Source="/Assets/Images/StarsMinimalistic3.png" Width="24" Height="24" Margin="0,0,0,0" />
+                                                        <Image x:Name="AiIcon1" Source="/Assets/Images/StarsMinimalistic3.png" Width="23" Height="22" Margin="0,0,0,0" />
                                                         <TextBlock x:Name="AiText1" Text="إنشاء خطة مع AI" FontSize="16" FontWeight="SemiBold" Foreground="White" Margin="8,0,0,0" FlowDirection="RightToLeft"/>
                                                     </StackPanel>
 
@@ -1591,9 +1422,6 @@ Margin="0,0,0,10" HorizontalAlignment="Center" Height="52" VerticalAlignment="Bo
                                     </Border>
 
                                     <Ellipse Height="140" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Width="140" Margin="0,0,0,550">
-                                        <Ellipse.Effect>
-                                            <DropShadowEffect/>
-                                        </Ellipse.Effect>
                                         <Ellipse.Fill>
                                             <ImageBrush ImageSource="/Assets/Images/Logo.png"/>
                                         </Ellipse.Fill>

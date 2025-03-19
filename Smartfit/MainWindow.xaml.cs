@@ -8,6 +8,24 @@ namespace SmartFit
 {
     public partial class MainWindow : Window
     {
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            DataContext = new ChartViewModel();
+        }
+
+
+        private bool _isMaximized = false;
+        private bool isFullscreen = false;
+        private bool isDragging = false;
+        private bool _IsUserEnterPlanInfos = false;
+        private Point clickPosition;
+        // Maximize or Restore window
+        // Store original size and position
+        private double _originalWidth, _originalHeight, _originalLeft, _originalTop;
+
+
         public class ChartViewModel
         {
             public ChartValues<double> ActivityValues { get; set; }
@@ -27,15 +45,6 @@ namespace SmartFit
                 };
             }
         }
-
-        public MainWindow()
-        {
-            InitializeComponent();
-            DataContext = new ChartViewModel();
-        }
-
-
-        private bool isFullscreen = false;
 
         private void ToggleFullscreen()
         {
@@ -71,53 +80,79 @@ namespace SmartFit
             WindowState = WindowState.Minimized;
         }
 
-        // Maximize or Restore window
-        // Store original size and position
-        private double _originalWidth, _originalHeight, _originalLeft, _originalTop;
+        private void TextBoxAnimation(object sender, bool GotFocus)
+        {
+            if (sender == SearchBox)
+            {
+                if (GotFocus)
+                {
+                    if (SearchBox.Text == "ابحث عن تمرينك")
+                    {
+                        SearchBox.IsReadOnly = false;
+                        SearchBox.Text = "";
+                        SearchBox.Foreground = Brushes.Black;
+                    }
+                }
+
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(SearchBox.Text))
+                    {
+                        SearchBox.Text = "ابحث عن تمرينك";
+                        SearchBox.Foreground = Brushes.Gray;
+                        SearchBox.IsReadOnly = true;
+                    }
+                }
+            }
+
+            else if (sender == TBTypeFavoriteEXC)
+            {
+                if (GotFocus)
+                {
+
+                    if (TBTypeFavoriteEXC.Text == "اختياري")
+                    {
+                        TBTypeFavoriteEXC.IsReadOnly = false;
+                        TBTypeFavoriteEXC.Text = "";
+                        TBTypeFavoriteEXC.Foreground = Brushes.Black;
+                    }
+                }
+
+                else
+                {
+
+                    if (string.IsNullOrWhiteSpace(TBTypeFavoriteEXC.Text))
+                    {
+                        TBTypeFavoriteEXC.Text = "اختياري";
+                        TBTypeFavoriteEXC.Foreground = Brushes.Gray;
+                        TBTypeFavoriteEXC.IsReadOnly = true;
+                    }
+                }
+            }
+        }
 
         private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (SearchBox.Text == "ابحث عن تمرينك")
-            {
-                SearchBox.IsReadOnly = false;
-                SearchBox.Text = "";
-                SearchBox.Foreground = Brushes.Black;
-            }
+            TextBoxAnimation(sender, true);
 
         }
 
         private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(SearchBox.Text))
-            {
-                SearchBox.Text = "ابحث عن تمرينك";
-                SearchBox.Foreground = Brushes.Gray;
-                SearchBox.IsReadOnly = true;
-            }
+            TextBoxAnimation(sender, false);
         }
 
         private void TBTypeFavoriteEXC_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (TBTypeFavoriteEXC.Text == "اختياري")
-            {
-                TBTypeFavoriteEXC.IsReadOnly = false;
-                TBTypeFavoriteEXC.Text = "";
-                TBTypeFavoriteEXC.Foreground = Brushes.Black;
-            }
+            TextBoxAnimation(sender, true);
+
 
         }
 
         private void TBTypeFavoriteEXC_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TBTypeFavoriteEXC.Text))
-            {
-                TBTypeFavoriteEXC.Text = "اختياري";
-                TBTypeFavoriteEXC.Foreground = Brushes.Gray;
-                TBTypeFavoriteEXC.IsReadOnly = true;
-            }
+            TextBoxAnimation(sender, false);
         }
-
-
 
         private void HomeBorder_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -173,7 +208,6 @@ namespace SmartFit
             }
         }
 
-        private bool _IsUserEnterPlanInfos = false;
 
         private void AiBorder_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -232,8 +266,7 @@ namespace SmartFit
             }
         }
 
-
-        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        private void btnContinuYourEXC_MouseDown(object sender, MouseButtonEventArgs e)
         {
             UserPopupScreen.IsOpen = false;
             WindowsContainer.SelectedIndex = 1;
@@ -275,18 +308,29 @@ namespace SmartFit
             UserPopupScreen.IsOpen = false;
         }
 
-        private void UserPhoto_MouseDown(object sender, MouseButtonEventArgs e)
+        private void btnUserPhoto_MouseDown(object sender, MouseButtonEventArgs e)
         {
+
             UserPopupScreen.IsOpen = true;
 
-            Userborder.Background = Brushes.White;
-            UserText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
-            UserIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/User2.png"));
+
+            Userborder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            UserText.Foreground = Brushes.White;
+            UserIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/User1.png"));
+
+            ExcBorder.Background = Brushes.White;
+            ExcText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            ExcIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/Dumbbells2.png"));
+
+            HomeBorder.Background = Brushes.White;
+            HomeText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            HomeIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/Home.png"));
+
+            AiBorder.Background = Brushes.White;
+            AiText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            AiIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/StarsMinimalistic2.png"));
         }
 
-
-        private bool isDragging = false;
-        private Point clickPosition;
         private void draggableBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             isDragging = true;
@@ -319,46 +363,62 @@ namespace SmartFit
             draggableBorder.ReleaseMouseCapture(); // Release the mouse
         }
 
-        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            UserPopupScreen.IsOpen = false;
-        }
-
         private void btnMakeYourPlanWithAi_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            WindowsContainer.SelectedIndex = 2;
             UserPopupScreen.IsOpen = false;
 
+            WindowsContainer.SelectedIndex = 2;
 
             if (_IsUserEnterPlanInfos) AiPopupScreen.IsOpen = false;
-            else AiPopupScreen.IsOpen = true;
-        }
 
+            else AiPopupScreen.IsOpen = true;
+
+            AiBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            AiText.Foreground = Brushes.White;
+            AiIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/StarsMinimalistic1.png"));
+
+            ExcBorder.Background = Brushes.White;
+            ExcText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            ExcIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/Dumbbells3.png"));
+
+            HomeBorder.Background = Brushes.White;
+            HomeText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            HomeIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/Home.png"));
+
+            Userborder.Background = Brushes.White;
+            UserText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7AB0"));
+            UserIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/User2.png"));
+
+        }
 
         private void btnMakeNewPlan_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            WindowsContainer.SelectedIndex = 1;
+            if (_IsUserEnterPlanInfos)
+            {
+                WindowsContainer.SelectedIndex = 1;
+            }
 
         }
 
         private void btnSuggestNewPlan_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            _IsUserEnterPlanInfos = false;
-            AiPopupScreen.IsOpen = true;
-            CBSelectAge.SelectedItem = null;
-            CBSelectHeigt.SelectedItem = null;
-            CBSelectWeight.SelectedItem = null;
-            CBSelectSportingGoals.SelectedItem = null;
-            CBSelectFitnessLevel.SelectedItem = null;
-            CBSelectEXCTime.SelectedItem = null;
-            CBSelectTrainingDaysOfWeek.SelectedItem = null;
-            CBSelectEXCPlace.SelectedItem = null;
-            CBSelectPlanType.SelectedItem = null;
-            TBTypeFavoriteEXC.Text = "اختياري";
+            if (_IsUserEnterPlanInfos)
+            {
+                _IsUserEnterPlanInfos = false;
+                AiPopupScreen.IsOpen = true;
+                CBSelectAge.SelectedItem = null;
+                CBSelectHeigt.SelectedItem = null;
+                CBSelectWeight.SelectedItem = null;
+                CBSelectSportingGoals.SelectedItem = null;
+                CBSelectFitnessLevel.SelectedItem = null;
+                CBSelectEXCTime.SelectedItem = null;
+                CBSelectTrainingDaysOfWeek.SelectedItem = null;
+                CBSelectEXCPlace.SelectedItem = null;
+                CBSelectPlanType.SelectedItem = null;
+                TBTypeFavoriteEXC.Text = "اختياري";
+            }
 
         }
-
-        private bool _isMaximized = false;
 
         private void MaximizeRestore_Click(object sender, RoutedEventArgs e)
         {
@@ -402,14 +462,12 @@ namespace SmartFit
             }
         }
 
-
-
-
-
         // Close window
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
     }
+
+
 }
