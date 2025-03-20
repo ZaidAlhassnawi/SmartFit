@@ -57,14 +57,18 @@ namespace Business
 
             bool isFound = DatabaseHelper.GetUserById(UserID, ref UserName, ref Age, ref Weight, ref Height, ref Gender, ref ActivityLevel);
 
-            if (isFound)
-                return new clsUser(UserID, UserName, Age, Weight, Height, Gender, ActivityLevel);
-            else
+            if (!isFound)
+            {
+                Console.WriteLine($"User with ID {UserID} not found."); // Log message
                 return null;
+            }
+
+            return new clsUser(UserID, UserName, Age, Weight, Height, Gender, ActivityLevel);
         }
 
 
-        public bool _AddNewUser()
+
+        private bool _AddNewUser()
         {
             this.UserID = DatabaseHelper.AddUser(this.UserName, this.Age, this.Weight, this.Height,
                 this.Gender, this.ActivityLevel);

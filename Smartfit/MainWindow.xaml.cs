@@ -12,16 +12,16 @@ namespace SmartFit
 {
     public partial class MainWindow : Window
     {
-        clsUser TestUser = LoginWindow.TestUser;
+
 
         private void InitializeUserInfoInApp(clsUser user)
         {
-            SideOfThePhotoUserName.Content = TestUser.UserName;
-            SideOfThePhotoUserAge.Content = TestUser.Age;
-            TBUserName.Text = TestUser.UserName;
-            TBUserAge.Text = TestUser.Age.ToString();
+            SideOfThePhotoUserName.Content = LoginWindow.TestUser.UserName;
+            SideOfThePhotoUserAge.Content = LoginWindow.TestUser.Age;
+            TBUserName.Text = LoginWindow.TestUser.UserName;
+            TBUserAge.Text = LoginWindow.TestUser.Age.ToString();
             TBUserEmail.Text = "Test@Email.com";
-            if (TestUser.Gender == "Male") { RBmale.IsChecked = true; }
+            if (LoginWindow.TestUser.Gender == "Male") { RBmale.IsChecked = true; }
             else { RBFemale.IsEnabled = true; }
 
         }
@@ -31,7 +31,7 @@ namespace SmartFit
             InitializeComponent();
             MakeYourAiPlanLabel();
             DataContext = new ChartViewModel();
-            InitializeUserInfoInApp(TestUser);
+            InitializeUserInfoInApp(LoginWindow.TestUser);
         }
 
         // Maximize or Restore window
@@ -537,7 +537,7 @@ namespace SmartFit
 
         private void IntializePrompt(Prompt MyPrompt)
         {
-            MyPrompt.Age = TestUser.Age.ToString();
+            MyPrompt.Age = LoginWindow.TestUser.Age.ToString();
             MyPrompt.Height = CBSelectHeight.Text;
             MyPrompt.Weight = CBSelectWeight.Text;
             MyPrompt.ExerciseTime = CBSelectEXCTime.Text;
@@ -633,8 +633,6 @@ namespace SmartFit
             }
         }
 
-        //There is Problem Here With the back end !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //Saves the New User Info to the data base
         private void btnSaveTheNewUserInfo_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (!string.IsNullOrEmpty(TBUserName.Text)
@@ -666,15 +664,19 @@ namespace SmartFit
                 try
                 {
 
-                    TestUser.UserName = TBUserName.Text;
-                    TestUser.Age = Convert.ToInt32(TBUserAge.Text);
+                    LoginWindow.TestUser.UserName = TBUserName.Text.Trim();
+                    LoginWindow.TestUser.Age = Convert.ToInt32(TBUserAge.Text.Trim());
                     if (RBmale.IsChecked == true)
-                    { TestUser.Gender = "Male"; }
-                    else { TestUser.Gender = "Female"; }
-                    SideOfThePhotoUserName.Content = TestUser.UserName;
-                    SideOfThePhotoUserAge.Content = TestUser.Age;
-                    TestUser.Mode = clsUser.enMode.Update;
-                    TestUser.Save();
+                    { LoginWindow.TestUser.Gender = "Male"; }
+                    else { LoginWindow.TestUser.Gender = "Female"; }
+                    SideOfThePhotoUserName.Content = LoginWindow.TestUser.UserName.Trim();
+                    SideOfThePhotoUserAge.Content = LoginWindow.TestUser.Age.ToString().Trim();
+                    LoginWindow.TestUser.Mode = clsUser.enMode.Update;
+                    if (LoginWindow.TestUser.Save())
+                    {
+                        MessageBox.Show("New User info. Saved Successfuly");
+                    }
+
 
                 }
                 catch (Exception ex)

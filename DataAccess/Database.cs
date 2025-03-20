@@ -370,25 +370,25 @@ namespace FitnessApp.DAL
         {
             bool isFound = false;
 
-            string query = "SELECT * FROM Users WHERE UserID = @UserID";
+            string query = "SELECT Name, Age, Weight, Height, Gender, ActivityLevel FROM Users WHERE UserID = @UserID";
             SQLiteParameter[] parameters = { new SQLiteParameter("@UserID", userId) };
 
             using (var reader = ExecuteReader(query, parameters))
             {
-                if (reader.Read())  // التحقق من وجود بيانات
+                if (reader != null && reader.Read()) // تأكد أن هناك بيانات قبل القراءة
                 {
                     isFound = true;
 
-                    UserName = (string)reader["UserName"];
-                    Age = (int)reader["Age"];
-                    Weight = (float)reader["Weight"];
-                    Height = (float)reader["Height"];
-                    Gender = (string)reader["Gender"];
-                    ActivityLevel = (string)reader["ActivityLevel"];
+                    UserName = reader["Name"].ToString();
+                    Age = Convert.ToInt32(reader["Age"]);
+                    Weight = Convert.ToSingle(reader["Weight"]);
+                    Height = Convert.ToSingle(reader["Height"]);
+                    Gender = reader["Gender"].ToString();
+                    ActivityLevel = reader["ActivityLevel"].ToString();
                 }
             }
 
-            return isFound; // في حال تم العثور على المستخدم تكون النتيجة ترو غير ذلك فولس
+            return isFound;
         }
 
         public static SQLiteDataReader GetAllUsers()

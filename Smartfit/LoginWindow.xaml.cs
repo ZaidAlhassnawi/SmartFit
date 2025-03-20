@@ -7,13 +7,16 @@ namespace SmartFit
 {
     public partial class LoginWindow : Window
     {
+
+        public static clsUser TestUser;
         public LoginWindow()
         {
             InitializeComponent();
 
+            TestUser = clsUser.FindUserByID(1);
         }
 
-        public static clsUser TestUser = new clsUser(1, "Test", 22, 73, 170, "Male", "Middle");
+
 
 
         private double _originalWidth, _originalHeight, _originalLeft, _originalTop;
@@ -98,24 +101,35 @@ namespace SmartFit
             string username = EmailTEXTBOX.Text;
             string password = PasswordTEXTBOX.Password;
 
-            if (!String.IsNullOrWhiteSpace(EmailTEXTBOX.Text) && !String.IsNullOrWhiteSpace(PasswordTEXTBOX.Password))
+            try
             {
-                // Check login credentials (for example, admin / 1234)
-                if (username.Trim() == TestUser.UserName && password.Trim() == "1234")
+                if (!String.IsNullOrWhiteSpace(EmailTEXTBOX.Text) && !String.IsNullOrWhiteSpace(PasswordTEXTBOX.Password))
                 {
-                    MainWindow mainWindow = new MainWindow(); // Create Main Window
-                    mainWindow.Show();  // Show the main window
-                    this.Close();       // Close the login window
+                    // Check login credentials (for example, admin / 1234)
+                    if (username.Trim() == TestUser.UserName && password.Trim() == "1234")
+                    {
+                        MainWindow mainWindow = new MainWindow(); // Create Main Window
+                        mainWindow.Show();  // Show the main window
+                        this.Close();       // Close the login window
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Username or Password!", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
+
                 else
                 {
-                    MessageBox.Show("Invalid Username or Password!", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Enter your Username and Password!", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Enter your Username and Password!", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("An error occurred: " + ex.Message);
+                return;
+                throw;
+
+
             }
         }
 
