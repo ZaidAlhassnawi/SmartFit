@@ -6,7 +6,7 @@ namespace FitnessApp.DAL
 {
     public static class DatabaseHelper
     {
-        private static string databasePath = "fitness.db";
+        private static string databasePath = "fitness.db";  
         private static string connectionString = $"Data Source={databasePath};Version=3;";
 
         // إنشاء اتصال بقاعدة البيانات
