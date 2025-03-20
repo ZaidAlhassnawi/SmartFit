@@ -100,7 +100,7 @@ namespace SmartFit
             if (!String.IsNullOrWhiteSpace(EmailTEXTBOX.Text) && !String.IsNullOrWhiteSpace(PasswordTEXTBOX.Password))
             {
                 // Check login credentials (for example, admin / 1234)
-                if (username == TestUser.UserName && password == "1234")
+                if (username.Trim() == TestUser.UserName && password.Trim() == "1234")
                 {
                     MainWindow mainWindow = new MainWindow(); // Create Main Window
                     mainWindow.Show();  // Show the main window

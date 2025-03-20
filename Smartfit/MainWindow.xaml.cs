@@ -14,7 +14,7 @@ namespace SmartFit
     {
         clsUser TestUser = LoginWindow.TestUser;
 
-        private void InitializeUser(clsUser user)
+        private void InitializeUserInfoInApp(clsUser user)
         {
             SideOfThePhotoUserName.Content = TestUser.UserName;
             SideOfThePhotoUserAge.Content = TestUser.Age;
@@ -31,7 +31,7 @@ namespace SmartFit
             InitializeComponent();
             MakeYourAiPlanLabel();
             DataContext = new ChartViewModel();
-            InitializeUser(TestUser);
+            InitializeUserInfoInApp(TestUser);
         }
 
         // Maximize or Restore window
@@ -161,35 +161,105 @@ namespace SmartFit
 
         private void draggableBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            UserPopupScreen.Placement = PlacementMode.Absolute;
-            isDragging = true;
-            clickPosition = e.GetPosition(this); // Get initial mouse position relative to the window
-            draggableBorder.CaptureMouse(); // Capture the mouse to track movement
+            if (sender == draggableBorder)
+            {
+                UserPopupScreen.Placement = PlacementMode.Absolute;
+                isDragging = true;
+                clickPosition = e.GetPosition(this); // Get initial mouse position relative to the window
+                draggableBorder.CaptureMouse(); // Capture the mouse to track movement
+            }
+
+            else if (sender == BorderMeasuringCaloriesInFood)
+            {
+                PopUpMeasuringCaloriesInFood.Placement = PlacementMode.Absolute;
+                isDragging = true;
+                clickPosition = e.GetPosition(this); // Get initial mouse position relative to the window
+                BorderMeasuringCaloriesInFood.CaptureMouse(); // Capture the mouse to track movement
+            }
+
+            else if (sender == BorderMeasuringCaloriesInPlan)
+            {
+                PopUpMeasuringCaloriesInPlan.Placement = PlacementMode.Absolute;
+                isDragging = true;
+                clickPosition = e.GetPosition(this); // Get initial mouse position relative to the window
+                BorderMeasuringCaloriesInPlan.CaptureMouse(); // Capture the mouse to track movement
+            }
         }
 
         private void draggableBorder_MouseMove(object sender, MouseEventArgs e)
         {
             if (isDragging && e.LeftButton == MouseButtonState.Pressed)
             {
-                Point currentPosition = e.GetPosition(this);
+                if (sender == draggableBorder)
+                {
+                    Point currentPosition = e.GetPosition(this);
 
-                double offsetX = currentPosition.X - clickPosition.X;
-                double offsetY = currentPosition.Y - clickPosition.Y;
+                    double offsetX = currentPosition.X - clickPosition.X;
+                    double offsetY = currentPosition.Y - clickPosition.Y;
 
-                // Move the Border
-                draggableBorder.Margin = new Thickness(
-                    draggableBorder.Margin.Left + offsetX,
-                    draggableBorder.Margin.Top + offsetY,
-                    0, 0);
+                    // Move the Border
+                    draggableBorder.Margin = new Thickness(
+                        draggableBorder.Margin.Left + offsetX,
+                        draggableBorder.Margin.Top + offsetY,
+                        0, 0);
 
-                clickPosition = currentPosition; // Update position for smooth dragging
+                    clickPosition = currentPosition; // Update position for smooth dragging
+                }
+
+                else if (sender == BorderMeasuringCaloriesInFood)
+                {
+                    Point currentPosition = e.GetPosition(this);
+
+                    double offsetX = currentPosition.X - clickPosition.X;
+                    double offsetY = currentPosition.Y - clickPosition.Y;
+
+                    // Move the Border
+                    BorderMeasuringCaloriesInFood.Margin = new Thickness(
+                        BorderMeasuringCaloriesInFood.Margin.Left + offsetX,
+                        BorderMeasuringCaloriesInFood.Margin.Top + offsetY,
+                        0, 0);
+
+                    clickPosition = currentPosition; // Update position for smooth dragging
+                }
+
+                else if (sender == BorderMeasuringCaloriesInPlan)
+                {
+                    Point currentPosition = e.GetPosition(this);
+
+                    double offsetX = currentPosition.X - clickPosition.X;
+                    double offsetY = currentPosition.Y - clickPosition.Y;
+
+                    // Move the Border
+                    BorderMeasuringCaloriesInPlan.Margin = new Thickness(
+                        BorderMeasuringCaloriesInPlan.Margin.Left + offsetX,
+                        BorderMeasuringCaloriesInPlan.Margin.Top + offsetY,
+                        0, 0);
+
+                    clickPosition = currentPosition; // Update position for smooth dragging
+                }
             }
         }
 
         private void draggableBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            isDragging = false;
-            draggableBorder.ReleaseMouseCapture(); // Release the mouse
+            if (sender == draggableBorder)
+            {
+                isDragging = false;
+                draggableBorder.ReleaseMouseCapture(); // Release the mouse
+            }
+
+            else if (sender == BorderMeasuringCaloriesInFood)
+            {
+                isDragging = false;
+                BorderMeasuringCaloriesInFood.ReleaseMouseCapture(); // Release the mouse
+            }
+
+            else if (sender == BorderMeasuringCaloriesInPlan)
+            {
+                isDragging = false;
+                BorderMeasuringCaloriesInPlan.ReleaseMouseCapture(); // Release the mouse
+            }
+
         }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
@@ -477,7 +547,7 @@ namespace SmartFit
 
             BuildPrompt(MyPrompt);
         }
-
+        //Also There is a Problem Here With the Ai Api !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         private void btnMakeThePlanPopupWindown_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if ((CBSelectHeight.SelectedItem != null)
@@ -595,6 +665,52 @@ namespace SmartFit
             }
 
 
+        }
+
+        private void btnCloseMeasuringCaloriesInFood_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            PopUpMeasuringCaloriesInFood.IsOpen = false;
+        }
+
+        private void btnCalcCaloriesInFood_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (PopUpMeasuringCaloriesInFood.IsOpen)
+                PopUpMeasuringCaloriesInFood.IsOpen = false;
+
+            else
+            {
+                PopUpMeasuringCaloriesInFood.IsOpen = true;
+                PopUpMeasuringCaloriesInPlan.IsOpen = false;
+            }
+        }
+
+        private void btnCloseMeasuringCaloriesInPlan_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            PopUpMeasuringCaloriesInPlan.IsOpen = false;
+
+        }
+
+        private void btnMeasuringCaloriesInPlan_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (PopUpMeasuringCaloriesInPlan.IsOpen)
+                PopUpMeasuringCaloriesInPlan.IsOpen = false;
+            else
+            {
+                PopUpMeasuringCaloriesInFood.IsOpen = false;
+                PopUpMeasuringCaloriesInPlan.IsOpen = true;
+            }
+        }
+
+        //AiChat button ( in side of searchbar ) and Notification
+        private void btnSoon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (PopUpMeasuringCaloriesInPlan.IsOpen)
+                PopUpMeasuringCaloriesInPlan.IsOpen = false;
+            else
+            {
+                PopUpMeasuringCaloriesInFood.IsOpen = false;
+                PopUpMeasuringCaloriesInPlan.IsOpen = true;
+            }
         }
 
         private void CopyStackPanelToAnother(StackPanel AiExcPlanStackPanel, StackPanel ExcPlanStackPanel)

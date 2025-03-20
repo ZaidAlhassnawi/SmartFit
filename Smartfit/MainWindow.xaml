@@ -664,8 +664,8 @@
                                 <ColumnDefinition Width="41*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image HorizontalAlignment="Center" Height="24" VerticalAlignment="Center" Width="24" Source="/Assets/Images/Notifications.png" Cursor="Hand"/>
-                            <Image HorizontalAlignment="Right" Height="24" VerticalAlignment="Center" Width="24" Source="/Assets/Images/AIChat.png" Cursor="Hand" Grid.Column="1" Margin="0,0,8,0"/>
+                            <Image x:Name="btnAiChat" HorizontalAlignment="Center" Height="24" VerticalAlignment="Center" Width="24" Source="/Assets/Images/Notifications.png" Cursor="Hand" MouseDown="btnSoon_MouseDown"/>
+                            <Image x:Name="btnNotification" HorizontalAlignment="Right" Height="24" VerticalAlignment="Center" Width="24" Source="/Assets/Images/AIChat.png" Cursor="Hand" Grid.Column="1" Margin="0,0,8,0" MouseDown="btnSoon_MouseDown"/>
 
                         </Grid>
                     </Grid>
@@ -809,10 +809,25 @@
                                                         </Border.Background>
                                                     </Border>
 
-                                                    <Border x:Name="btnCalcCaloriesInFood" Width="230" Height="42" CornerRadius="20" Background="#4A7AB0" Margin="17,23,17,38" Grid.Row="1" Cursor="Hand">
+                                                    <Border x:Name="btnCalcCaloriesInFood" Width="230" Height="42" CornerRadius="20" Background="#4A7AB0" Margin="17,23,17,38" Grid.Row="1" Cursor="Hand" MouseDown="btnCalcCaloriesInFood_MouseDown">
                                                         <Label Foreground="#FFFFFFFF" Content="قياس الان" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                                                     </Border>
-
+<!-- -->
+                                                    <Popup x:Name="PopUpMeasuringCaloriesInFood" Placement="Center" AllowsTransparency="True">
+                                                        <Border x:Name="BorderMeasuringCaloriesInFood" Width="504" Height="479" CornerRadius="32" Background="White" BorderThickness="1" BorderBrush="Black" MouseLeftButtonDown="draggableBorder_MouseLeftButtonDown" MouseMove="draggableBorder_MouseMove" MouseLeftButtonUp="draggableBorder_MouseLeftButtonUp">
+                                                            <Grid>
+                                                                <TextBlock FontSize="100" Text="Soon !" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF4A7AB0" FontWeight="Bold"/>
+                                                                <Border   CornerRadius="15" BorderBrush="Black" BorderThickness="0" Height="38" Margin="0,3,22,0" VerticalAlignment="Top" MouseDown="btnCloseMeasuringCaloriesInFood_MouseDown" HorizontalAlignment="Right" Width="33" Cursor="Hand">
+                                                                    <Border.Effect>
+                                                                        <DropShadowEffect/>
+                                                                    </Border.Effect>
+                                                                    <TextBlock Text="✕" FontSize="16" Foreground="Red" Height="18" Width="13" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                                                    
+                                                                </Border>
+                                                            </Grid>
+                                                        </Border>
+                                                    </Popup>
+                                                    
                                                 </Grid>
                                             </Border>
 
@@ -830,10 +845,23 @@
                                                         </Border.Background>
                                                     </Border>
 
-                                                    <Border x:Name="btnNumberOfCaloriesBerKilo" Width="230" Height="42" CornerRadius="20" Background="#4A7AB0" Margin="17,23,17,38" Grid.Row="1" Cursor="Hand">
+                                                    <Border x:Name="btnMeasuringCaloriesInPlan" Width="230" Height="42" CornerRadius="20" Background="#4A7AB0" Margin="17,23,17,38" Grid.Row="1" Cursor="Hand" MouseDown="btnMeasuringCaloriesInPlan_MouseDown">
                                                         <Label Foreground="#FFFFFFFF" Content="احسب الان" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                                                     </Border>
+                                                    <Popup x:Name="PopUpMeasuringCaloriesInPlan" Placement="Center" AllowsTransparency="True">
+                                                        <Border  x:Name="BorderMeasuringCaloriesInPlan" Width="504" Height="479" CornerRadius="32" Background="White" BorderThickness="1" BorderBrush="Black" MouseLeftButtonDown="draggableBorder_MouseLeftButtonDown" MouseLeftButtonUp="draggableBorder_MouseLeftButtonUp" MouseMove="draggableBorder_MouseMove">
+                                                            <Grid>
+                                                                <TextBlock FontSize="100" Text="Soon !" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF4A7AB0" FontWeight="Bold"/>
+                                                                <Border   CornerRadius="15" BorderBrush="Black" BorderThickness="0" Height="38" Margin="0,3,22,0" VerticalAlignment="Top" MouseDown="btnCloseMeasuringCaloriesInPlan_MouseDown" HorizontalAlignment="Right" Width="33" Cursor="Hand">
+                                                                    <Border.Effect>
+                                                                        <DropShadowEffect/>
+                                                                    </Border.Effect>
+                                                                    <TextBlock Text="✕" FontSize="16" Foreground="Red" Height="18" Width="13" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
 
+                                                                </Border>
+                                                            </Grid>
+                                                        </Border>
+                                                    </Popup>
                                                 </Grid>
                                             </Border>
 
