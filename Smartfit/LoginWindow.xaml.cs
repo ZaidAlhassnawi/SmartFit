@@ -82,6 +82,11 @@ namespace SmartFit
             Close();
         }
 
+        private void btnCreateNewAccount_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
         private void LoginTitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
