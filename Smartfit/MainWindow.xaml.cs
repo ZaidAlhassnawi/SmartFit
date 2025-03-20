@@ -83,7 +83,7 @@ namespace SmartFit
             public ChartViewModel()
             {
                 // Activity durations in minutes
-                ActivityValues = new ChartValues<double> { 0, 0, 0, 0, 0, 0, 0 };
+                ActivityValues = new ChartValues<double> { 50, 75, 80, 90, 100, 120, 30 };
                 Days = new string[] { "Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri" };
 
                 // Custom formatter for y-axis labels
@@ -563,36 +563,48 @@ namespace SmartFit
                 AiPopupScreen.IsOpen = false;
                 _IsUserEnterPlanInfos = true;
 
-                //
-                AiExcPlanStackPanel.Children.Clear();
-                //AddExerciseToStackPanel(AiExcPlanStackPanel, "Mountain Climbers", "12");
-                //AddExerciseToStackPanel(AiExcPlanStackPanel, "Push-ups", "15");
-                //AddExerciseToStackPanel(AiExcPlanStackPanel, "Squats", "20");
-                Prompt MyPrompt = new Prompt();
-
-                IntializePrompt(MyPrompt);
-                PromptResult MyPromptResult = clsPlan.CreatePlan(MyPrompt);
-
-
-                Dictionary<string, (int reps, int Time)>? AiExercises = MyPromptResult.Exercises;
-                lblAmountOfWater.Content = MyPromptResult.AmountOfWater;
-                lblCalorieIntake.Content = MyPromptResult.CalorieIntake;
-                lblExerciseTime.Content = MyPromptResult.ExerciseTime;
-
-                if (AiExercises != null) // Ensure it's not null
+                try
                 {
-                    foreach (var exercise in AiExercises)
+
+
+                    AiExcPlanStackPanel.Children.Clear();
+
+                    Prompt MyPrompt = new Prompt();
+
+                    IntializePrompt(MyPrompt);
+                    PromptResult MyPromptResult = clsPlan.CreatePlan(MyPrompt);
+                    if (MyPromptResult == null)
                     {
-                        string exerciseName = exercise.Key;
-                        int reps = exercise.Value.reps;
-                        int time = exercise.Value.Time;
-                        // Add the TextBlock to the StackPanel
+                        MessageBox.Show("MyPromptResult is null!");
+                        return; // Exit the function to prevent further errors
                     }
-                    AddExerciseToStackPanel(AiExcPlanStackPanel, "Mountain Climbers", "12");
+
+                    Dictionary<string, (int reps, int Time)>? AiExercises = MyPromptResult.Exercises;
+                    lblAmountOfWater.Content = MyPromptResult.AmountOfWater;
+                    lblCalorieIntake.Content = MyPromptResult.CalorieIntake;
+                    lblExerciseTime.Content = MyPromptResult.ExerciseTime;
+
+                    if (AiExercises != null) // Ensure it's not null
+                    {
+                        foreach (var exercise in AiExercises)
+                        {
+                            string exerciseName = exercise.Key;
+                            int reps = exercise.Value.reps;
+                            int time = exercise.Value.Time;
+                            // Add the TextBlock to the StackPanel
+                        }
+                        AddExerciseToStackPanel(AiExcPlanStackPanel, "Mountain Climbers", "12");
+                    }
+                    else
+                    {
+                        MessageBox.Show("The Ai Failed");
+                    }
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("The Ai Failed");
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                    throw;
                 }
 
             }
@@ -649,14 +661,25 @@ namespace SmartFit
                         break;
                 }
 
-                TestUser.UserName = TBUserName.Text;
-                TestUser.Age = Convert.ToInt32(TBUserAge.Text);
-                if (RBmale.IsChecked == true)
-                { TestUser.Gender = "Male"; }
-                else { TestUser.Gender = "Female"; }
 
-                TestUser.Mode = clsUser.enMode.Update;
-                TestUser.Save();
+                try
+                {
+
+                    TestUser.UserName = TBUserName.Text;
+                    TestUser.Age = Convert.ToInt32(TBUserAge.Text);
+                    if (RBmale.IsChecked == true)
+                    { TestUser.Gender = "Male"; }
+                    else { TestUser.Gender = "Female"; }
+
+                    TestUser.Mode = clsUser.enMode.Update;
+                    TestUser.Save();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                    throw;
+                }
+
             }
             else
             {
@@ -817,12 +840,16 @@ namespace SmartFit
 
         private void btnAddNewPlan_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (_IsUserEnterPlanInfos)
+            if (_IsUserEnterPlanInfos && AiExcPlanStackPanel.Children.Count != 0)
             {
                 WindowsContainer.SelectedIndex = 1;
 
                 CopyStackPanelToAnother(AiExcPlanStackPanel, ExcPlanStackPanel);
 
+            }
+            else
+            {
+                MessageBox.Show("The Exeirceses is empty");
             }
 
         }
