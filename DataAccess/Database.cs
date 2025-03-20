@@ -32,6 +32,7 @@ namespace FitnessApp.DAL
         private static void CreateAllTables(SQLiteConnection conn)
         {
             // جدول المستخدمين
+            ///
             ExecuteNonQuery(conn, @"
                 CREATE TABLE IF NOT EXISTS Users (
                     UserID INTEGER PRIMARY KEY AUTOINCREMENT,
