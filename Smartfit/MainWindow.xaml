@@ -10,7 +10,7 @@
         WindowStyle="None" AllowsTransparency="False"
         ResizeMode="CanResize" WindowStartupLocation="CenterScreen"
         Padding="2,0,2,4" Background="Transparent" 
-    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" MinWidth="1170" MinHeight="900">
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" MinWidth="1170" MinHeight="900" KeyDown="mainwindow_KeyDown">
 
     <Window.Resources>
         <ResourceDictionary>

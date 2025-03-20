@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmartFit"  
         mc:Ignorable="d"
-        Title="LoginWindow" Height="1024" Width="1440" WindowStyle="None" WindowStartupLocation="CenterScreen" KeyDown="LoginWindow_KeyDown">
+        Title="LoginWindow" Height="1024" Width="1440" WindowStyle="None" WindowStartupLocation="CenterScreen" KeyDown="LoginWindow_KeyDown" x:Name="LoginWindowScreen">
 
 
     <Grid Margin="-15,-24,-15,-19">

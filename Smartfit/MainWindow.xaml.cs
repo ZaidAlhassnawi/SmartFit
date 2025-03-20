@@ -713,6 +713,18 @@ namespace SmartFit
             }
         }
 
+        private void mainwindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (mainwindow.WindowState == WindowState.Normal && e.Key == Key.F11)
+            {
+                mainwindow.WindowState = WindowState.Maximized;
+            }
+            else if (mainwindow.WindowState == WindowState.Maximized && e.Key == Key.F11)
+            {
+                mainwindow.WindowState = WindowState.Normal;
+            }
+        }
+
         private void CopyStackPanelToAnother(StackPanel AiExcPlanStackPanel, StackPanel ExcPlanStackPanel)
         {
             // Clear the destination StackPanel first

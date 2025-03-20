@@ -125,6 +125,14 @@ namespace SmartFit
             {
                 Login_Click(sender, e);
             }
+            else if (LoginWindowScreen.WindowState == WindowState.Normal && e.Key == Key.F11)
+            {
+                LoginWindowScreen.WindowState = WindowState.Maximized;
+            }
+            else if (LoginWindowScreen.WindowState == WindowState.Maximized && e.Key == Key.F11)
+            {
+                LoginWindowScreen.WindowState = WindowState.Normal;
+            }
         }
 
     }
