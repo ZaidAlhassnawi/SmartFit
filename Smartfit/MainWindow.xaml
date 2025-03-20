@@ -936,13 +936,16 @@
 
                             <TabItem TabIndex="1" >
 
-                                <ScrollViewer>
+                                <ScrollViewer HorizontalScrollBarVisibility="Visible">
 
-                                    <StackPanel x:Name="ExcPlanStackPanel" Orientation="Vertical" Margin="5,1,0,0">
+                                    
+                                
+                                        <TextBox  x:Name="TBMyPlan" FontSize="25" Foreground="#4A7AB0">
+
+                                        </TextBox>
 
 
-
-                                    </StackPanel>
+                          
 
                                 </ScrollViewer>
 
@@ -955,11 +958,11 @@
 
                                     <Grid Margin="0,244,0,115">
 
-                                        <ScrollViewer Margin="0,-20,0,4">
+                                        <ScrollViewer Margin="0,-20,0,4" HorizontalScrollBarVisibility="Visible">
 
-                                            <RichTextBox x:Name="AiResponse" FontSize="100" Foreground="#4A7AB0">
+                                            <TextBox  x:Name="TBAiResponse" FontSize="25" Foreground="#4A7AB0">
                                                 
-                                            </RichTextBox>
+                                            </TextBox>
                                             
                                         </ScrollViewer>
 

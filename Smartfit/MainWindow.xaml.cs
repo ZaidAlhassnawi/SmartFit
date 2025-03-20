@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
@@ -32,6 +33,8 @@ namespace SmartFit
             MakeYourAiPlanLabel();
             DataContext = new ChartViewModel();
             InitializeUserInfoInApp(LoginWindow.TestUser);
+            TBAiResponse.Text = ReadFromFile();
+            TBMyPlan.Text = ReadFromFile();
         }
 
         // Maximize or Restore window
@@ -64,15 +67,15 @@ namespace SmartFit
                 }
             };
 
-            if (ExcPlanStackPanel.Children.Count == 0)
-            {
-                if (!ExcPlanStackPanel.Children.Contains(MakeYouPlanWithAi))
-                    ExcPlanStackPanel.Children.Add(MakeYouPlanWithAi);
-            }
-            else
-            {
-                ExcPlanStackPanel.Children.Remove(MakeYouPlanWithAi);
-            }
+            //if (ExcPlanStackPanel.Children.Count == 0)
+            //{
+            //    if (!ExcPlanStackPanel.Children.Contains(MakeYouPlanWithAi))
+            //        ExcPlanStackPanel.Children.Add(MakeYouPlanWithAi);
+            //}
+            //else
+            //{
+            //    ExcPlanStackPanel.Children.Remove(MakeYouPlanWithAi);
+            //}
         }
 
         public class ChartViewModel
@@ -548,7 +551,7 @@ namespace SmartFit
             BuildPrompt(MyPrompt);
         }
         //Also There is a Problem Here With the Ai Api !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        private void btnMakeThePlanPopupWindown_MouseDown(object sender, MouseButtonEventArgs e)
+        private async void btnMakeThePlanPopupWindown_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if ((CBSelectHeight.SelectedItem != null)
                 && (CBSelectWeight.SelectedItem != null)
@@ -572,28 +575,30 @@ namespace SmartFit
                     Prompt MyPrompt = new Prompt();
 
                     IntializePrompt(MyPrompt);
-                    PromptResult MyPromptResult = clsPlan.CreatePlan(MyPrompt);
+                    string MyPromptResult = await clsPlan.CreatePlanAsync(MyPrompt);
                     if (MyPromptResult == null)
                     {
                         MessageBox.Show("MyPromptResult is null!");
                         return; // Exit the function to prevent further errors
                     }
 
-                    Dictionary<string, (int reps, int Time)>? AiExercises = MyPromptResult.Exercises;
-                    lblAmountOfWater.Content = MyPromptResult.AmountOfWater;
-                    lblCalorieIntake.Content = MyPromptResult.CalorieIntake;
-                    lblExerciseTime.Content = MyPromptResult.ExerciseTime;
+                    //Dictionary<string, (int reps, int Time)>? AiExercises = MyPromptResult.Exercises;
+                    //lblAmountOfWater.Content = MyPromptResult.AmountOfWater;
+                    //lblCalorieIntake.Content = MyPromptResult.CalorieIntake;
+                    //lblExerciseTime.Content = MyPromptResult.ExerciseTime;
 
-                    if (AiExercises != null) // Ensure it's not null
+                    if (MyPromptResult != "") // Ensure it's not null
                     {
-                        foreach (var exercise in AiExercises)
-                        {
-                            string exerciseName = exercise.Key;
-                            int reps = exercise.Value.reps;
-                            int time = exercise.Value.Time;
-                            // Add the TextBlock to the StackPanel
-                        }
+                        //foreach (var exercise in AiExercises)
+                        //{
+                        //    string exerciseName = exercise.Key;
+                        //    int reps = exercise.Value.reps;
+                        //    int time = exercise.Value.Time;
+                        //    // Add the TextBlock to the StackPanel
+                        //}
                         //AddExerciseToStackPanel(AiExcPlanStackPanel, "Mountain Climbers", "12");
+                        TBAiResponse.Text = MyPromptResult;
+
                     }
                     else
                     {
@@ -609,6 +614,17 @@ namespace SmartFit
                 }
 
             }
+        }
+
+        public static void SaveToFile(string text)
+        {
+            File.WriteAllText("Plan.txt", text);
+        }
+
+        // Read text from a file
+        public static string ReadFromFile()
+        {
+            return File.Exists("Plan.txt") ? File.ReadAllText("Plan.txt") : "";
         }
 
         private void btnCloseUserPopUpScreen_MouseDown(object sender, MouseButtonEventArgs e)
@@ -846,12 +862,13 @@ namespace SmartFit
 
         private void btnAddNewPlan_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (_IsUserEnterPlanInfos && ExcPlanStackPanel.Children.Count != 0)
+            if (_IsUserEnterPlanInfos)
             {
                 WindowsContainer.SelectedIndex = 1;
 
-                CopyStackPanelToAnother(ExcPlanStackPanel, ExcPlanStackPanel);
+                TBMyPlan.Text = TBAiResponse.Text;
 
+                SaveToFile(TBMyPlan.Text);
             }
             else
             {
@@ -876,6 +893,7 @@ namespace SmartFit
                 CBSelectEXCPlace.SelectedItem = null;
                 CBSelectPlanType.SelectedItem = null;
                 TBTypeFavoriteEXC.Text = "اختياري";
+                TBAiResponse.Text = "";
             }
 
         }
