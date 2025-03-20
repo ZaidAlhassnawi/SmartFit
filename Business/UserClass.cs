@@ -21,6 +21,7 @@ namespace Business
 
         public clsUser()
         {
+            DatabaseHelper.InitializeDatabase();
             this.UserID = -1;
             this.UserName = "Test";
             this.Age = 22;
@@ -36,6 +37,7 @@ namespace Business
         public clsUser(int UserID, string UserName, int Age, float Weight, float Height,
             string Gender, string ActivityLevel)
         {
+            DatabaseHelper.InitializeDatabase();
             this.UserID = UserID;
             this.UserName = UserName;
             this.Age = Age;
@@ -62,7 +64,7 @@ namespace Business
         }
 
 
-        private bool _AddNewUser()
+        public bool _AddNewUser()
         {
             this.UserID = DatabaseHelper.AddUser(this.UserName, this.Age, this.Weight, this.Height,
                 this.Gender, this.ActivityLevel);

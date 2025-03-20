@@ -10,11 +10,12 @@ namespace SmartFit
         public LoginWindow()
         {
             InitializeComponent();
+
         }
 
-        public static clsUser TestUser = new clsUser();
+        public static clsUser TestUser = new clsUser(1, "Test", 22, 73, 170, "Male", "Middle");
 
-        private clsUser CurrentUser;
+
         private double _originalWidth, _originalHeight, _originalLeft, _originalTop;
         private bool _isMaximized = false;
         private bool isFullscreen = false;

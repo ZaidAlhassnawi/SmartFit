@@ -278,7 +278,7 @@ namespace FitnessApp.DAL
 
         ////Updates///
 
-        public static bool UpdateUser(int userId, string name, int age, float weight, float height, string gender, string activityLevel)
+        public static bool UpdateUser(int userId, string name, int age, double weight, double height, string gender, string activityLevel)
         {
             string query = @"UPDATE Users SET Name = @Name, Age = @Age, Weight = @Weight, 
                      Height = @Height, Gender = @Gender, ActivityLevel = @ActivityLevel

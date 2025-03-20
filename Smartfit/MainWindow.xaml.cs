@@ -671,13 +671,15 @@ namespace SmartFit
                     if (RBmale.IsChecked == true)
                     { TestUser.Gender = "Male"; }
                     else { TestUser.Gender = "Female"; }
-
+                    SideOfThePhotoUserName.Content = TestUser.UserName;
+                    SideOfThePhotoUserAge.Content = TestUser.Age;
                     TestUser.Mode = clsUser.enMode.Update;
                     TestUser.Save();
+
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Ai Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("An error occurred: " + ex.Message, "Saving User Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                     throw;
                 }
