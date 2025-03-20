@@ -603,7 +603,8 @@ namespace SmartFit
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message);
+                    MessageBox.Show("An error occurred: " + ex.Message, "Ai Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                     throw;
                 }
 
@@ -676,7 +677,8 @@ namespace SmartFit
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message);
+                    MessageBox.Show("An error occurred: " + ex.Message, "Ai Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                     throw;
                 }
 
