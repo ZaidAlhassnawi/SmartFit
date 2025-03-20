@@ -90,7 +90,7 @@ namespace Business
             try
             {
                 string prompt = BuildPrompt(promptObject);
-                string apiKey = "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";
+                string apiKey = "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";
                 string apiUrl = "https://openrouter.ai/api/v1/chat/completions";
 
                 using (HttpClient client = new HttpClient())
