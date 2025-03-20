@@ -107,7 +107,7 @@ namespace FitnessApp.DAL
             try
             {
                 string query = @"INSERT INTO Users 
-                                       (Name, Age, Weight, Height, Gender, ActivityLevel)
+                                       (Name,Age, Weight, Height, Gender, ActivityLevel)
                                 VALUES (@Name, @Age, @Weight, @Height, @Gender, @ActivityLevel)";
 
                 SQLiteParameter[] parameters =
@@ -278,7 +278,7 @@ namespace FitnessApp.DAL
 
         ////Updates///
 
-        public static bool UpdateUser(int userId, string name, int age, float weight, float height, string gender, string activityLevel)
+        public static bool UpdateUser(int userId, string name, int age, double weight, double height, string gender, string activityLevel)
         {
             string query = @"UPDATE Users SET Name = @Name, Age = @Age, Weight = @Weight, 
                      Height = @Height, Gender = @Gender, ActivityLevel = @ActivityLevel
@@ -366,8 +366,7 @@ namespace FitnessApp.DAL
             }
         }
 
-        public static bool GetUserById(int userId, ref string UserName, ref int Age, ref float Weight,
-            ref float Height, ref string Gender, ref string ActivityLevel)
+        public static bool GetUserById(int userId, ref string UserName, ref int Age, ref float Weight, ref float Height, ref string Gender, ref string ActivityLevel)
         {
             bool isFound = false;
 
@@ -392,15 +391,13 @@ namespace FitnessApp.DAL
             return isFound; // في حال تم العثور على المستخدم تكون النتيجة ترو غير ذلك فولس
         }
 
-
         public static SQLiteDataReader GetAllUsers()
         {
             string query = "SELECT * FROM Users";
             return ExecuteReader(query, null);
         }
 
-        public static bool GetWorkoutPlansByUserId(int UserID, ref int PlanID, ref string PlanName,
-            ref string PlanDetails, ref string CreatedAt)
+        public static bool GetWorkoutPlansByUserId(int UserID, ref int PlanID, ref string PlanName, ref string PlanDetails, ref string CreatedAt)
         {
             bool isFound = false;
 
@@ -425,8 +422,7 @@ namespace FitnessApp.DAL
         }
 
         // البحث عن جميع التمارين ضمن خطة معينة
-        public static bool GetExercisesByPlanId(int PlanID, ref int ExerciseID, ref string ExerciseName,
-            ref int Repetitions, ref int Sets, ref int Duration, ref float CaloriesBurned)
+        public static bool GetExercisesByPlanId(int PlanID, ref int ExerciseID, ref string ExerciseName, ref int Repetitions, ref int Sets, ref int Duration, ref float CaloriesBurned)
         {
             bool isFound = false;
 
@@ -453,8 +449,7 @@ namespace FitnessApp.DAL
         }
 
         //البحث عن نشاط يومي لمستخدم في تاريخ معين
-        public static bool GetUserActivityByDate(int UserID, string Date, ref int ActivitieID, ref int Steps,
-            ref float CaloriesBurned, ref int WorkoutDuration)
+        public static bool GetUserActivityByDate(int UserID, string Date, ref int ActivitieID, ref int Steps, ref float CaloriesBurned, ref int WorkoutDuration)
         {
             bool isFound = false;
 
@@ -482,8 +477,7 @@ namespace FitnessApp.DAL
 
         }
 
-        public static bool GetNutritionPlan(int UserID, ref int NutritionPlanID, ref string PlanDetails,
-            ref string CreatedAt)
+        public static bool GetNutritionPlan(int UserID, ref int NutritionPlanID, ref string PlanDetails, ref string CreatedAt)
         {
             bool isFound = false;
 

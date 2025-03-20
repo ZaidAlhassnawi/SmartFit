@@ -1,10 +1,4 @@
 ﻿using FitnessApp.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 
 
@@ -27,21 +21,23 @@ namespace Business
 
         public clsUser()
         {
+            DatabaseHelper.InitializeDatabase();
             this.UserID = -1;
-            this.UserName = "";
-            this.Age = 0;
-            this.Weight = 0;
-            this.Height = 0;
-            this.Gender = "";
-            this.ActivityLevel = "";
+            this.UserName = "Test";
+            this.Age = 22;
+            this.Weight = 73;
+            this.Height = 170;
+            this.Gender = "Male";
+            this.ActivityLevel = "Middle";
 
             Mode = enMode.AddNew;
 
         }
 
-        private clsUser(int UserID, string UserName, int Age, float Weight, float Height,
+        public clsUser(int UserID, string UserName, int Age, float Weight, float Height,
             string Gender, string ActivityLevel)
         {
+            DatabaseHelper.InitializeDatabase();
             this.UserID = UserID;
             this.UserName = UserName;
             this.Age = Age;
@@ -68,7 +64,7 @@ namespace Business
         }
 
 
-        private bool _AddNewUser()
+        public bool _AddNewUser()
         {
             this.UserID = DatabaseHelper.AddUser(this.UserName, this.Age, this.Weight, this.Height,
                 this.Gender, this.ActivityLevel);
@@ -78,10 +74,10 @@ namespace Business
 
         private bool _UpdateUser()
         {
-            return DatabaseHelper.UpdateUser(this.UserID,this.UserName,this.Age,this.Weight,this.Height,this.Gender,
+            return DatabaseHelper.UpdateUser(this.UserID, this.UserName, this.Age, this.Weight, this.Height, this.Gender,
                 this.ActivityLevel);
         }
- 
+
 
         public bool Save()
         {

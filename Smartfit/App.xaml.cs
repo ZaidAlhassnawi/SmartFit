@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 
 namespace SmartFit
 {
@@ -10,5 +8,7 @@ namespace SmartFit
     public partial class App : Application
     {
     }
+
+
 
 }

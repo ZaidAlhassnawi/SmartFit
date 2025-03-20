@@ -1,9 +1,9 @@
-﻿using FitnessApp.DAL;
-using Newtonsoft.Json;
-using System.Configuration;
+﻿using System.Configuration;
 using System.IO;
 using System.Net.Http;
 using System.Text;
+using FitnessApp.DAL;
+using Newtonsoft.Json;
 
 namespace Business
 {
@@ -85,124 +85,132 @@ namespace Business
             return false;
         }
 
-
         public static PromptResult CreatePlan(Prompt PromptObject)
         {
-            // Build the prompt based on the user's input, including ExerciseTime
-            string prompt = BuildPrompt(PromptObject);
-
-            using (HttpClient client = new HttpClient())
+            try
             {
-                // Add API Key to the header
-                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {DecodeBase64(File.ReadAllText("SecretFile.txt").Trim())}");
+                // Build the prompt based on the user's input
+                string prompt = BuildPrompt(PromptObject);
 
-                // Prepare the request payload (JSON format)
-                var requestBody = new
+                using (HttpClient client = new HttpClient())
                 {
-                    model = "gpt-3.5-turbo",
-                    messages = new List<object>
-        {
-            new { role = "user", content = prompt }
-        }
-                };
+                    // Add API Key to the header
+                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {DecodeBase64(File.ReadAllText("SecretFile.txt").Trim())}");
 
-                string jsonContent = JsonConvert.SerializeObject(requestBody);
-
-                StringContent content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = client.PostAsync(ConfigurationManager.AppSettings["apiUrl"], content).Result;
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new Exception($"Error calling AI API: {response.StatusCode}");
-                }
-
-                string aiResponse = response.Content.ReadAsStringAsync().Result;
-
-                string[] responseParts = aiResponse.Split(new[] { "----" }, StringSplitOptions.None);
-
-                if (responseParts.Length < 2)
-                {
-                    throw new Exception("Invalid AI response format.");
-                }
-
-                Dictionary<string, string> firstPart = new Dictionary<string, string>
-    {
-        { "Field1", responseParts[0].Split("\n")[0] },  // First line of the first part (CalorieIntake)
-        { "Field2", responseParts[0].Split("\n")[1] },  // Second line of the first part (AmountOfWater)
-        { "Field3", responseParts[0].Split("\n")[2] }   // Third line of the first part (ExerciseTime)
-    };
-
-                Dictionary<string, string> secondPart = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseParts[1]);
-
-                Dictionary<string, (int reps, int Time)> exercises = new Dictionary<string, (int reps, int Time)>();
-
-                foreach (var item in secondPart)
-                {
-                    string[] exerciseData = item.Value.Split(',');
-
-                    if (exerciseData.Length == 2)
+                    // Prepare the request payload (JSON format)
+                    var requestBody = new
                     {
-                        if (int.TryParse(exerciseData[0], out int reps) && int.TryParse(exerciseData[1], out int time))
+                        model = "gpt-3.5-turbo",
+                        messages = new List<object> { new { role = "user", content = prompt } }
+                    };
+
+                    string jsonContent = JsonConvert.SerializeObject(requestBody);
+                    StringContent content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = client.PostAsync(ConfigurationManager.AppSettings["apiUrl"], content).Result;
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new Exception($"Error calling AI API: {response.StatusCode}");
+                    }
+
+                    string aiResponse = response.Content.ReadAsStringAsync().Result;
+                    Console.WriteLine("🟢 AI Response: " + aiResponse); // Debugging
+
+                    // Check if response is empty
+                    if (string.IsNullOrWhiteSpace(aiResponse))
+                        throw new Exception("AI response is empty.");
+
+                    string[] responseParts = aiResponse.Split(new[] { "----" }, StringSplitOptions.None);
+
+                    if (responseParts.Length < 2)
+                        throw new Exception("Invalid AI response format.");
+
+                    Dictionary<string, string> firstPart = new Dictionary<string, string>
+            {
+                { "Field1", responseParts[0].Split("\n")[0] },  // Calorie Intake
+                { "Field2", responseParts[0].Split("\n")[1] },  // Water Intake
+                { "Field3", responseParts[0].Split("\n")[2] }   // Exercise Time
+            };
+
+                    Dictionary<string, string> secondPart = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseParts[1]);
+
+                    if (secondPart == null || secondPart.Count == 0)
+                        throw new Exception("Exercise data is missing or not formatted correctly.");
+
+                    Dictionary<string, (int reps, int duration)> exercises = new Dictionary<string, (int reps, int duration)>();
+
+                    foreach (var item in secondPart)
+                    {
+                        string[] exerciseData = item.Value.Split(',');
+
+                        if (exerciseData.Length == 2)
                         {
-                            exercises[item.Key] = (reps, time);
+                            if (int.TryParse(exerciseData[0], out int reps) && int.TryParse(exerciseData[1], out int duration))
+                            {
+                                exercises[item.Key] = (reps, duration);
+                            }
+                            else
+                            {
+                                Console.WriteLine($"⚠️ Skipping exercise: {item.Key} (Invalid format)");
+                            }
                         }
                         else
                         {
-                            throw new Exception($"Invalid data format for exercise: {item.Key}");
+                            Console.WriteLine($"⚠️ Skipping exercise: {item.Key} (Unexpected format)");
                         }
                     }
-                    else
+
+                    // Create and return the final result
+                    return new PromptResult
                     {
-                        throw new Exception($"Invalid exercise format for {item.Key}. Expected 'reps,time'.");
-                    }
+                        CalorieIntake = Convert.ToInt32(firstPart["Field1"]),
+                        AmountOfWater = Convert.ToInt32(firstPart["Field2"]),
+                        ExerciseTime = Convert.ToInt32(firstPart["Field3"]),
+                        Exercises = exercises
+                    };
                 }
-
-                var result = new PromptResult
-                {
-                    CalorieIntake = Convert.ToInt32(firstPart["Field1"]),
-                    AmountOfWater = Convert.ToInt32(firstPart["Field2"]),
-                    ExerciseTime = Convert.ToInt32(firstPart["Field3"]),  // Adding ExerciseTime here
-                    Exercises = exercises
-                };
-
-                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("❌ ERROR: " + ex.Message);
+                return null; // Handle error gracefully
             }
         }
+
 
         public static string BuildPrompt(Prompt promptObject)
         {
             StringBuilder promptBuilder = new StringBuilder();
 
             promptBuilder.AppendLine($"Age: {promptObject.Age}");
-            promptBuilder.AppendLine($"Height: {promptObject.Height} cm");
-            promptBuilder.AppendLine($"Weight: {promptObject.Weight} kg");
-            promptBuilder.AppendLine($"Exercise Time: {promptObject.ExerciseTime} minutes");
-            promptBuilder.AppendLine($"Exercise Days: {string.Join(", ", promptObject.ExerciseDayes ?? new string[0])}");
-            promptBuilder.AppendLine($"Favorite Exercises: {string.Join(", ", promptObject.Favoriteexercises ?? new string[0])}");
+            promptBuilder.AppendLine($"Height: {promptObject.Height}");
+            promptBuilder.AppendLine($"Weight: {promptObject.Weight}");
+            promptBuilder.AppendLine($"Exercise Time: {promptObject.ExerciseTime}");
+            promptBuilder.AppendLine($"Exercise Days: {string.Join(", ", promptObject.ExerciseDayes)}");
+            promptBuilder.AppendLine($"Favorite Exercises: {string.Join(", ", promptObject.Favoriteexercises)}");
+            promptBuilder.AppendLine($"Exercise Goal: {promptObject.ExercisesGoal}");
 
-            promptBuilder.AppendLine($"Exercise Goal: {promptObject.ExerciseGoal}");
-
-            promptBuilder.AppendLine("Please create a detailed exercise plan that includes the following:");
+            promptBuilder.AppendLine("Please create a detailed exercise plan that includes:");
             promptBuilder.AppendLine("1. The amount of water to drink daily.");
             promptBuilder.AppendLine("2. The recommended calorie intake.");
             promptBuilder.AppendLine("3. Total Exercise Time.");
-            promptBuilder.AppendLine("4. A list of exercises to do, how many sets and reps for each, and how often to do them.");
+            promptBuilder.AppendLine("4. A list of exercises with sets, reps, and duration.");
 
             return promptBuilder.ToString();
         }
 
         public class Prompt
         {
-            public int Age, Height, Weight, ExerciseTime;
-            public string[]? ExerciseDayes, Favoriteexercises;
-            public string? ExerciseGoal;
+            public string Age, Height, Weight, ExerciseTime;
+            public string? ExerciseDayes, Favoriteexercises;
+            public string? ExercisesGoal;
         }
 
         public class PromptResult
         {
             public int CalorieIntake, AmountOfWater, ExerciseTime;
-            public Dictionary<string, (int reps, int Time)>? Exercises;
+            public Dictionary<string, (int reps, int duration)>? Exercises;
         }
 
         static string DecodeBase64(string base64)

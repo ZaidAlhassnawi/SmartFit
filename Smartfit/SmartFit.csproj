@@ -33,6 +33,8 @@
     <None Remove="Assets\Images\Dumbbells3.png" />
     <None Remove="Assets\Images\food.png" />
     <None Remove="Assets\Images\Home.png" />
+    <None Remove="Assets\Images\LoginScreenBackGround.png" />
+    <None Remove="Assets\Images\LoginWithGoogle.png" />
     <None Remove="Assets\Images\Logo.png" />
     <None Remove="Assets\Images\Magnifer.png" />
     <None Remove="Assets\Images\MountainClimbersEXC.png" />
@@ -81,6 +83,8 @@
     <Resource Include="Assets\Images\Dumbbells3.png" />
     <Resource Include="Assets\Images\food.png" />
     <Resource Include="Assets\Images\Home.png" />
+    <Resource Include="Assets\Images\LoginScreenBackGround.png" />
+    <Resource Include="Assets\Images\LoginWithGoogle.png" />
     <Resource Include="Assets\Images\Logo.png" />
     <Resource Include="Assets\Images\Magnifer.png" />
     <Resource Include="Assets\Images\MountainClimbersEXC.png" />
