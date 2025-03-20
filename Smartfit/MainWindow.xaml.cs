@@ -567,7 +567,7 @@ namespace SmartFit
                 {
 
 
-                    AiExcPlanStackPanel.Children.Clear();
+                    //AiExcPlanStackPanel.Children.Clear();
 
                     Prompt MyPrompt = new Prompt();
 
@@ -593,7 +593,7 @@ namespace SmartFit
                             int time = exercise.Value.Time;
                             // Add the TextBlock to the StackPanel
                         }
-                        AddExerciseToStackPanel(AiExcPlanStackPanel, "Mountain Climbers", "12");
+                        //AddExerciseToStackPanel(AiExcPlanStackPanel, "Mountain Climbers", "12");
                     }
                     else
                     {
@@ -846,11 +846,11 @@ namespace SmartFit
 
         private void btnAddNewPlan_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (_IsUserEnterPlanInfos && AiExcPlanStackPanel.Children.Count != 0)
+            if (_IsUserEnterPlanInfos && ExcPlanStackPanel.Children.Count != 0)
             {
                 WindowsContainer.SelectedIndex = 1;
 
-                CopyStackPanelToAnother(AiExcPlanStackPanel, ExcPlanStackPanel);
+                CopyStackPanelToAnother(ExcPlanStackPanel, ExcPlanStackPanel);
 
             }
             else

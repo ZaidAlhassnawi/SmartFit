@@ -1,7 +1,6 @@
-﻿using System.Configuration;
-using System.IO;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text;
+using System.Windows;
 using FitnessApp.DAL;
 using Newtonsoft.Json;
 
@@ -85,99 +84,92 @@ namespace Business
             return false;
         }
 
-        public static PromptResult CreatePlan(Prompt PromptObject)
+        /////////////////////////////////////////////////////////////////////////////////////
+
+        public static PromptResult CreatePlan(Prompt promptObject)
         {
             try
             {
-                // Build the prompt based on the user's input
-                string prompt = BuildPrompt(PromptObject);
+                string prompt = BuildPrompt(promptObject);
+                string apiKey = "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";
+                string apiUrl = "https://openrouter.ai/api/v1/chat/completions";
 
                 using (HttpClient client = new HttpClient())
                 {
-                    // Add API Key to the header
-                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {DecodeBase64(File.ReadAllText("SecretFile.txt").Trim())}");
-
-                    // Prepare the request payload (JSON format)
                     var requestBody = new
                     {
-                        model = "gpt-3.5-turbo",
-                        messages = new List<object> { new { role = "user", content = prompt } }
+                        model = "google/gemma-3-1b-it:free",
+                        messages = new[] {
+                    new { role = "user", content = new object[] { new { type = "text", text = prompt } } }
+                }
                     };
 
                     string jsonContent = JsonConvert.SerializeObject(requestBody);
                     StringContent content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
 
-                    HttpResponseMessage response = client.PostAsync(ConfigurationManager.AppSettings["apiUrl"], content).Result;
+                    HttpResponseMessage response = client.PostAsync(apiUrl, content).Result;
 
                     if (!response.IsSuccessStatusCode)
-                    {
-                        throw new Exception($"Error calling AI API: {response.StatusCode}");
-                    }
+                        throw new Exception($"API Error: {response.StatusCode}\nDetails: {response.Content.ReadAsStringAsync().Result}");
 
                     string aiResponse = response.Content.ReadAsStringAsync().Result;
-                    Console.WriteLine("🟢 AI Response: " + aiResponse); // Debugging
 
-                    // Check if response is empty
-                    if (string.IsNullOrWhiteSpace(aiResponse))
-                        throw new Exception("AI response is empty.");
+                    // Debugging: Log the raw AI response
+                    MessageBox.Show("🔍 AI Response: " + aiResponse);
 
-                    string[] responseParts = aiResponse.Split(new[] { "----" }, StringSplitOptions.None);
+                    dynamic result = JsonConvert.DeserializeObject(aiResponse);
+                    string aiGeneratedText = result?.choices?[0]?.message?.content ?? throw new Exception("Invalid AI response format.");
 
+                    // Split response into parts (ensure AI is formatting it correctly)
+                    string[] responseParts = aiGeneratedText.Split(new[] { "----" }, StringSplitOptions.None);
                     if (responseParts.Length < 2)
                         throw new Exception("Invalid AI response format.");
 
-                    Dictionary<string, string> firstPart = new Dictionary<string, string>
-            {
-                { "Field1", responseParts[0].Split("\n")[0] },  // Calorie Intake
-                { "Field2", responseParts[0].Split("\n")[1] },  // Water Intake
-                { "Field3", responseParts[0].Split("\n")[2] }   // Exercise Time
-            };
+                    // Parse first part (Extracting numerical values)
+                    string[] firstPartLines = responseParts[0].Split('\n');
+                    if (firstPartLines.Length < 3)
+                        throw new Exception("Insufficient data in AI response.");
 
+                    int calorieIntake = int.TryParse(firstPartLines[0].Trim(), out int ci) ? ci : 0;
+                    int amountOfWater = int.TryParse(firstPartLines[1].Trim(), out int aw) ? aw : 0;
+                    int exerciseTime = int.TryParse(firstPartLines[2].Trim(), out int et) ? et : 0;
+
+                    // Deserialize second part (Exercises Dictionary)
                     Dictionary<string, string> secondPart = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseParts[1]);
 
-                    if (secondPart == null || secondPart.Count == 0)
-                        throw new Exception("Exercise data is missing or not formatted correctly.");
-
-                    Dictionary<string, (int reps, int duration)> exercises = new Dictionary<string, (int reps, int duration)>();
-
+                    // Processing exercises (Ensuring valid format)
+                    Dictionary<string, (int reps, int duration)> exercises = new();
                     foreach (var item in secondPart)
                     {
                         string[] exerciseData = item.Value.Split(',');
-
-                        if (exerciseData.Length == 2)
+                        if (exerciseData.Length == 2 &&
+                            int.TryParse(exerciseData[0], out int reps) &&
+                            int.TryParse(exerciseData[1], out int duration))
                         {
-                            if (int.TryParse(exerciseData[0], out int reps) && int.TryParse(exerciseData[1], out int duration))
-                            {
-                                exercises[item.Key] = (reps, duration);
-                            }
-                            else
-                            {
-                                Console.WriteLine($"⚠️ Skipping exercise: {item.Key} (Invalid format)");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine($"⚠️ Skipping exercise: {item.Key} (Unexpected format)");
+                            exercises[item.Key] = (reps, duration);
                         }
                     }
 
-                    // Create and return the final result
+                    // Return only the required values
                     return new PromptResult
                     {
-                        CalorieIntake = Convert.ToInt32(firstPart["Field1"]),
-                        AmountOfWater = Convert.ToInt32(firstPart["Field2"]),
-                        ExerciseTime = Convert.ToInt32(firstPart["Field3"]),
+                        CalorieIntake = calorieIntake,
+                        AmountOfWater = amountOfWater,
+                        ExerciseTime = exerciseTime,
                         Exercises = exercises
                     };
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("❌ ERROR: " + ex.Message);
-                return null; // Handle error gracefully
+                MessageBox.Show("❌ ERROR: " + ex.Message);
+                return null;
             }
         }
 
+
+        /////////////////////////////////////////////////////////////////////////////////////
 
         public static string BuildPrompt(Prompt promptObject)
         {
@@ -206,7 +198,6 @@ namespace Business
             public string? ExerciseDayes, Favoriteexercises;
             public string? ExercisesGoal;
         }
-
         public class PromptResult
         {
             public int CalorieIntake, AmountOfWater, ExerciseTime;
