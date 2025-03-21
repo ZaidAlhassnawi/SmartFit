@@ -90,14 +90,17 @@ namespace Business
             try
             {
                 string prompt = BuildPrompt(promptObject);
-                string apiKey = "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";
+               
+                string apiKey = "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";
                 string apiUrl = "https://openrouter.ai/api/v1/chat/completions";
+               // string apiUrl = "https://openrouter.ai/api/v1/chat/completions";
 
                 using (HttpClient client = new HttpClient())
                 {
                     var requestBody = new
                     {
-                        model = "google/gemma-3-1b-it:free",
+                        model = "mistralai/mistral-7b-instruct",
+                     
                         messages = new[]
                         {
                         new { role = "user", content = new object[] { new { type = "text", text = prompt } } }
