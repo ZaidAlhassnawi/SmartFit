@@ -6,7 +6,7 @@ namespace FitnessApp.DAL
 {
     public static class DatabaseHelper
     {
-        private static string databasePath = "fitness.db";
+        private static string databasePath = "fitness.db";  
         private static string connectionString = $"Data Source={databasePath};Version=3;";
 
         // إنشاء اتصال بقاعدة البيانات
@@ -32,6 +32,7 @@ namespace FitnessApp.DAL
         private static void CreateAllTables(SQLiteConnection conn)
         {
             // جدول المستخدمين
+            ///
             ExecuteNonQuery(conn, @"
                 CREATE TABLE IF NOT EXISTS Users (
                     UserID INTEGER PRIMARY KEY AUTOINCREMENT,

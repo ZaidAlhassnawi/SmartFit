@@ -936,13 +936,16 @@
 
                             <TabItem TabIndex="1" >
 
-                                <ScrollViewer>
+                                <ScrollViewer HorizontalScrollBarVisibility="Visible">
 
-                                    <StackPanel x:Name="ExcPlanStackPanel" Orientation="Vertical" Margin="5,1,0,0">
+                                    
+                                
+                                        <TextBox  x:Name="TBMyPlan" FontSize="25" Foreground="#4A7AB0">
+
+                                        </TextBox>
 
 
-
-                                    </StackPanel>
+                          
 
                                 </ScrollViewer>
 
@@ -955,182 +958,12 @@
 
                                     <Grid Margin="0,244,0,115">
 
-                                        <ScrollViewer Margin="0,-20,0,4">
+                                        <ScrollViewer Margin="0,-20,0,4" HorizontalScrollBarVisibility="Visible">
 
-                                            <StackPanel x:Name="AiExcPlanStackPanel" Orientation="Vertical" Width="Auto" HorizontalAlignment="Stretch">
-
-                                                <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                                    <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Grid Background="White" Margin="0,0,861,0" />
-                                                        <Image Source="/Assets/Images/MountainClimbersEXC.png" HorizontalAlignment="Left" Width="172" />
-
-                                                        <Grid Background="White" HorizontalAlignment="Left" Width="861" Margin="176,0,0,0"/>
-                                                        <TextBlock FontSize="24" Text="Mountain Climbers" Margin="181,10,0,72" HorizontalAlignment="Left" Width="236"/>
-                                                        <Label FontSize="24" Content="×12" Margin="181,90,0,0" IsEnabled="False" HorizontalAlignment="Left" Width="236"/>
-                                                    </Grid>
-
-                                                </Border>
-
-                                                <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                                    <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Grid Background="White" Margin="0,0,861,0" />
-                                                        <Image Source="/Assets/Images/MountainClimbersEXC.png" HorizontalAlignment="Left" Width="172" />
-
-                                                        <Grid Background="White" HorizontalAlignment="Left" Width="861" Margin="176,0,0,0"/>
-                                                        <TextBlock FontSize="24" Text="Mountain Climbers" Margin="181,10,0,72" HorizontalAlignment="Left" Width="236"/>
-                                                        <Label FontSize="24" Content="×12" Margin="181,90,0,0" IsEnabled="False" HorizontalAlignment="Left" Width="236"/>
-                                                    </Grid>
-
-                                                </Border>
-
-                                                <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                                    <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Grid Background="White" Margin="0,0,861,0" />
-                                                        <Image Source="/Assets/Images/MountainClimbersEXC.png" HorizontalAlignment="Left" Width="172" />
-
-                                                        <Grid Background="White" HorizontalAlignment="Left" Width="861" Margin="176,0,0,0"/>
-                                                        <TextBlock FontSize="24" Text="Mountain Climbers" Margin="181,10,0,72" HorizontalAlignment="Left" Width="236"/>
-                                                        <Label FontSize="24" Content="×12" Margin="181,90,0,0" IsEnabled="False" HorizontalAlignment="Left" Width="236"/>
-                                                    </Grid>
-
-                                                </Border>
-
-                                                <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                                    <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Grid Background="White" Margin="0,0,861,0" />
-                                                        <Image Source="/Assets/Images/MountainClimbersEXC.png" HorizontalAlignment="Left" Width="172" />
-
-                                                        <Grid Background="White" HorizontalAlignment="Left" Width="861" Margin="176,0,0,0"/>
-                                                        <TextBlock FontSize="24" Text="Mountain Climbers" Margin="181,10,0,72" HorizontalAlignment="Left" Width="236"/>
-                                                        <Label FontSize="24" Content="×12" Margin="181,90,0,0" IsEnabled="False" HorizontalAlignment="Left" Width="236"/>
-                                                    </Grid>
-
-                                                </Border>
-
-                                                <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                                    <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Grid Background="White" Margin="0,0,861,0" />
-                                                        <Image Source="/Assets/Images/MountainClimbersEXC.png" HorizontalAlignment="Left" Width="172" />
-
-                                                        <Grid Background="White" HorizontalAlignment="Left" Width="861" Margin="176,0,0,0"/>
-                                                        <TextBlock FontSize="24" Text="Mountain Climbers" Margin="181,10,0,72" HorizontalAlignment="Left" Width="236"/>
-                                                        <Label FontSize="24" Content="×12" Margin="181,90,0,0" IsEnabled="False" HorizontalAlignment="Left" Width="236"/>
-                                                    </Grid>
-
-                                                </Border>
-
-                                                <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                                    <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Grid Background="White" Margin="0,0,861,0" />
-                                                        <Image Source="/Assets/Images/MountainClimbersEXC.png" HorizontalAlignment="Left" Width="172" />
-
-                                                        <Grid Background="White" HorizontalAlignment="Left" Width="861" Margin="176,0,0,0"/>
-                                                        <TextBlock FontSize="24" Text="Mountain Climbers" Margin="181,10,0,72" HorizontalAlignment="Left" Width="236"/>
-                                                        <Label FontSize="24" Content="×12" Margin="181,90,0,0" IsEnabled="False" HorizontalAlignment="Left" Width="236"/>
-                                                    </Grid>
-
-                                                </Border>
-
-                                                <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                                    <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Grid Background="White" Margin="0,0,861,0" />
-                                                        <Image Source="/Assets/Images/MountainClimbersEXC.png" HorizontalAlignment="Left" Width="172" />
-
-                                                        <Grid Background="White" HorizontalAlignment="Left" Width="861" Margin="176,0,0,0"/>
-                                                        <TextBlock FontSize="24" Text="Mountain Climbers" Margin="181,10,0,72" HorizontalAlignment="Left" Width="236"/>
-                                                        <Label FontSize="24" Content="×12" Margin="181,90,0,0" IsEnabled="False" HorizontalAlignment="Left" Width="236"/>
-                                                    </Grid>
-
-                                                </Border>
-
-                                                <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                                    <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Grid Background="White" Margin="0,0,861,0" />
-                                                        <Image Source="/Assets/Images/MountainClimbersEXC.png" HorizontalAlignment="Left" Width="172" />
-
-                                                        <Grid Background="White" HorizontalAlignment="Left" Width="861" Margin="176,0,0,0"/>
-                                                        <TextBlock FontSize="24" Text="Mountain Climbers" Margin="181,10,0,72" HorizontalAlignment="Left" Width="236"/>
-                                                        <Label FontSize="24" Content="×12" Margin="181,90,0,0" IsEnabled="False" HorizontalAlignment="Left" Width="236"/>
-                                                    </Grid>
-
-                                                </Border>
-
-                                                <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                                    <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Grid Background="White" Margin="0,0,861,0" />
-                                                        <Image Source="/Assets/Images/MountainClimbersEXC.png" HorizontalAlignment="Left" Width="172" />
-
-                                                        <Grid Background="White" HorizontalAlignment="Left" Width="861" Margin="176,0,0,0"/>
-                                                        <TextBlock FontSize="24" Text="Mountain Climbers" Margin="181,10,0,72" HorizontalAlignment="Left" Width="236"/>
-                                                        <Label FontSize="24" Content="×12" Margin="181,90,0,0" IsEnabled="False" HorizontalAlignment="Left" Width="236"/>
-                                                    </Grid>
-
-                                                </Border>
-
-                                                <Border CornerRadius="32" Margin="16,12" Width="Auto" Height="147"  Background="White"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand">
-
-                                                    <Grid Margin="10" Width="Auto" Height="127" VerticalAlignment="Top" >
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Grid Background="White" Margin="0,0,861,0" />
-                                                        <Image Source="/Assets/Images/MountainClimbersEXC.png" HorizontalAlignment="Left" Width="172" />
-
-                                                        <Grid Background="White" HorizontalAlignment="Left" Width="861" Margin="176,0,0,0"/>
-                                                        <TextBlock FontSize="24" Text="Mountain Climbers" Margin="181,10,0,72" HorizontalAlignment="Left" Width="236"/>
-                                                        <Label FontSize="24" Content="×12" Margin="181,90,0,0" IsEnabled="False" HorizontalAlignment="Left" Width="236"/>
-                                                    </Grid>
-
-                                                </Border>
-
-                                            </StackPanel>
-
+                                            <TextBox  x:Name="TBAiResponse" FontSize="25" Foreground="#4A7AB0">
+                                                
+                                            </TextBox>
+                                            
                                         </ScrollViewer>
 
                                     </Grid>
